@@ -3,9 +3,272 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Upscale</title>
+
+    <!-- Google Font (Jost)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CLI-->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+      body {
+        font-family: "Jost";
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World</h1>
+    <!-- Video Background -->
+    <div
+      class="absolute inset-0 z-[-1] w-full h-screen xl:h-auto overflow-hidden"
+    >
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        autoplay
+        loop
+        muted
+      >
+        <source src="Asset/Video/repeat-medium.mp4" type="video/mp4" />
+        Your browser does not support video tag.
+      </video>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="max-w-[1200px] h-screen mx-auto flex flex-col place-content-between"
+    >
+      <!-- Navbar -->
+      <div
+        class="w-full h-auto pt-2 flex flex-row justify-between items-center"
+      >
+        <img
+          src="Asset/Images/logo-upscale.png"
+          alt="Upscale"
+          class="w-[176px] h-[40px]"
+        />
+        <div class="w-auto h-auto flex items-center text-[#FFFFFF] gap-10">
+          <a href="#">Home</a>
+          <a href="#">For Business</a>
+          <a href="#">For Talent</a>
+          <a href="#">Jobs</a>
+          <a href="#">F.A.Q</a>
+          <div class="w-auto h-auto flex items-center gap-3">
+            <img
+              src="Asset/Images/id.png"
+              alt="Indonesia Flag"
+              class="w-[18px] h-[12px] mb-0.5"
+            />
+            <p>ID</p>
+          </div>
+          <div class="border-l h-5"></div>
+          <div class="w-auto h-auto flex items-center gap-10">
+            <a href="#">Login</a>
+            <a href="#" class="border rounded-full px-3">Live Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div
+        class="w-auto h-auto flex justify-center items-center text-white pt-32"
+      >
+        <div class="w-[600px] flex flex-col gap-5">
+          <p class="text-[35px] tracking-wide">
+            Hire Talent On-Demand
+            <span class="text-[#47B2E4] text-[43px]">.</span>
+          </p>
+          <p class="text-[30px] inline">
+            Kami membantu meng-handle semua urusan "talent", agar anda dapat
+            fokus pada pengembangan bisnis
+            <span class="text-[#47B2E4] text-[30px]">.</span>
+          </p>
+          <p class="text-[20px]">
+            Hire sofware developers, designers, product manager, finance, atau
+            administratif team dari eksklusif network kami. Talent kami bisa
+            bekerja secara remote maupun on-site.
+          </p>
+          <p class="text-[20px]">
+            Kontrak full-time maupun freelance yang disesuaikan dengan kebutuhan
+            bisnis Anda.
+          </p>
+        </div>
+        <div
+          class="w-[600px] flex justify-center items-center gap-10 text-[16px]"
+        >
+          <a href="#" class="rounded-full px-8 py-3 bg-[#47B2E4]"
+            >Request Quotation</a
+          >
+          <a href="#" class="border rounded-full px-8 py-3">Join as Talent</a>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="relative w-auto h-auto border pb-20">
+        <div class="absolute grid grid-cols-4 justify-between gap-10">
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Dedicated Team</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent sebagai karyawan outsource.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Freelance Team</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent freelance berbasis man-hour.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Head Hunter</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent sebagai karyawan internal anda.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Project-Based</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire vendor / freelance berbasis project.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Companies -->
+    <div class="w-full h-auto bg-[#37517e] flex">
+      <div
+        class="max-w-[1200px] h-auto mx-auto grid grid-cols-5 pt-52 pb-24 gap-24"
+      >
+        <img src="Asset/Images/logo-koinworks.png" alt="Koinworks" />
+        <img src="Asset/Images/logo-cakap.png" alt="Cakap" />
+        <img src="Asset/Images/logo-gameloft.png" alt="Gameloft" />
+        <img src="Asset/Images/logo-krafthaus.png" alt="Krafthaus" />
+        <img src="Asset/Images/logo-crowde.png" alt="Crowde" />
+      </div>
+    </div>
+
+    <!-- Strategy -->
+    <div class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10">
+      <div class="flex flex-col justify-center items-center gap-10">
+        <p class="text-[30px] text-[#12304A]">
+          Fokuskan perhatian pada strategi pengembangan bisnis Anda
+          <span class="text-[#47B2E4] text-[43px]">.</span>
+        </p>
+        <p class="text-[17px] text-[#587790] text-center px-72">
+          Kami akan meng-handle urusan perpajakan, legal, dan management. Kami
+          memiliki framework kerja yang terbukti efektif untuk kolaborasi team
+          dan juga terdapat tools memonitor produktivitas secara real-time.
+        </p>
+      </div>
+      <img src="Asset/Images/devices.png" alt="Devices" class="py-10" />
+      <div class="w-full flex justify-between items-center gap-10">
+        <div class="flex flex-col text-center gap-5">
+          <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
+          <p>
+            Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
+            dalam waktu 14 hari.
+          </p>
+        </div>
+        <div class="flex flex-col text-center gap-5">
+          <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
+          <p>
+            Anda akan mendapatkan report berkala dan dapat login dalam sistem
+            real-time monitoring kami.
+          </p>
+        </div>
+        <div class="flex flex-col text-center gap-5">
+          <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
+          <p>
+            Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
+            produktif.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Departemen -->
+    <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
+      <div class="max-w-[1200px] h-auto mx-auto flex flex-col gap-10">
+        <div class="flex flex-col text-center gap-10">
+          <p class="text-[30px] text-[#12304A]">
+            Departemen apa yang Anda butuhkan saat ini?
+          </p>
+          <p class="text-[17px] text-[#587790] px-64">
+            Talent kami mencakup, namun tidak terbatas pada Software Developer,
+            Quality Assurance, Graphic Designer, UX Designer, Product Manager,
+            Keuangan, Data Entry, dll. Talent kami sangat disiplin dan memiliki
+            passion terhadap produktifitas dan teknologi.
+          </p>
+        </div>
+        <div class="grid grid-cols-3 justify-center items-center">
+          <div class="flex flex-col text-center gap-5 px-5">
+            <div class="flex flex-col">
+              <p class="text-[18px] text-[#12304A]">Talent Pool</p>
+              <p class="text-[32px] text-[#12304A]">100000 +</p>
+            </div>
+            <p class="text-[16px] text-[#587790]">
+              Talent pool dari partnership, komunitas, dan universitas.
+            </p>
+          </div>
+          <div class="flex flex-col text-center gap-5 px-5 border-l border-r">
+            <div class="flex flex-col">
+              <p class="text-[18px] text-[#12304A]">Talent Tersalurkan</p>
+              <p class="text-[32px] text-[#12304A]">7000 +</p>
+            </div>
+            <p class="text-[16px] text-[#587790]">
+              Talent tersalurkan dan bekerja untuk client kami.
+            </p>
+          </div>
+          <div class="flex flex-col text-center gap-5 px-5">
+            <div class="flex flex-col">
+              <p class="text-[18px] text-[#12304A]">Happy Clients</p>
+              <p class="text-[32px] text-[#12304A]">100 +</p>
+            </div>
+            <p class="text-[16px] text-[#587790]">
+              Sejak tahun 2009, UpScale telah dipercaya oleh ratusan perusahaan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Procedure -->
+    <div class="max-w-[1200px] h-auto mx-auto flex py-20">
+      <div class="flex flex-col gap-5">
+        <div class="">
+          <p>Bagaimana prosedur kami ?</p>
+          <p>Kami bekerja sesuai dengan kebutuhan bisnis Anda</p>
+        </div>
+        <p>
+          Konsultasi singkat dengan konsultan kami akan membantu kamu untuk
+          mengetahui kebutuhan bisnis dan talent Anda. Kami pastikan talent yang
+          kami tawarkan adalah talent yang memiliki kualifikasi sesuai dengan
+          kebutuhan.
+        </p>
+        <p>Perkiraan waktu untuk konsultasi</p>
+        <div><span>30</span> <span>Menit</span></div>
+      </div>
+      <div class="relative"></div>
+    </div>
   </body>
 </html>
