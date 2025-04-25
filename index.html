@@ -13,8 +13,14 @@
       rel="stylesheet"
     />
 
-    <!-- Tailwind CLI-->
+    <!-- Tailwind CLI -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Alpine CLI -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
 
     <style>
       body {
@@ -22,7 +28,10 @@
       }
     </style>
   </head>
-  <body>
+  <body
+    x-data="{ stickyNav: false }"
+    @scroll.window="stickyNav = window.pageYOffset > 30"
+  >
     <!-- Video Background -->
     <div
       class="absolute inset-0 z-[-1] w-full h-screen xl:h-auto overflow-hidden"
@@ -38,12 +47,74 @@
       </video>
     </div>
 
+    <!-- Chat -->
+    <div
+      class="size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 800 800"
+        height="32px"
+        width="32px"
+        role="img"
+        alt="Chat icon"
+        aria-labelledby="openIconTitle openIconDesc"
+        class="tawk-min-chat-icon"
+        fill="white"
+      >
+        <title id="openIconTitle">Opens Chat</title>
+        <desc id="openIconDesc">This icon Opens the chat window.</desc>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
+        ></path>
+      </svg>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <div
+      x-bind:class="stickyNav ? '' : 'hidden'"
+      class="fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
+    >
+      <div
+        class="max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
+      >
+        <img
+          src="Asset/Images/logo-upscale.png"
+          alt="Upscale"
+          class="w-[176px] h-[40px]"
+        />
+        <div class="w-auto h-auto flex items-center text-[#FFFFFF] gap-10">
+          <a href="#">Home</a>
+          <a href="#">For Business</a>
+          <a href="#">For Talent</a>
+          <a href="#">Jobs</a>
+          <a href="#">F.A.Q</a>
+          <div class="w-auto h-auto flex items-center gap-3">
+            <img
+              src="Asset/Images/id.png"
+              alt="Indonesia Flag"
+              class="w-[18px] h-[12px] mb-0.5"
+            />
+            <p>ID</p>
+          </div>
+          <div class="border-l h-5"></div>
+          <div class="w-auto h-auto flex items-center gap-10">
+            <a href="#">Login</a>
+            <a href="#" class="border rounded-full px-3">Live Chat</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Header -->
     <div
       class="max-w-[1200px] h-screen mx-auto flex flex-col place-content-between"
     >
       <!-- Navbar -->
       <div
+        x-bind:class="stickyNav ? 'hidden' : ''"
         class="w-full h-auto pt-2 flex flex-row justify-between items-center"
       >
         <img
@@ -74,9 +145,7 @@
       </div>
 
       <!-- Content -->
-      <div
-        class="w-auto h-auto flex justify-center items-center text-white pt-32"
-      >
+      <div class="w-auto h-auto flex justify-center items-center text-white">
         <div class="w-[600px] flex flex-col gap-5">
           <p class="text-[35px] tracking-wide">
             Hire Talent On-Demand
@@ -230,7 +299,9 @@
               Talent pool dari partnership, komunitas, dan universitas.
             </p>
           </div>
-          <div class="flex flex-col text-center gap-5 px-5 border-l border-r">
+          <div
+            class="flex flex-col text-center gap-5 px-5 border-l-1 border-l-[#dbdee0] border-r-1 border-r-[#dbdee0]"
+          >
             <div class="flex flex-col">
               <p class="text-[18px] text-[#12304A]">Talent Tersalurkan</p>
               <p class="text-[32px] text-[#12304A]">7000 +</p>
@@ -433,7 +504,10 @@
     </div>
 
     <!-- Recruitment -->
-    <div class="max-w-[1200px] h-auto mx-auto py-20 items-center">
+    <div
+      x-data="{ open1: false, open2: false, open3: false }"
+      class="max-w-[1200px] h-auto mx-auto py-20 items-center"
+    >
       <div class="flex flex-row">
         <div class="flex flex-col gap-9">
           <p class="text-[30px] text-[#12304A]">
@@ -443,35 +517,79 @@
             Tentukan tipe recruitment anda. Pilihan fasilitas tidak bersifat
             wajib, sehingga masih dapat disesuaikan kembali sesuai kebutuhan.
           </p>
-          <div class="flex flex-col gap-8">
-            <div class="flex flex-row gap-3">
-              <button
-                type="button"
-                class="bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF]"
+          <div class="flex flex-col gap-7">
+            <div class="flex flex-col">
+              <div
+                x-on:click="open1 = ! open1"
+                class="flex flex-row gap-3 hover:cursor-pointer"
               >
+                <button
+                  type="button"
+                  x-bind:class="open1 ? 'rotate-90' : ''"
+                  class="flex justify-center items-center bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF] transition ease-in-out duration-300 hover:cursor-pointer"
                 >
-              </button>
-              <p class="text-[16px] text-[#12304A]">
-                Dedicated Team / Freelance Team
+                  <img
+                    src="Asset/Images/angle-right-svgrepo-com.svg"
+                    alt="greater"
+                    class="size-4"
+                  />
+                </button>
+                <p class="text-[16px] text-[#12304A]">
+                  Dedicated Team / Freelance Team
+                </p>
+              </div>
+              <p x-show="open1" class="text-[17px] text-[#587790] pt-4 pr-10">
+                Pencarian talent terbaik untuk kebutuhan bisnis Anda. Talent
+                bersedia untuk bekerja on-site maupun remote dan full-time
+                maupun part-time
               </p>
             </div>
-            <div class="flex flex-row gap-3">
-              <button
-                type="button"
-                class="bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF]"
+            <div class="flex flex-col">
+              <div
+                x-on:click="open2 = ! open2"
+                class="flex flex-row gap-3 hover:cursor-pointer"
               >
+                <button
+                  x-bind:class="open2 ? 'rotate-90' : ''"
+                  type="button"
+                  class="flex justify-center items-center bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF] transition ease-in-out duration-300 hover:cursor-pointer"
                 >
-              </button>
-              <p class="text-[16px] text-[#12304A]">Head Hunter</p>
+                  <img
+                    src="Asset/Images/angle-right-svgrepo-com.svg"
+                    alt="greater"
+                    class="size-4"
+                  />
+                </button>
+                <p class="text-[16px] text-[#12304A]">Head Hunter</p>
+              </div>
+              <p x-show="open2" class="text-[17px] text-[#587790] pt-4 pr-14">
+                Menyediakan fasilitas pencarian talent untuk dijadikan karyawan
+                internal.
+              </p>
             </div>
-            <div class="flex flex-row gap-3">
-              <button
-                type="button"
-                class="bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF]"
+
+            <div class="flex flex-col">
+              <div
+                x-on:click="open3 = ! open3"
+                class="flex flex-row gap-3 hover:cursor-pointer"
               >
+                <button
+                  x-bind:class="open3 ? 'rotate-90' : ''"
+                  type="button"
+                  class="flex justify-center items-center bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF] transition ease-in-out duration-300 hover:cursor-pointer"
                 >
-              </button>
-              <p class="text-[16px] text-[#12304A]">Project-Based</p>
+                  <img
+                    src="Asset/Images/angle-right-svgrepo-com.svg"
+                    alt="greater"
+                    class="size-4"
+                  />
+                </button>
+                <p class="text-[16px] text-[#12304A]">Project-Based</p>
+              </div>
+              <p x-show="open3" class="text-[17px] text-[#587790] pt-4 pr-10">
+                Menyediakan fasilitas pencarian vendor untuk menjadi
+                sub-contractor project Anda.
+              </p>
             </div>
           </div>
         </div>
@@ -701,42 +819,53 @@
     </div>
 
     <!-- Footer -->
-    <div class="w-full h-auto bg-[#37517d]">
+    <div class="w-full h-auto bg-[#37517d] relative">
       <div class="max-w-[1200px] h-auto mx-auto text-[#FFFFFF]">
         <div class="flex flex-col">
-          <div class="flex flex-row justify-between">
-            <div class="flex flex-col">
-              <p>UpScale</p>
-              <div class="flex flex-row">
-                <div class="flex flex-col">
+          <div class="flex flex-row justify-between py-20">
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">UpScale</p>
+              <div class="flex flex-row text-[16px] gap-10">
+                <div class="flex flex-col gap-5">
                   <p>Location</p>
                   <p>Phone</p>
                   <p>Email</p>
                 </div>
-                <div class="flex flex-col">
+                <div class="flex flex-col gap-5">
                   <p>
                     Jln. Ringroad Utara No 34 Maguwoharjo Yogyakarta, Indonesia
                   </p>
-                  <div class="flex justify-start">
-                    <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="Asset/Images/id.png"
+                      alt="Indonesian Flag"
+                      class="self-center pb-[1px]"
+                    />
                     <span>+62 87 888 666 531</span>
-                    <img src="Asset/Images/au.png" alt="Australian Flag" />
+                    <span>|</span>
+                    <img
+                      src="Asset/Images/au.png"
+                      alt="Australian Flag"
+                      class="self-center pb-[1px]"
+                    />
                     <span>+61 3 9010 6067</span>
                   </div>
                   <p>dodi@upscale.id</p>
                 </div>
               </div>
             </div>
-            <div class="flex flex-col">
-              <p>For Talent</p>
-              <div class="flex flex-col">
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">For Talent</p>
+              <div class="flex flex-col text-[15px] gap-5 opacity-80">
                 <p>Why Join as Talent?</p>
                 <p>Job Opportunities</p>
                 <p>Register as Talent</p>
               </div>
             </div>
           </div>
-          <div class="flex flex-row justify-between">
+          <div
+            class="flex flex-row justify-between text-[12px] py-5 opacity-70"
+          >
             <p>&copy; UpScale 2020. Member of PT Talenta Sinergi Group</p>
             <img
               src="Asset/Images/logo-upscale.png"
@@ -746,6 +875,11 @@
           </div>
         </div>
       </div>
+
+      <!-- Middle border -->
+      <div
+        class="absolute bottom-16 w-full border-0.5 border-b border-[#dcdfe0] opacity-40"
+      ></div>
     </div>
   </body>
 </html>
