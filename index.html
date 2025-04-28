@@ -29,7 +29,7 @@
     </style>
   </head>
   <body
-    x-data="{ stickyNav: false }"
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false }"
     @scroll.window="stickyNav = window.pageYOffset > 30"
   >
     <!-- Video Background -->
@@ -47,35 +47,93 @@
       </video>
     </div>
 
-    <!-- Chat -->
-    <div
+    <!-- Chat Button -->
+    <!-- <div
+      x-on:click="showChat = !showChat"
       class="size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 800 800"
-        height="32px"
-        width="32px"
-        role="img"
-        alt="Chat icon"
-        aria-labelledby="openIconTitle openIconDesc"
-        class="tawk-min-chat-icon"
-        fill="white"
-      >
-        <title id="openIconTitle">Opens Chat</title>
-        <desc id="openIconDesc">This icon Opens the chat window.</desc>
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
-        ></path>
-      </svg>
+      <div class="w-auto h-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 800"
+          height="32px"
+          width="32px"
+          role="img"
+          alt="Chat icon"
+          aria-labelledby="openIconTitle openIconDesc"
+          x-bind:class="showChat ? 'hidden' : ''"
+          fill="white"
+        >
+          <title id="openIconTitle">Opens Chat</title>
+          <desc id="openIconDesc">This icon Opens the chat window.</desc>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
+          ></path>
+        </svg>
+
+        <img
+          x-show="showChat"
+          src="Asset/Images/close.png"
+          alt="Close"
+          class="size-[25px]"
+        />
+      </div>
+    </div> -->
+
+    <!-- Chat Section -->
+    <div
+      x-show="showChat"
+      class="w-[350px] h-[520px] fixed bottom-24 right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+    >
+      <div class="flex w-full h-auto bg-[#37517e]">
+        <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
+          For faster response, please contact us from our WhatsApp 123-456-789
+        </p>
+      </div>
+      <div class="w-full h-full">
+        <div class="w-full h-full flex flex-col px-5 pt-5 gap-5">
+          <input
+            type="text"
+            placeholder="* Name"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="text"
+            placeholder="* Phone"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="email"
+            placeholder="* Email"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <textarea
+            name=""
+            id=""
+            placeholder="* Message"
+            cols="55"
+            class="border border-gray-300 rounded-sm p-2 resize-none"
+          ></textarea>
+          <button
+            type="button"
+            class="flex flex-row justify-center items-center bg-[#37517e] text-[#FFFFFF] text-[18px] py-2 rounded-sm mt-3 gap-2 hover:cursor-pointer"
+          >
+            <img src="Asset/Images/message.png" alt="Send" />
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-auto flex justify-center items-center pb-7">
+        <p class="text-[12px]">Add free live chat to your site</p>
+      </div>
     </div>
 
     <!-- Sticky Navbar -->
     <div
       x-bind:class="stickyNav ? '' : 'hidden'"
-      class="fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
+      class="hidden xl:fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
     >
       <div
         class="max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
@@ -91,13 +149,43 @@
           <a href="#">For Talent</a>
           <a href="#">Jobs</a>
           <a href="#">F.A.Q</a>
-          <div class="w-auto h-auto flex items-center gap-3">
+          <div
+            @mouseover="showLanguage = true"
+            @mouseleave="showLanguage = false"
+            class="relative w-auto h-auto flex items-center gap-3 py-5"
+          >
             <img
               src="Asset/Images/id.png"
               alt="Indonesia Flag"
               class="w-[18px] h-[12px] mb-0.5"
             />
             <p>ID</p>
+
+            <!-- Change Language -->
+            <div
+              x-show="showLanguage"
+              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+            >
+              <!-- Polygon -->
+              <div class="fixed top-13">
+                <img
+                  src="Asset/Images/polygon.png"
+                  alt="Polygon"
+                  class="rotate-180"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
@@ -110,74 +198,174 @@
 
     <!-- Header -->
     <div
-      class="max-w-[1200px] h-screen mx-auto flex flex-col place-content-between"
+      x-data="{ showHamburgerContent: false }"
+      class="relative max-w-[1200px] h-screen mx-auto flex flex-col place-content-start gap-10 xl:place-content-between"
     >
       <!-- Navbar -->
       <div
         x-bind:class="stickyNav ? 'hidden' : ''"
-        class="w-full h-auto pt-2 flex flex-row justify-between items-center"
+        class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
       >
         <img
           src="Asset/Images/logo-upscale.png"
           alt="Upscale"
-          class="w-[176px] h-[40px]"
+          class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
         />
-        <div class="w-auto h-auto flex items-center text-[#FFFFFF] gap-10">
+
+        <div
+          class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
+        >
           <a href="#">Home</a>
           <a href="#">For Business</a>
           <a href="#">For Talent</a>
           <a href="#">Jobs</a>
           <a href="#">F.A.Q</a>
-          <div class="w-auto h-auto flex items-center gap-3">
+          <div
+            @mouseover="showLanguage = true"
+            @mouseleave="showLanguage = false"
+            class="relative w-auto h-auto flex items-center gap-3 py-5"
+          >
             <img
               src="Asset/Images/id.png"
               alt="Indonesia Flag"
               class="w-[18px] h-[12px] mb-0.5"
             />
             <p>ID</p>
+
+            <!-- Change Language -->
+            <div
+              x-show="showLanguage"
+              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+            >
+              <!-- Polygon -->
+              <div class="fixed top-13">
+                <img
+                  src="Asset/Images/polygon.png"
+                  alt="Polygon"
+                  class="rotate-180"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
             <a href="#">Login</a>
-            <a href="#" class="border rounded-full px-3">Live Chat</a>
+            <a
+              x-on:click="showChat = true"
+              href="#"
+              class="border rounded-full px-3"
+              >Live Chat</a
+            >
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <div
+          x-on:click="showHamburgerContent = !showHamburgerContent"
+          class="lg:hidden size-6 mr-2"
+        >
+          <img src="Asset/Images/hamburger.svg" alt="Hamburger" />
+        </div>
+
+        <!-- Hamburger Content (Mobile) -->
+        <div
+          x-show="showHamburgerContent"
+          class="md:hidden absolute top-11 w-full h-auto bg-white py-5"
+        >
+          <div
+            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+          >
+            <a href="#">Home</a>
+            <a href="#">For Business</a>
+            <a href="#">For Talent</a>
+            <a href="#">Jobs</a>
+            <a href="#">F.A.Q</a>
+            <div
+              x-data="{ showLanguageMobile: false }"
+              class="flex flex-col gap-4"
+            >
+              <div
+                x-on:click="showLanguageMobile = !showLanguageMobile"
+                class="flex items-center gap-3"
+              >
+                <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                <p>ID</p>
+              </div>
+
+              <!-- Change Language Mobile -->
+              <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-3 text-[#47b2e4]">
+              <a href="#" class="">Login</a>
+              <div class="border opacity-50"></div>
+              <a href="#" class="border rounded-full px-3">Live Chat</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Content -->
-      <div class="w-auto h-auto flex justify-center items-center text-white">
-        <div class="w-[600px] flex flex-col gap-5">
-          <p class="text-[35px] tracking-wide">
+      <div
+        class="w-auto h-screen lg:h-auto flex flex-col lg:flex-row justify-center items-center text-white max-xl:px-3 gap-10"
+      >
+        <div class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5">
+          <p class="text-[27px] xl:text-[35px] xl:tracking-wide">
             Hire Talent On-Demand
-            <span class="text-[#47B2E4] text-[43px]">.</span>
+            <span class="text-[#47B2E4] text-[27px] xl:text-[43px]">.</span>
           </p>
-          <p class="text-[30px] inline">
+          <p class="text-[25px] xl:text-[30px] inline">
             Kami membantu meng-handle semua urusan "talent", agar anda dapat
             fokus pada pengembangan bisnis
-            <span class="text-[#47B2E4] text-[30px]">.</span>
+            <span class="text-[#47B2E4] text-[27px] xl:text-[30px]">.</span>
           </p>
-          <p class="text-[20px]">
+          <p class="text-[18px] xl:text-[20px]">
             Hire sofware developers, designers, product manager, finance, atau
             administratif team dari eksklusif network kami. Talent kami bisa
             bekerja secara remote maupun on-site.
           </p>
-          <p class="text-[20px]">
+          <p class="text-[18px] xl:text-[20px]">
             Kontrak full-time maupun freelance yang disesuaikan dengan kebutuhan
             bisnis Anda.
           </p>
         </div>
         <div
-          class="w-[600px] flex justify-center items-center gap-10 text-[16px]"
+          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end"
         >
-          <a href="#" class="rounded-full px-8 py-3 bg-[#47B2E4]"
-            >Request Quotation</a
+          <button
+            class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4]"
           >
-          <a href="#" class="border rounded-full px-8 py-3">Join as Talent</a>
+            Request Quotation
+          </button>
+          <button
+            class="max-lg:w-full border rounded-full lg:px-8 py-4 lg:py-3"
+          >
+            Join as Talent
+          </button>
         </div>
       </div>
 
       <!-- Features -->
-      <div class="relative w-auto h-auto pb-20">
+      <div class="max-lg:hidden relative w-auto h-auto pb-20">
         <div class="absolute grid grid-cols-4 justify-between gap-10">
           <div
             class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
@@ -226,48 +414,110 @@
     <!-- Companies -->
     <div class="w-full h-auto bg-[#37517e] flex">
       <div
-        class="max-w-[1200px] h-auto mx-auto grid grid-cols-5 pt-52 pb-24 gap-24"
+        class="max-w-[1200px] h-auto mx-auto flex flex-col max-xl:py-10 max-xl:px-3 gap-10"
       >
-        <img src="Asset/Images/logo-koinworks.png" alt="Koinworks" />
-        <img src="Asset/Images/logo-cakap.png" alt="Cakap" />
-        <img src="Asset/Images/logo-gameloft.png" alt="Gameloft" />
-        <img src="Asset/Images/logo-krafthaus.png" alt="Krafthaus" />
-        <img src="Asset/Images/logo-crowde.png" alt="Crowde" />
+        <div class="lg:hidden grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Dedicated Team</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent sebagai karyawan outsource.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Freelance Team</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent freelance berbasis man-hour.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Head Hunter</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire talent sebagai karyawan internal anda.
+              </p>
+            </div>
+          </div>
+          <div
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+          >
+            <div class="flex flex-col justify-center gap-4 px-5">
+              <p class="text-[25px]">Project-Based</p>
+              <p class="text-[17px] text-[#587790]">
+                Hire vendor / freelance berbasis project.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:pt-52 xl:pb-24 gap-10 xl:gap-24"
+        >
+          <img src="Asset/Images/logo-koinworks.png" alt="Koinworks" />
+          <img src="Asset/Images/logo-cakap.png" alt="Cakap" />
+          <img
+            src="Asset/Images/logo-gameloft.png"
+            alt="Gameloft"
+            class="max-md:hidden"
+          />
+          <img
+            src="Asset/Images/logo-krafthaus.png"
+            alt="Krafthaus"
+            class="max-lg:hidden"
+          />
+          <img
+            src="Asset/Images/logo-crowde.png"
+            alt="Crowde"
+            class="max-lg:hidden"
+          />
+        </div>
       </div>
     </div>
 
     <!-- Strategy -->
-    <div class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10">
+    <div
+      class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
+    >
       <div class="flex flex-col justify-center items-center gap-10">
-        <p class="text-[30px] text-[#12304A]">
+        <p class="text-[30px] text-[#12304A] max-xl:text-center">
           Fokuskan perhatian pada strategi pengembangan bisnis Anda
-          <span class="text-[#47B2E4] text-[43px]">.</span>
+          <span class="text-[#47B2E4] text-[30px] md:text-[43px]">.</span>
         </p>
-        <p class="text-[17px] text-[#587790] text-center px-72">
+        <p class="text-[17px] text-[#587790] text-center lg:px-72">
           Kami akan meng-handle urusan perpajakan, legal, dan management. Kami
           memiliki framework kerja yang terbukti efektif untuk kolaborasi team
           dan juga terdapat tools memonitor produktivitas secara real-time.
         </p>
       </div>
       <img src="Asset/Images/devices.png" alt="Devices" class="py-10" />
-      <div class="w-full flex justify-between items-center gap-10">
+      <div
+        class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
+      >
         <div class="flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
-          <p>
+          <p class="text-[17px] text-[#587790]">
             Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
             dalam waktu 14 hari.
           </p>
         </div>
         <div class="flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
-          <p>
+          <p class="text-[17px] text-[#587790]">
             Anda akan mendapatkan report berkala dan dapat login dalam sistem
             real-time monitoring kami.
           </p>
         </div>
         <div class="flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
-          <p>
+          <p class="text-[17px] text-[#587790]">
             Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
             produktif.
           </p>
@@ -276,7 +526,7 @@
     </div>
 
     <!-- Departemen -->
-    <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
+    <!-- <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
       <div class="max-w-[1200px] h-auto mx-auto flex flex-col gap-10">
         <div class="flex flex-col text-center gap-10">
           <p class="text-[30px] text-[#12304A]">
@@ -321,10 +571,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Procedure 1 -->
-    <div class="max-w-[1200px] h-auto mx-auto grid grid-cols-2 py-20">
+    <!-- <div class="max-w-[1200px] h-auto mx-auto grid grid-cols-2 py-20">
       <div class="flex flex-col gap-5 font-[500] pr-5">
         <div class="text-[30px] text-[#12304A]">
           <p>Bagaimana prosedur kami ?</p>
@@ -402,10 +652,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Consultation -->
-    <div
+    <!-- <div
       class="w-full h-[320px] bg-[url(/Asset/Images/hd-4.jpg)] bg-fixed text-white"
     >
       <div class="max-w-[1200px] h-full mx-auto">
@@ -424,10 +674,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Procedure 2 -->
-    <div class="w-full h-auto bg-[#f1f5f7]">
+    <!-- <div class="w-full h-auto bg-[#f1f5f7]">
       <div class="max-w-[1200px] h-auto mx-auto grid grid-cols-2 py-20">
         <div class="flex flex-col gap-5 font-[500] pr-5">
           <div class="text-[30px] text-[#12304A]">
@@ -501,10 +751,10 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Recruitment -->
-    <div
+    <!-- <div
       x-data="{ open1: false, open2: false, open3: false }"
       class="max-w-[1200px] h-auto mx-auto py-20 items-center"
     >
@@ -816,36 +1066,36 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Footer -->
-    <div class="w-full h-auto bg-[#37517d] relative">
-      <div class="max-w-[1200px] h-auto mx-auto text-[#FFFFFF]">
+    <!-- <div class="w-full h-auto bg-[#37517d] relative">
+      <div class="max-w-[1200px] h-auto mx-auto text-[#ffffff]">
         <div class="flex flex-col">
           <div class="flex flex-row justify-between py-20">
             <div class="flex flex-col gap-8">
-              <p class="text-[24px]">UpScale</p>
+              <p class="text-[24px]">upscale</p>
               <div class="flex flex-row text-[16px] gap-10">
                 <div class="flex flex-col gap-5">
-                  <p>Location</p>
-                  <p>Phone</p>
-                  <p>Email</p>
+                  <p>location</p>
+                  <p>phone</p>
+                  <p>email</p>
                 </div>
                 <div class="flex flex-col gap-5">
                   <p>
-                    Jln. Ringroad Utara No 34 Maguwoharjo Yogyakarta, Indonesia
+                    jln. ringroad utara no 34 maguwoharjo yogyakarta, indonesia
                   </p>
                   <div class="flex justify-start gap-3">
                     <img
-                      src="Asset/Images/id.png"
-                      alt="Indonesian Flag"
+                      src="asset/images/id.png"
+                      alt="indonesian flag"
                       class="self-center pb-[1px]"
                     />
                     <span>+62 87 888 666 531</span>
                     <span>|</span>
                     <img
-                      src="Asset/Images/au.png"
-                      alt="Australian Flag"
+                      src="asset/images/au.png"
+                      alt="australian flag"
                       class="self-center pb-[1px]"
                     />
                     <span>+61 3 9010 6067</span>
@@ -855,31 +1105,31 @@
               </div>
             </div>
             <div class="flex flex-col gap-8">
-              <p class="text-[24px]">For Talent</p>
+              <p class="text-[24px]">for talent</p>
               <div class="flex flex-col text-[15px] gap-5 opacity-80">
-                <p>Why Join as Talent?</p>
-                <p>Job Opportunities</p>
-                <p>Register as Talent</p>
+                <p>why join as talent?</p>
+                <p>job opportunities</p>
+                <p>register as talent</p>
               </div>
             </div>
           </div>
           <div
             class="flex flex-row justify-between text-[12px] py-5 opacity-70"
           >
-            <p>&copy; UpScale 2020. Member of PT Talenta Sinergi Group</p>
+            <p>&copy; upscale 2020. member of pt talenta sinergi group</p>
             <img
-              src="Asset/Images/logo-upscale.png"
-              alt="Upscale"
+              src="asset/images/logo-upscale.png"
+              alt="upscale"
               class="w-[88px] h-[20px]"
             />
           </div>
         </div>
       </div>
-
-      <!-- Middle border -->
-      <div
+    -->
+    <!-- Middle border -->
+    <!-- <div
         class="absolute bottom-16 w-full border-0.5 border-b border-[#dcdfe0] opacity-40"
-      ></div>
-    </div>
+      ></div> -->
+    <!-- </div> -->
   </body>
 </html>
