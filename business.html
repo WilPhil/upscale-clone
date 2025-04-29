@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upscale</title>
+
+    <!-- Google Font (Jost)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CLI -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Alpine CLI -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-family: "Jost";
+      }
+    </style>
+  </head>
+  <body
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false }"
+    @scroll.window="stickyNav = window.pageYOffset > 30"
+  >
+    <!-- Background -->
+    <!-- <div
+      class="absolute inset-0 z-[-1] w-full h-screen xl:h-auto overflow-hidden"
+    >
+      <img
+        src="Asset/Images/video-poster-2.jpg"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        autoplay
+        loop
+        muted
+      >
+        <source src="Asset/Video/repeat-medium.mp4" type="video/mp4" />
+        Your browser does not support video tag.
+      </video>
+    </div> -->
+
+    <!-- Chat Button -->
+    <div
+      x-on:click="showChat = !showChat"
+      class="size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+    >
+      <div class="w-auto h-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 800"
+          height="32px"
+          width="32px"
+          role="img"
+          alt="Chat icon"
+          aria-labelledby="openIconTitle openIconDesc"
+          x-bind:class="showChat ? 'hidden' : ''"
+          fill="white"
+        >
+          <title id="openIconTitle">Opens Chat</title>
+          <desc id="openIconDesc">This icon Opens the chat window.</desc>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
+          ></path>
+        </svg>
+
+        <img
+          x-show="showChat"
+          src="Asset/Images/close.png"
+          alt="Close"
+          class="size-[25px]"
+        />
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div
+      x-show="showChat"
+      class="w-[300px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+    >
+      <div class="flex w-full h-auto bg-[#37517e]">
+        <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
+          For faster response, please contact us from our WhatsApp 123-456-789
+        </p>
+      </div>
+      <div class="w-full h-full">
+        <div class="w-full h-full flex flex-col px-5 pt-5 gap-5">
+          <input
+            type="text"
+            placeholder="* Name"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="text"
+            placeholder="* Phone"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="email"
+            placeholder="* Email"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <textarea
+            name=""
+            id=""
+            placeholder="* Message"
+            cols="55"
+            class="border border-gray-300 rounded-sm p-2 resize-none"
+          ></textarea>
+          <button
+            type="button"
+            class="flex flex-row justify-center items-center bg-[#37517e] text-[#FFFFFF] text-[18px] py-2 rounded-sm mt-3 gap-2 hover:cursor-pointer"
+          >
+            <img src="Asset/Images/message.png" alt="Send" />
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-auto flex justify-center items-center pb-7">
+        <p class="text-[12px]">Add free live chat to your site</p>
+      </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <div
+      x-bind:class="stickyNav ? '' : 'hidden'"
+      class="fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
+    >
+      <div
+        class="max-sm:relative max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
+      >
+        <img
+          src="Asset/Images/logo-upscale.png"
+          alt="Upscale"
+          class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+        />
+        <div
+          class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10"
+        >
+          <a href="index.html">Home</a>
+          <a href="business.html">For Business</a>
+          <a href="#">For Talent</a>
+          <a href="#">Jobs</a>
+          <a href="#">F.A.Q</a>
+          <div
+            @mouseover="showLanguage = true"
+            @mouseleave="showLanguage = false"
+            class="relative w-auto h-auto flex items-center gap-3 py-5"
+          >
+            <img
+              src="Asset/Images/id.png"
+              alt="Indonesia Flag"
+              class="w-[18px] h-[12px] mb-0.5"
+            />
+            <p>ID</p>
+
+            <!-- Change Language -->
+            <div
+              x-show="showLanguage"
+              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+            >
+              <!-- Polygon -->
+              <div class="fixed top-13">
+                <img
+                  src="Asset/Images/polygon.png"
+                  alt="Polygon"
+                  class="rotate-180"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex flex-row items-center gap-2">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="border-l h-5"></div>
+          <div class="w-auto h-auto flex items-center gap-10">
+            <a href="#">Login</a>
+            <a href="#" class="border rounded-full px-3">Live Chat</a>
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <div
+          x-on:click="showHamburgerContent = !showHamburgerContent"
+          class="lg:hidden size-6 mr-2"
+        >
+          <img src="Asset/Images/hamburger.svg" alt="Hamburger" />
+        </div>
+
+        <!-- Hamburger Content (Mobile) -->
+        <div
+          x-show="showHamburgerContent"
+          class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
+        >
+          <div
+            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+          >
+            <a href="index.html">Home</a>
+            <a href="business.html">For Business</a>
+            <a href="#">For Talent</a>
+            <a href="#">Jobs</a>
+            <a href="#">F.A.Q</a>
+            <div
+              x-data="{ showLanguageMobile: false }"
+              class="flex flex-col gap-4"
+            >
+              <div
+                x-on:click="showLanguageMobile = !showLanguageMobile"
+                class="flex items-center gap-3"
+              >
+                <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                <p>ID</p>
+              </div>
+
+              <!-- Change Language Mobile -->
+              <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-3 text-[#47b2e4]">
+              <a href="#" class="">Login</a>
+              <div class="border opacity-50"></div>
+              <a href="#" class="border rounded-full px-3">Live Chat</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="w-full h-screen bg-[url(Asset/Images/video-poster-2.jpg)] bg-cover"
+    >
+      <div
+        class="relative max-w-[1200px] h-screen mx-auto flex flex-col place-content-start gap-10 xl:place-content-between"
+      >
+        <!-- Navbar -->
+        <div
+          x-bind:class="stickyNav ? 'hidden' : ''"
+          class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
+        >
+          <img
+            src="Asset/Images/logo-upscale.png"
+            alt="Upscale"
+            class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+          />
+
+          <div
+            class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
+          >
+            <a href="index.html">Home</a>
+            <a href="business.html">For Business</a>
+            <a href="#">For Talent</a>
+            <a href="#">Jobs</a>
+            <a href="#">F.A.Q</a>
+            <div
+              @mouseover="showLanguage = true"
+              @mouseleave="showLanguage = false"
+              class="relative w-auto h-auto flex items-center gap-3 py-5"
+            >
+              <img
+                src="Asset/Images/id.png"
+                alt="Indonesia Flag"
+                class="w-[18px] h-[12px] mb-0.5"
+              />
+              <p>ID</p>
+
+              <!-- Change Language -->
+              <div
+                x-show="showLanguage"
+                class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+              >
+                <!-- Polygon -->
+                <div class="fixed top-13">
+                  <img
+                    src="Asset/Images/polygon.png"
+                    alt="Polygon"
+                    class="rotate-180"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <div class="flex flex-row items-center gap-2">
+                    <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div class="flex flex-row items-center gap-2">
+                    <img src="Asset/Images/en.png" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="border-l h-5"></div>
+            <div class="w-auto h-auto flex items-center gap-10">
+              <a href="#">Login</a>
+              <a
+                x-on:click="showChat = true"
+                href="#"
+                class="border rounded-full px-3"
+                >Live Chat</a
+              >
+            </div>
+          </div>
+
+          <!-- Hamburger Icon (Mobile) -->
+          <div
+            x-on:click="showHamburgerContent = !showHamburgerContent"
+            class="lg:hidden size-6 mr-2"
+          >
+            <img src="Asset/Images/hamburger.svg" alt="Hamburger" />
+          </div>
+
+          <!-- Hamburger Content (Mobile) -->
+          <div
+            x-show="showHamburgerContent"
+            class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
+          >
+            <div
+              class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+            >
+              <a href="index.html">Home</a>
+              <a href="business.html">For Business</a>
+              <a href="#">For Talent</a>
+              <a href="#">Jobs</a>
+              <a href="#">F.A.Q</a>
+              <div
+                x-data="{ showLanguageMobile: false }"
+                class="flex flex-col gap-4"
+              >
+                <div
+                  x-on:click="showLanguageMobile = !showLanguageMobile"
+                  class="flex items-center gap-3"
+                >
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+
+                <!-- Change Language Mobile -->
+                <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                  <div class="flex items-center gap-3">
+                    <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <img src="Asset/Images/en.png" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3 text-[#47b2e4]">
+                <a href="#" class="">Login</a>
+                <div class="border opacity-50"></div>
+                <a href="#" class="border rounded-full px-3">Live Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="w-full h-screen flex justify-start items-center">
+          <div class="flex flex-col text-white gap-10">
+            <p class="text-[45px]">Scaling Up Your Business</p>
+            <p class="text-[25px]">
+              Service kami cocok untuk membantu berbagai skala perusahaan mulai
+              dari:
+            </p>
+            <div class="w-auto h-auto flex pl-5">
+              <ul class="text-[25px] list-disc">
+                <li>Enterprise Corporation</li>
+                <li>Startup Company</li>
+                <li>E-commerce</li>
+                <li>Small-business</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
