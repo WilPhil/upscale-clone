@@ -55,7 +55,7 @@
     <!-- Chat Button -->
     <div
       x-on:click="showChat = !showChat"
-      class="size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+      class="animate-pulse size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
     >
       <div class="w-auto h-auto">
         <svg
@@ -90,7 +90,8 @@
     <!-- Chat Section -->
     <div
       x-show="showChat"
-      class="w-[300px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+      x-transition.duration.500ms
+      class="w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
     >
       <div class="flex w-full h-auto bg-[#37517e]">
         <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
@@ -151,15 +152,31 @@
         <div
           class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10"
         >
-          <a href="index.html">Home</a>
+          <a
+            href="index.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Home</a
+          >
           <a href="business.html" class="text-[#47b2e4]">For Business</a>
-          <a href="#">For Talent</a>
-          <a href="#">Jobs</a>
-          <a href="#">F.A.Q</a>
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Talent</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >F.A.Q</a
+          >
           <div
             @mouseover="showLanguage = true"
             @mouseleave="showLanguage = false"
-            class="relative w-auto h-auto flex items-center gap-3 py-5"
+            class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
           >
             <img
               src="Asset/Images/id.png"
@@ -171,10 +188,11 @@
             <!-- Change Language -->
             <div
               x-show="showLanguage"
+              x-transition.duration.500ms
               class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
             >
               <!-- Polygon -->
-              <div class="fixed top-13">
+              <div class="relative -right-6 -top-[43px]">
                 <img
                   src="Asset/Images/polygon.png"
                   alt="Polygon"
@@ -183,11 +201,15 @@
               </div>
 
               <div class="flex flex-col gap-2">
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
                   <img src="Asset/Images/id.png" alt="Indonesian Flag" />
                   <p>ID</p>
                 </div>
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
                   <img src="Asset/Images/en.png" alt="American Flag" />
                   <p>EN</p>
                 </div>
@@ -196,8 +218,16 @@
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
-            <a href="#">Login</a>
-            <a href="#" class="border rounded-full px-3">Live Chat</a>
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Login</a
+            >
+            <a
+              href="#"
+              class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+              >Live Chat</a
+            >
           </div>
         </div>
 
@@ -212,6 +242,7 @@
         <!-- Hamburger Content (Mobile) -->
         <div
           x-show="showHamburgerContent"
+          x-transition.duration.500ms
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
         >
           <div
@@ -277,15 +308,31 @@
           <div
             class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
           >
-            <a href="index.html">Home</a>
+            <a
+              href="index.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Home</a
+            >
             <a href="business.html" class="text-[#47b2e4]">For Business</a>
-            <a href="#">For Talent</a>
-            <a href="#">Jobs</a>
-            <a href="#">F.A.Q</a>
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >For Talent</a
+            >
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Jobs</a
+            >
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >F.A.Q</a
+            >
             <div
               @mouseover="showLanguage = true"
               @mouseleave="showLanguage = false"
-              class="relative w-auto h-auto flex items-center gap-3 py-5"
+              class="relative w-auto h-auto flex items-center gap-3 py-5 cursor-pointer"
             >
               <img
                 src="Asset/Images/id.png"
@@ -297,10 +344,11 @@
               <!-- Change Language -->
               <div
                 x-show="showLanguage"
+                x-transition.duration.500ms
                 class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
               >
                 <!-- Polygon -->
-                <div class="fixed top-13">
+                <div class="relative -right-6 -top-[43px]">
                   <img
                     src="Asset/Images/polygon.png"
                     alt="Polygon"
@@ -309,11 +357,15 @@
                 </div>
 
                 <div class="flex flex-col gap-2">
-                  <div class="flex flex-row items-center gap-2">
+                  <div
+                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
                     <img src="Asset/Images/id.png" alt="Indonesian Flag" />
                     <p>ID</p>
                   </div>
-                  <div class="flex flex-row items-center gap-2">
+                  <div
+                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
                     <img src="Asset/Images/en.png" alt="American Flag" />
                     <p>EN</p>
                   </div>
@@ -322,11 +374,15 @@
             </div>
             <div class="border-l h-5"></div>
             <div class="w-auto h-auto flex items-center gap-10">
-              <a href="#">Login</a>
+              <a
+                href="#"
+                class="cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >Login</a
+              >
               <a
                 x-on:click="showChat = true"
                 href="#"
-                class="border rounded-full px-3"
+                class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
                 >Live Chat</a
               >
             </div>
@@ -343,6 +399,7 @@
           <!-- Hamburger Content (Mobile) -->
           <div
             x-show="showHamburgerContent"
+            x-transition.duration.500ms
             class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
           >
             <div
@@ -387,7 +444,7 @@
         </div>
 
         <!-- Content -->
-        <div class="w-full h-screen grid grid-cols-2">
+        <div class="w-full h-screen flex lg:grid lg:grid-cols-2 max-lg:px-3">
           <div class="w-auto h-auto flex items-center">
             <div class="flex flex-col text-white gap-10">
               <p class="text-[45px]">Scaling Up Your Business</p>
@@ -412,11 +469,11 @@
 
     <!-- Description & Companies -->
     <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
-      <div class="max-w-[1200px] mx-auto flex flex-col gap-20">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-20 max-lg:px-3">
         <div
-          class="h-auto flex gap-14 items-center text-[17px] text-[#587790] leading-8"
+          class="h-auto flex flex-col lg:flex-row gap-5 lg:gap-14 items-center text-[17px] text-[#587790] leading-8"
         >
-          <div class="pr-3">
+          <div class="lg:pr-3">
             <p>
               Dapatkan akses database talent kami untuk membantu scaling up
               perusahaan anda dengan cara yang flexible. Hal ini sangat krusial
@@ -425,7 +482,7 @@
               tepat.
             </p>
           </div>
-          <div class="pr-3">
+          <div class="lg:pr-3">
             <p>
               Sejak tahun 2009, kami telah membantu banyak perusahaan untuk
               mewujudkan harapan dengan mencarikan talent atau vendor yang
@@ -433,7 +490,7 @@
               5000 talent, kami dapat membantu anda mewujudkan visi anda.
             </p>
           </div>
-          <div class="relative flex w-full h-full px-30 pb-14">
+          <div class="max-lg:hidden relative flex w-full h-full px-30 pb-14">
             <div
               class="absolute left-0 top-6 w-[248px] h-[186px] rounded-sm z-10 overflow-hidden shadow-sm"
             >
@@ -471,8 +528,28 @@
               />
             </div>
           </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-5">
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-15.jpg"
+              alt="Image 1"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+              alt="Image 2"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-3.jpg"
+              alt="Image 3"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-1.jpg"
+              alt="Image 4"
+            />
+          </div>
         </div>
-        <div class="w-full grid grid-cols-5 gap-20">
+        <div
+          class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-20"
+        >
           <img
             src="https://upscale.id/template/upscale/media/logos/logo-6.png"
             alt="Wakuliner"
@@ -484,22 +561,25 @@
           <img
             src="https://upscale.id/template/upscale/media/logos/logo-1.png"
             alt="Koinworks"
+            class="max-md:hidden"
           />
           <img
             src="https://upscale.id/template/upscale/media/logos/logo-5.png"
             alt="Crowde"
+            class="max-lg:hidden"
           />
           <img
             src="https://upscale.id/template/upscale/media/logos/logo-3.png"
             alt="Gameloft"
+            class="max-lg:hidden"
           />
         </div>
       </div>
     </div>
 
     <!-- Article -->
-    <div class="max-w-[1200px] h-auto mx-auto py-20">
-      <div class="grid grid-cols-3 gap-5">
+    <div class="max-w-[1200px] h-auto mx-auto py-20 max-lg:px-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-5">
         <div class="flex flex-col gap-8">
           <div class="relative w-auto h-auto">
             <img
@@ -521,8 +601,26 @@
             perusahaan oli & gas untuk entry & extraction data untuk AI Learning
           </p>
           <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
-            <a href="#">Data Entry Dedicated Team </a>
-            <p>></p>
+            <a href="#" class="hover:underline">Data Entry Dedicated Team</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
           </div>
         </div>
         <div class="flex flex-col gap-8">
@@ -546,8 +644,26 @@
             programmer & mengelola development office di Jogja.
           </p>
           <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
-            <a href="#">Dodi Prakoso Wibowo</a>
-            <p>></p>
+            <a href="#" class="hover:underline">Dodi Prakoso Wibowo</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
           </div>
         </div>
         <div class="flex flex-col gap-8">
@@ -571,8 +687,26 @@
             Managing Director untuk mengelola cabang di Indonesia.
           </p>
           <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
-            <a href="#">Arief Widyananda</a>
-            <p>></p>
+            <a href="#" class="hover:underline">Arief Widyananda</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
@@ -580,22 +714,24 @@
 
     <!-- Price Plan & Consultation -->
     <div class="w-full h-auto bg-[#f1f5f7] py-20">
-      <div class="max-w-[1200px] mx-auto flex flex-col gap-10">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-10 max-lg:px-3">
         <div class="flex flex-col text-center gap-5">
           <p class="text-[30px] text-[#12304a]">
             Simple & an affordable price plans for everyone
           </p>
-          <p class="text-[17px] text-[#587790] px-64">
+          <p class="text-[17px] text-[#587790] lg:px-64">
             Paket harga dengan konsep yang sederhana & terjangkau untuk semua
             orang. Baik skala Coorporate, startup sampai dengan UKM
           </p>
         </div>
-        <div class="w-full h-auto bg-[#FFFFFF] p-10 flex rounded-sm shadow-md">
-          <div class="w-1/3 flex flex-col gap-9">
-            <p class="text-[30px] text-[#12304a] mr-10">
+        <div
+          class="w-full h-auto bg-[#FFFFFF] p-10 flex flex-col lg:flex-row rounded-sm shadow-md max-lg:gap-10"
+        >
+          <div class="lg:w-1/3 flex flex-col gap-9">
+            <p class="text-[30px] text-[#12304a] lg:mr-10">
               Ingin Konsultasi Kebutuhan Anda?
             </p>
-            <p class="text-[17px] text-[#587790] mr-10">
+            <p class="text-[17px] text-[#587790] lg:mr-10">
               Bisnis analis kami akan membantu Anda dalam menentukan kualifikasi
               talent.
             </p>
@@ -610,13 +746,13 @@
               </div>
             </div>
           </div>
-          <div class="w-2/3 flex flex-col gap-5">
+          <div class="lg:w-2/3 flex flex-col gap-5">
             <input
               type="text"
               placeholder="Name"
               class="w-auto border border-gray-300 rounded-sm py-4 pl-3"
             />
-            <div class="flex gap-10">
+            <div class="flex flex-col lg:flex-row gap-5">
               <input
                 type="text"
                 placeholder="Phone"
@@ -625,7 +761,7 @@
               <input
                 type="text"
                 placeholder="Email"
-                class="w-full border border-gray-300 rounded-sm py-2 pl-3"
+                class="w-full border border-gray-300 rounded-sm py-4 lg:py-2 pl-3"
               />
             </div>
             <textarea
@@ -638,7 +774,7 @@
             <div>
               <button
                 type="button"
-                class="bg-[#47b2e4] text-[16px] text-[#FFFFFF] px-8 py-3 rounded-full hover:cursor-pointer"
+                class="bg-[#47b2e4] text-[16px] text-[#FFFFFF] px-8 py-3 rounded-full hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
               >
                 Send Inquiry
               </button>
@@ -724,9 +860,11 @@
             <div class="flex flex-col gap-8">
               <p class="text-[24px]">For Talent</p>
               <div class="flex flex-col text-[15px] gap-5 opacity-80">
-                <p>Why Join as Talent?</p>
-                <p>Job Opportunities</p>
-                <p>Register as Talent</p>
+                <p class="hover:underline cursor-pointer">
+                  Why Join as Talent?
+                </p>
+                <p class="hover:underline cursor-pointer">Job Opportunities</p>
+                <p class="hover:underline cursor-pointer">Register as Talent</p>
               </div>
             </div>
           </div>
