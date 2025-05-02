@@ -25,6 +25,7 @@
     <style>
       body {
         font-family: "Jost";
+        scroll-behavior: smooth;
       }
     </style>
   </head>
@@ -50,7 +51,7 @@
     <!-- Chat Button -->
     <div
       x-on:click="showChat = !showChat"
-      class="size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+      class="animate-pulse size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
     >
       <div class="w-auto h-auto">
         <svg
@@ -85,7 +86,8 @@
     <!-- Chat Section -->
     <div
       x-show="showChat"
-      class="w-[300px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+      x-transition.duration.500ms
+      class="w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
     >
       <div class="flex w-full h-auto bg-[#37517e]">
         <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
@@ -146,15 +148,35 @@
         <div
           class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10"
         >
-          <a href="index.html">Home</a>
-          <a href="business.html">For Business</a>
-          <a href="#">For Talent</a>
-          <a href="#">Jobs</a>
-          <a href="#">F.A.Q</a>
+          <a
+            href="index.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Home</a
+          >
+          <a
+            href="business.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Business</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Talent</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >F.A.Q</a
+          >
           <div
             @mouseover="showLanguage = true"
             @mouseleave="showLanguage = false"
-            class="relative w-auto h-auto flex items-center gap-3 py-5"
+            class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
           >
             <img
               src="Asset/Images/id.png"
@@ -166,10 +188,11 @@
             <!-- Change Language -->
             <div
               x-show="showLanguage"
+              x-transition.duration.500ms
               class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
             >
               <!-- Polygon -->
-              <div class="fixed top-13">
+              <div class="relative -right-6 -top-[43px]">
                 <img
                   src="Asset/Images/polygon.png"
                   alt="Polygon"
@@ -178,11 +201,15 @@
               </div>
 
               <div class="flex flex-col gap-2">
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
                   <img src="Asset/Images/id.png" alt="Indonesian Flag" />
                   <p>ID</p>
                 </div>
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
                   <img src="Asset/Images/en.png" alt="American Flag" />
                   <p>EN</p>
                 </div>
@@ -191,8 +218,16 @@
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
-            <a href="#">Login</a>
-            <a href="#" class="border rounded-full px-3">Live Chat</a>
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Login</a
+            >
+            <a
+              href="#"
+              class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+              >Live Chat</a
+            >
           </div>
         </div>
 
@@ -207,6 +242,7 @@
         <!-- Hamburger Content (Mobile) -->
         <div
           x-show="showHamburgerContent"
+          x-transition.duration.500ms
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
         >
           <div
@@ -244,7 +280,7 @@
             <div class="flex gap-3 text-[#47b2e4]">
               <a href="#" class="">Login</a>
               <div class="border opacity-50"></div>
-              <a href="#" class="border rounded-full px-3">Live Chat</a>
+              <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
             </div>
           </div>
         </div>
@@ -257,7 +293,7 @@
     >
       <!-- Navbar -->
       <div
-        x-bind:class="stickyNav ? 'hidden' : ''"
+        x-bind:class="stickyNav ? 'hidden md:opacity-0' : 'opacity-100'"
         class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
       >
         <img
@@ -269,15 +305,35 @@
         <div
           class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
         >
-          <a href="index.html">Home</a>
-          <a href="business.html">For Business</a>
-          <a href="#">For Talent</a>
-          <a href="#">Jobs</a>
-          <a href="#">F.A.Q</a>
+          <a
+            href="index.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Home</a
+          >
+          <a
+            href="business.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Business</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Talent</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >F.A.Q</a
+          >
           <div
             @mouseover="showLanguage = true"
             @mouseleave="showLanguage = false"
-            class="relative w-auto h-auto flex items-center gap-3 py-5"
+            class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
           >
             <img
               src="Asset/Images/id.png"
@@ -289,10 +345,11 @@
             <!-- Change Language -->
             <div
               x-show="showLanguage"
+              x-transition.duration.500ms
               class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
             >
               <!-- Polygon -->
-              <div class="fixed top-13">
+              <div class="relative -right-6 -top-[43px]">
                 <img
                   src="Asset/Images/polygon.png"
                   alt="Polygon"
@@ -301,11 +358,15 @@
               </div>
 
               <div class="flex flex-col gap-2">
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
                   <img src="Asset/Images/id.png" alt="Indonesian Flag" />
                   <p>ID</p>
                 </div>
-                <div class="flex flex-row items-center gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
                   <img src="Asset/Images/en.png" alt="American Flag" />
                   <p>EN</p>
                 </div>
@@ -314,11 +375,15 @@
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
-            <a href="#">Login</a>
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Login</a
+            >
             <a
               x-on:click="showChat = true"
               href="#"
-              class="border rounded-full px-3"
+              class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
               >Live Chat</a
             >
           </div>
@@ -335,6 +400,7 @@
         <!-- Hamburger Content (Mobile) -->
         <div
           x-show="showHamburgerContent"
+          x-transition.duration.500ms
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
         >
           <div
@@ -406,12 +472,12 @@
           class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end"
         >
           <button
-            class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4]"
+            class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4] hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
           >
             Request Quotation
           </button>
           <button
-            class="max-lg:w-full border rounded-full lg:px-8 py-4 lg:py-3"
+            class="max-lg:w-full border rounded-full lg:px-8 py-4 lg:py-3 hover:cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
           >
             Join as Talent
           </button>
@@ -722,9 +788,7 @@
         <div
           class="h-full flex flex-col md:flex-row justify-center md:justify-between items-center max-md:gap-10"
         >
-          <div
-            class="flex flex-col max-md:text-center max-lg:pr-5 max-md:gap-5"
-          >
+          <div class="flex flex-col max-md:text-center md:pr-5 max-md:gap-5">
             <p class="text-[30px]">Ingin Konsultasi Kebutuhan Anda?</p>
             <p class="text-[17px]">
               Bisnis analis kami selalu siap untuk mendengar kebutuhan bisnis
@@ -734,7 +798,7 @@
           <div class="flex lg:pr-28">
             <button
               type="button"
-              class="bg-[#47B2E4] py-2 lg:py-3 px-15 text-[16px]"
+              class="bg-[#47B2E4] py-2 lg:py-3 px-15 text-[16px] rounded-sm hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
             >
               Hubungi kami sekarang
             </button>
@@ -845,7 +909,7 @@
                 <button
                   type="button"
                   x-bind:class="open1 ? 'rotate-90' : ''"
-                  class="flex justify-center items-center bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF] transition ease-in-out duration-300 hover:cursor-pointer"
+                  class="flex justify-center items-center bg-[#12304A] size-[25px] rounded-md text-[#FFFFFF] transition ease-in-out duration-500 hover:cursor-pointer"
                 >
                   <img
                     src="Asset/Images/angle-right-svgrepo-com.svg"
@@ -853,12 +917,15 @@
                     class="size-4"
                   />
                 </button>
-                <p class="text-[16px] text-[#12304A]">
+                <p
+                  class="text-[16px] text-[#12304A] hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
                   Dedicated Team / Freelance Team
                 </p>
               </div>
               <p
                 x-show="open1"
+                x-transition.duration.500ms
                 class="text-[17px] text-[#587790] pt-4 lg:pr-10 text-left max-lg:pl-3"
               >
                 Pencarian talent terbaik untuk kebutuhan bisnis Anda. Talent
@@ -882,10 +949,15 @@
                     class="size-4"
                   />
                 </button>
-                <p class="text-[16px] text-[#12304A]">Head Hunter</p>
+                <p
+                  class="text-[16px] text-[#12304A] hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
+                  Head Hunter
+                </p>
               </div>
               <p
                 x-show="open2"
+                x-transition.duration.500ms
                 class="text-[17px] text-[#587790] pt-4 lg:pr-14 text-left max-lg:pl-3"
               >
                 Menyediakan fasilitas pencarian talent untuk dijadikan karyawan
@@ -909,10 +981,15 @@
                     class="size-4"
                   />
                 </button>
-                <p class="text-[16px] text-[#12304A]">Project-Based</p>
+                <p
+                  class="text-[16px] text-[#12304A] hover:text-[#47b2e4] transition ease-in-out duration-500"
+                >
+                  Project-Based
+                </p>
               </div>
               <p
                 x-show="open3"
+                x-transition.duration.500ms
                 class="text-[17px] text-[#587790] pt-4 lg:pr-10 text-left max-lg:pl-3"
               >
                 Menyediakan fasilitas pencarian vendor untuk menjadi
@@ -1222,9 +1299,15 @@
             <div class="flex flex-col gap-8">
               <p class="text-[24px]">For Talent</p>
               <div class="flex flex-col text-[15px] gap-5 opacity-80">
-                <p>Why Join as Talent?</p>
-                <p>Job Opportunities</p>
-                <p>Register as Talent</p>
+                <p class="hover:underline hover:cursor-pointer">
+                  Why Join as Talent?
+                </p>
+                <p class="hover:underline hover:cursor-pointer">
+                  Job Opportunities
+                </p>
+                <p class="hover:underline hover:cursor-pointer">
+                  Register as Talent
+                </p>
               </div>
             </div>
           </div>
