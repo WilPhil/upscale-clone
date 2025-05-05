@@ -30,8 +30,9 @@
     </style>
   </head>
   <body
-    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false }"
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
     @scroll.window="stickyNav = window.pageYOffset > 30"
+    x-bind:class="showLoginContent ? 'overflow-y-hidden' : ''"
   >
     <!-- Video Background -->
     <div
@@ -159,7 +160,7 @@
             >For Business</a
           >
           <a
-            href="#"
+            href="talent.html"
             class="hover:text-[#47b2e4] transition ease-in-out duration-500"
             >For Talent</a
           >
@@ -218,11 +219,12 @@
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
-            <a
-              href="#"
-              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
-              >Login</a
+            <p
+              x-on:click="showLoginContent = true"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500 cursor-pointer"
             >
+              Login
+            </p>
             <a
               href="#"
               class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
@@ -246,11 +248,11 @@
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
         >
           <div
-            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+            class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
           >
             <a href="index.html">Home</a>
             <a href="business.html">For Business</a>
-            <a href="#">For Talent</a>
+            <a href="talent.html">For Talent</a>
             <a href="#">Jobs</a>
             <a href="#">F.A.Q</a>
             <div
@@ -277,11 +279,90 @@
                 </div>
               </div>
             </div>
-            <div class="flex gap-3 text-[#47b2e4]">
-              <a href="#" class="">Login</a>
-              <div class="border opacity-50"></div>
+            <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
+              <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                Login
+              </p>
               <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <div
+      x-show="showLoginContent"
+      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 max-lg:px-3"
+    >
+      <div
+        class="max-md:w-full w-[500px] h-fit flex flex-col bg-white mt-10 gap-5 rounded-sm shadow-sm"
+      >
+        <div class="flex justify-between items-center pt-5 px-5">
+          <p class="text-[20px] text-[#12304a]">Login Dashboard</p>
+          <div>
+            <p
+              x-on:click="showLoginContent = false"
+              class="text-2xl opacity-80 cursor-pointer hover:opacity-100"
+            >
+              &times;
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-col border-t-1 border-t-gray-300 border-b-1 border-b-gray-300 py-5 px-5 gap-4 text-[17px]"
+        >
+          <div class="flex flex-col md:flex-row md:items-center max-md:gap-2">
+            <p class="w-full md:w-1/3 text-[#587790]">Email</p>
+            <input
+              type="text"
+              placeholder="Type Your Email"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div
+            class="flex flex-col md:flex-row justify-between md:items-center max-md:gap-2"
+          >
+            <p class="w-full md:w-1/3 text-[#587790]">Password</p>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Type Your Password"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="max-md:hidden w-1/3"></div>
+            <a
+              href="#"
+              class="w-2/3 text-[15px] text-[#47b2e4] hover:underline"
+            >
+              Forgot Password
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-5 md:gap-10"
+        >
+          <div>
+            <a href="#" class="text-[17px] text-[#47b2e4] hover:underline"
+              >Belum punya Akun?</a
+            >
+          </div>
+          <div class="flex text-[16px] text-white gap-2">
+            <button
+              type="button"
+              class="bg-[#28a745] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Reset Password
+            </button>
+            <button
+              type="button"
+              class="bg-[#47b2e4] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Login
+            </button>
           </div>
         </div>
       </div>
@@ -316,7 +397,7 @@
             >For Business</a
           >
           <a
-            href="#"
+            href="talent.html"
             class="hover:text-[#47b2e4] transition ease-in-out duration-500"
             >For Talent</a
           >
@@ -375,11 +456,12 @@
           </div>
           <div class="border-l h-5"></div>
           <div class="w-auto h-auto flex items-center gap-10">
-            <a
-              href="#"
-              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
-              >Login</a
+            <p
+              x-on:click="showLoginContent = true"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500 cursor-pointer"
             >
+              Login
+            </p>
             <a
               x-on:click="showChat = true"
               href="#"
@@ -404,11 +486,11 @@
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
         >
           <div
-            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+            class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
           >
             <a href="index.html">Home</a>
             <a href="business.html">For Business</a>
-            <a href="#">For Talent</a>
+            <a href="talent.html">For Talent</a>
             <a href="#">Jobs</a>
             <a href="#">F.A.Q</a>
             <div
@@ -435,10 +517,11 @@
                 </div>
               </div>
             </div>
-            <div class="flex gap-3 text-[#47b2e4]">
-              <a href="#" class="">Login</a>
-              <div class="border opacity-50"></div>
-              <a href="#" class="border rounded-full px-3">Live Chat</a>
+            <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
+              <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                Login
+              </p>
+              <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
             </div>
           </div>
         </div>
