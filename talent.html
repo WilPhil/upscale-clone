@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upscale</title>
+
+    <!-- Google Font (Jost)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CLI -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- Alpine CLI -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-family: "Jost";
+      }
+    </style>
+  </head>
+  <body
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
+    @scroll.window="stickyNav = window.pageYOffset > 60"
+    x-bind:class="showLoginContent ? 'overflow-y-hidden': ''"
+  >
+    <!-- Chat Button -->
+    <div
+      x-on:click="showChat = !showChat"
+      class="animate-pulse size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+    >
+      <div class="w-auto h-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 800"
+          height="32px"
+          width="32px"
+          role="img"
+          alt="Chat icon"
+          aria-labelledby="openIconTitle openIconDesc"
+          x-bind:class="showChat ? 'hidden' : ''"
+          fill="white"
+        >
+          <title id="openIconTitle">Opens Chat</title>
+          <desc id="openIconDesc">This icon Opens the chat window.</desc>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
+          ></path>
+        </svg>
+
+        <img
+          x-show="showChat"
+          src="Asset/Images/close.png"
+          alt="Close"
+          class="size-[25px]"
+        />
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div
+      x-show="showChat"
+      x-transition.duration.500ms
+      class="w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+    >
+      <div class="flex w-full h-auto bg-[#37517e]">
+        <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
+          For faster response, please contact us from our WhatsApp 123-456-789
+        </p>
+      </div>
+      <div class="w-full h-full">
+        <div class="w-full h-full flex flex-col px-5 pt-5 gap-5">
+          <input
+            type="text"
+            placeholder="* Name"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="text"
+            placeholder="* Phone"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="email"
+            placeholder="* Email"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <textarea
+            name=""
+            id=""
+            placeholder="* Message"
+            cols="55"
+            class="border border-gray-300 rounded-sm p-2 resize-none"
+          ></textarea>
+          <button
+            type="button"
+            class="flex flex-row justify-center items-center bg-[#37517e] text-[#FFFFFF] text-[18px] py-2 rounded-sm mt-3 gap-2 hover:cursor-pointer"
+          >
+            <img src="Asset/Images/message.png" alt="Send" />
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-auto flex justify-center items-center pb-7">
+        <p class="text-[12px]">Add free live chat to your site</p>
+      </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <div
+      x-bind:class="stickyNav ? '' : 'hidden'"
+      class="fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
+    >
+      <div
+        class="max-sm:relative max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
+      >
+        <img
+          src="Asset/Images/logo-upscale.png"
+          alt="Upscale"
+          class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+        />
+        <div
+          class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10"
+        >
+          <a
+            href="index.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Home</a
+          >
+          <a
+            href="business.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Business</a
+          >
+          <a href="talent.html" class="text-[#47b2e4]">For Talent</a>
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Jobs</a
+          >
+          <a
+            href="#"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >F.A.Q</a
+          >
+          <div
+            @mouseover="showLanguage = true"
+            @mouseleave="showLanguage = false"
+            class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
+          >
+            <img
+              src="Asset/Images/id.png"
+              alt="Indonesia Flag"
+              class="w-[18px] h-[12px] mb-0.5"
+            />
+            <p>ID</p>
+
+            <!-- Change Language -->
+            <div
+              x-show="showLanguage"
+              x-transition.duration.500ms
+              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+            >
+              <!-- Polygon -->
+              <div class="relative -right-6 -top-[43px]">
+                <img
+                  src="Asset/Images/polygon.png"
+                  alt="Polygon"
+                  class="rotate-180"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="border-l h-5"></div>
+          <div class="w-auto h-auto flex items-center gap-10">
+            <p
+              x-on:click="showLoginContent = true"
+              class="cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >
+              Login
+            </p>
+            <a
+              href="#"
+              class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+              >Live Chat</a
+            >
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <div
+          x-on:click="showHamburgerContent = !showHamburgerContent"
+          class="lg:hidden size-6 mr-2"
+        >
+          <img src="Asset/Images/hamburger.svg" alt="Hamburger" />
+        </div>
+
+        <!-- Hamburger Content (Mobile) -->
+        <div
+          x-show="showHamburgerContent"
+          x-transition.duration.500ms
+          class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
+        >
+          <div
+            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+          >
+            <a href="index.html">Home</a>
+            <a href="business.html">For Business</a>
+            <a href="talent.html">For Talent</a>
+            <a href="#">Jobs</a>
+            <a href="#">F.A.Q</a>
+            <div
+              x-data="{ showLanguageMobile: false }"
+              class="flex flex-col gap-4"
+            >
+              <div
+                x-on:click="showLanguageMobile = !showLanguageMobile"
+                class="flex items-center gap-3"
+              >
+                <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                <p>ID</p>
+              </div>
+
+              <!-- Change Language Mobile -->
+              <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <img src="Asset/Images/en.png" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex gap-3 text-[#47b2e4]">
+              <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                Login
+              </p>
+              <div class="border opacity-50"></div>
+              <a href="#" class="border rounded-full px-3">Live Chat</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <div
+      x-show="showLoginContent"
+      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 max-lg:px-3"
+    >
+      <div
+        class="max-md:w-full w-[500px] h-fit flex flex-col bg-white mt-10 gap-5 rounded-sm shadow-sm"
+      >
+        <div class="flex justify-between items-center pt-5 px-5">
+          <p class="text-[20px] text-[#12304a]">Login Dashboard</p>
+          <div>
+            <p
+              x-on:click="showLoginContent = false"
+              class="text-2xl opacity-80 cursor-pointer hover:opacity-100"
+            >
+              &times;
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-col border-t-1 border-t-gray-300 border-b-1 border-b-gray-300 py-5 px-5 gap-4 text-[17px]"
+        >
+          <div class="flex flex-col md:flex-row md:items-center max-md:gap-2">
+            <p class="w-full md:w-1/3 text-[#587790]">Email</p>
+            <input
+              type="text"
+              placeholder="Type Your Email"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div
+            class="flex flex-col md:flex-row justify-between md:items-center max-md:gap-2"
+          >
+            <p class="w-full md:w-1/3 text-[#587790]">Password</p>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Type Your Password"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="max-md:hidden w-1/3"></div>
+            <a
+              href="#"
+              class="w-2/3 text-[15px] text-[#47b2e4] hover:underline"
+            >
+              Forgot Password
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-5 md:gap-10"
+        >
+          <div>
+            <a href="#" class="text-[17px] text-[#47b2e4] hover:underline"
+              >Belum punya Akun?</a
+            >
+          </div>
+          <div class="flex text-[16px] text-white gap-2">
+            <button
+              type="button"
+              class="bg-[#28a745] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Reset Password
+            </button>
+            <button
+              type="button"
+              class="bg-[#47b2e4] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="w-full h-screen bg-[url(Asset/Images/video-poster-2.jpg)] bg-cover"
+    >
+      <div
+        class="relative max-w-[1200px] h-screen mx-auto flex flex-col place-content-start gap-10 xl:place-content-between"
+      >
+        <!-- Navbar -->
+        <div
+          x-bind:class="stickyNav ? 'opacity-0' : 'opacity-100'"
+          class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
+        >
+          <img
+            src="Asset/Images/logo-upscale.png"
+            alt="Upscale"
+            class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+          />
+
+          <div
+            class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
+          >
+            <a
+              href="index.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Home</a
+            >
+            <a
+              href="business.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >For Business</a
+            >
+            <a href="talent.html" class="text-[#47b2e4]">For Talent</a>
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Jobs</a
+            >
+            <a
+              href="#"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >F.A.Q</a
+            >
+            <div
+              @mouseover="showLanguage = true"
+              @mouseleave="showLanguage = false"
+              class="relative w-auto h-auto flex items-center gap-3 py-5 cursor-pointer"
+            >
+              <img
+                src="Asset/Images/id.png"
+                alt="Indonesia Flag"
+                class="w-[18px] h-[12px] mb-0.5"
+              />
+              <p>ID</p>
+
+              <!-- Change Language -->
+              <div
+                x-show="showLanguage"
+                x-transition.duration.500ms
+                class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+              >
+                <!-- Polygon -->
+                <div class="relative -right-6 -top-[43px]">
+                  <img
+                    src="Asset/Images/polygon.png"
+                    alt="Polygon"
+                    class="rotate-180"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <div
+                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
+                    <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div
+                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
+                    <img src="Asset/Images/en.png" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="border-l h-5"></div>
+            <div class="w-auto h-auto flex items-center gap-10">
+              <p
+                x-on:click="showLoginContent = true"
+                class="cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >
+                Login
+              </p>
+              <a
+                x-on:click="showChat = true"
+                href="#"
+                class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+                >Live Chat</a
+              >
+            </div>
+          </div>
+
+          <!-- Hamburger Icon (Mobile) -->
+          <div
+            x-on:click="showHamburgerContent = !showHamburgerContent"
+            class="lg:hidden size-6 mr-2"
+          >
+            <img src="Asset/Images/hamburger.svg" alt="Hamburger" />
+          </div>
+
+          <!-- Hamburger Content (Mobile) -->
+          <div
+            x-show="showHamburgerContent"
+            x-transition.duration.500ms
+            class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
+          >
+            <div
+              class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+            >
+              <a href="index.html">Home</a>
+              <a href="business.html">For Business</a>
+              <a href="talent.html">For Talent</a>
+              <a href="#">Jobs</a>
+              <a href="#">F.A.Q</a>
+              <div
+                x-data="{ showLanguageMobile: false }"
+                class="flex flex-col gap-4"
+              >
+                <div
+                  x-on:click="showLanguageMobile = !showLanguageMobile"
+                  class="flex items-center gap-3"
+                >
+                  <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+
+                <!-- Change Language Mobile -->
+                <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                  <div class="flex items-center gap-3">
+                    <img src="Asset/Images/id.png" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <img src="Asset/Images/en.png" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex gap-3 text-[#47b2e4]">
+                <a href="#" class="">Login</a>
+                <div class="border opacity-50"></div>
+                <a href="#" class="border rounded-full px-3">Live Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="w-full h-screen flex lg:grid lg:grid-cols-2 max-lg:px-3">
+          <div class="w-auto h-auto flex items-center">
+            <div class="flex flex-col text-white gap-5">
+              <p class="text-[45px]">
+                Upgrade kemampuan dan networkmu
+                <span class="text-[43px] text-[#47b2e4]">.</span>
+              </p>
+              <p class="text-[25px]">
+                Bergabung dan dapatkan beberapa manfaat:
+              </p>
+              <div class="w-auto h-auto flex pl-5">
+                <ul class="text-[25px] list-disc">
+                  <li>Karir di perusahaan idaman</li>
+                  <li>Project as a freelance</li>
+                  <li>Pasif Income</li>
+                  <li>Free Education</li>
+                  <li>Konsultasi senior programmer</li>
+                  <li>Kerja Remote (lokal/International)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end items-center">
+            <p
+              class="text-[16px] text-white px-5 py-3 border-1 border-white rounded-full cursor-pointer hover:bg-[#47b2e4] hover:border-[#47b2e4] transition duration-500 ease-in-out"
+            >
+              Join Community
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="w-full h-auto bg-[#37517e] py-20">
+      <div class="max-w-[1200px] mx-auto flex items-center gap-5 text-white">
+        <div class="w-1/3 flex items-center gap-10">
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 37 32"
+            enable-background="new 0 0 37 32"
+            xml:space="preserve"
+            fill="#000000"
+            class="size-20"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <path
+                  fill="#47b2e4"
+                  d="M33.582,2.483c-1.776-1.56-4.077-2.418-6.481-2.418c-2.767,0-5.49,1.134-7.472,3.112l-0.781,0.778 c-0.188,0.188-0.508,0.188-0.697,0l-1.027-1.024C15.23,1.041,12.711,0,10.032,0C7.415,0,4.938,1,3.059,2.814 c-1.87,1.805-2.911,4.287-2.933,6.988c-0.023,2.824,1.095,5.573,3.067,7.541l14.252,14.22C17.728,31.845,18.103,32,18.5,32 s0.772-0.155,1.055-0.437L34.061,17.09c1.952-1.948,3.021-4.645,2.934-7.399C36.906,6.897,35.693,4.338,33.582,2.483z M33.355,16.382L18.849,30.855c-0.188,0.188-0.51,0.188-0.697,0L3.899,16.635c-1.784-1.779-2.794-4.267-2.773-6.824 c0.02-2.431,0.953-4.66,2.627-6.277C5.445,1.9,7.675,1,10.032,1c2.413,0,4.681,0.938,6.387,2.64l1.026,1.024 c0.565,0.564,1.545,0.564,2.11,0l0.78-0.778c1.796-1.792,4.263-2.82,6.766-2.82c2.161,0,4.228,0.77,5.821,2.169 c1.902,1.67,2.993,3.974,3.073,6.488C36.075,12.238,35.138,14.603,33.355,16.382z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+          <div class="flex flex-col gap-3">
+            <p class="text-[20px]">Get the Dream Jobs</p>
+            <p class="text-[17px]">
+              Helps talent to get the best-matched company and career.
+            </p>
+          </div>
+        </div>
+        <div class="w-1/3 flex items-center gap-10">
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 32 32"
+            enable-background="new 0 0 32 32"
+            xml:space="preserve"
+            fill="#"
+            stroke="#"
+            class="size-16"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <path
+                  fill="#47b2e4"
+                  d="M10.243,11.992c-3.463-0.443-6.97,0.737-9.439,3.206c-0.128,0.128-0.253,0.26-0.374,0.392 c-0.472,0.519-0.563,1.248-0.233,1.859c0.334,0.618,1.004,0.945,1.703,0.833c2.389-0.383,4.799,0.086,6.857,1.299 c-0.978,1.159-1.669,2.526-1.976,4.012c-0.093,0.45,0.048,0.916,0.379,1.247c0.263,0.264,0.613,0.406,0.972,0.406 c0.091,0,0.184-0.009,0.275-0.028c1.487-0.308,2.854-0.999,4.012-1.976c1.214,2.059,1.681,4.469,1.3,6.857 c-0.112,0.701,0.215,1.37,0.833,1.704C14.794,31.936,15.057,32,15.318,32c0.392,0,0.78-0.146,1.091-0.43 c0.133-0.12,0.263-0.245,0.392-0.373c2.315-2.316,3.608-5.875,3.136-9.388c1.412-0.973,2.749-2.074,3.967-3.292 c4.526-4.527,7.399-10.519,8.087-16.872c0.049-0.445-0.108-0.886-0.43-1.207c-0.321-0.321-0.761-0.475-1.207-0.43 C24.001,0.697,18.009,3.57,13.482,8.097C12.284,9.295,11.202,10.609,10.243,11.992z M30.462,1.003 c0.139-0.02,0.286,0.036,0.392,0.143s0.158,0.249,0.143,0.393c-0.674,6.216-3.371,11.843-7.8,16.272 c-1.068,1.068-2.24,2.03-3.465,2.904c-0.438-1.802-1.365-3.557-2.893-5.085c-0.195-0.195-0.512-0.195-0.707,0s-0.195,0.512,0,0.707 c3.469,3.469,4.403,9.712-0.038,14.152c-0.117,0.117-0.236,0.23-0.357,0.341c-0.304,0.279-0.621,0.143-0.711,0.094 c-0.19-0.103-0.374-0.332-0.321-0.666c0.451-2.824-0.168-5.684-1.744-8.052c-0.009-0.014-0.024-0.021-0.034-0.034 c-0.009-0.011-0.012-0.024-0.022-0.034c-0.012-0.012-0.028-0.017-0.04-0.028c-0.03-0.025-0.06-0.047-0.094-0.065 c-0.023-0.012-0.045-0.021-0.07-0.029c-0.038-0.013-0.075-0.021-0.115-0.024c-0.023-0.002-0.046-0.002-0.069,0 c-0.04,0.002-0.078,0.009-0.117,0.021c-0.025,0.008-0.047,0.018-0.071,0.029c-0.02,0.01-0.042,0.012-0.061,0.025 c-0.016,0.01-0.024,0.026-0.038,0.038c-0.01,0.008-0.023,0.011-0.032,0.021c-1.108,1.071-2.49,1.803-3.995,2.114 c-0.177,0.034-0.293-0.062-0.336-0.106c-0.044-0.044-0.142-0.165-0.106-0.337c0.311-1.504,1.042-2.886,2.114-3.995 c0.013-0.013,0.017-0.03,0.028-0.044c0.008-0.01,0.021-0.015,0.029-0.026c0.011-0.017,0.013-0.036,0.022-0.053 c0.015-0.029,0.027-0.058,0.036-0.089c0.009-0.032,0.014-0.063,0.017-0.096c0.003-0.031,0.003-0.061-0.001-0.093 c-0.003-0.032-0.01-0.062-0.02-0.093c-0.009-0.03-0.021-0.058-0.036-0.087c-0.016-0.029-0.035-0.055-0.056-0.082 c-0.012-0.014-0.017-0.032-0.031-0.045c-0.012-0.011-0.027-0.015-0.039-0.025c-0.012-0.01-0.019-0.023-0.032-0.032 c-2.367-1.574-5.227-2.194-8.05-1.744c-0.336,0.058-0.563-0.13-0.666-0.32c-0.048-0.09-0.185-0.405,0.093-0.711 c0.11-0.121,0.223-0.239,0.34-0.356c2.313-2.314,5.623-3.402,8.863-2.903C10.378,13.004,10.382,13,10.387,13 c0.003,0,0.007,0,0.01,0c0.008,0,0.015,0.003,0.022,0.004c0.056,0.006,0.112,0.008,0.167-0.005 c0.025-0.006,0.047-0.018,0.071-0.027c0.035-0.014,0.07-0.025,0.101-0.047c0.03-0.021,0.052-0.048,0.076-0.075 c0.017-0.019,0.039-0.031,0.054-0.053c0.964-1.424,2.076-2.768,3.302-3.994C18.556,4.437,24.334,1.667,30.462,1.003z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M22.14,12.859c0.801,0,1.555-0.312,2.122-0.878c1.169-1.17,1.169-3.073,0-4.243 c-1.134-1.133-3.11-1.133-4.243,0c-1.17,1.17-1.17,3.073,0,4.243C20.585,12.548,21.339,12.859,22.14,12.859z M20.726,8.445 c0.378-0.378,0.88-0.586,1.414-0.586s1.037,0.208,1.415,0.586c0.779,0.78,0.779,2.049,0,2.829c-0.756,0.754-2.074,0.754-2.829,0 C19.946,10.494,19.946,9.226,20.726,8.445z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M5.442,25.851l-1.659,1.66c-0.195,0.195-0.195,0.512,0,0.707c0.098,0.098,0.226,0.146,0.354,0.146 s0.256-0.049,0.354-0.146l1.659-1.66c0.195-0.195,0.195-0.512,0-0.707S5.637,25.655,5.442,25.851z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M5.438,20.862l-4.152,4.151c-0.195,0.195-0.195,0.512,0,0.707c0.098,0.098,0.226,0.146,0.354,0.146 s0.256-0.049,0.354-0.146l4.152-4.151c0.195-0.195,0.195-0.512,0-0.707S5.633,20.667,5.438,20.862z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M6.172,30.606c0.098,0.098,0.226,0.146,0.354,0.146s0.256-0.049,0.354-0.146l4.152-4.151 c0.195-0.195,0.195-0.512,0-0.707s-0.512-0.195-0.707,0l-4.152,4.151C5.977,30.095,5.977,30.411,6.172,30.606z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+          <div class="flex flex-col gap-3">
+            <p class="text-[20px]">Skill Improvement</p>
+            <p class="text-[17px]">FREE access to our educational classes.</p>
+          </div>
+        </div>
+        <div class="w-1/3 flex items-center gap-10">
+          <svg
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 38 32"
+            enable-background="new 0 0 38 32"
+            xml:space="preserve"
+            fill="#000000"
+            class="size-20"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <g>
+                <path
+                  fill="#47b2e4"
+                  d="M36.5,0h-27C9.224,0,9,0.224,9,0.5S9.224,1,9.5,1h27C36.775,1,37,1.225,37,1.5v5C37,6.775,36.775,7,36.5,7 h-27C9.224,7,9,7.224,9,7.5S9.224,8,9.5,8h27C37.327,8,38,7.327,38,6.5v-5C38,0.673,37.327,0,36.5,0z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M4,8c2.206,0,4-1.794,4-4S6.206,0,4,0S0,1.794,0,4S1.794,8,4,8z M4,1c1.654,0,3,1.346,3,3S5.654,7,4,7 S1,5.654,1,4S2.346,1,4,1z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M36.5,12h-27C9.224,12,9,12.224,9,12.5S9.224,13,9.5,13h27c0.275,0,0.5,0.225,0.5,0.5v5 c0,0.275-0.225,0.5-0.5,0.5h-27C9.224,19,9,19.224,9,19.5S9.224,20,9.5,20h27c0.827,0,1.5-0.673,1.5-1.5v-5 C38,12.673,37.327,12,36.5,12z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M4,20c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4S1.794,20,4,20z M4,13c1.654,0,3,1.346,3,3 s-1.346,3-3,3s-3-1.346-3-3S2.346,13,4,13z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M36.5,24h-27C9.224,24,9,24.224,9,24.5S9.224,25,9.5,25h27c0.275,0,0.5,0.225,0.5,0.5v5 c0,0.275-0.225,0.5-0.5,0.5h-27C9.224,31,9,31.224,9,31.5S9.224,32,9.5,32h27c0.827,0,1.5-0.673,1.5-1.5v-5 C38,24.673,37.327,24,36.5,24z"
+                ></path>
+                <path
+                  fill="#47b2e4"
+                  d="M4,32c2.206,0,4-1.794,4-4s-1.794-4-4-4s-4,1.794-4,4S1.794,32,4,32z M4,25c1.654,0,3,1.346,3,3 s-1.346,3-3,3s-3-1.346-3-3S2.346,25,4,25z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+          <div class="flex flex-col gap-3">
+            <p class="text-[20px]">Know your Rights</p>
+            <p class="text-[17px]">
+              Helps talent to get their rights based on company rules and
+              regulation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Community -->
+    <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-20 max-lg:px-3">
+        <div class="h-auto grid grid-cols-2 gap-10">
+          <div class="flex flex-col gap-10">
+            <p class="text-[45px] text-[#12304a]">Join Our Community</p>
+            <p class="text-[17px] text-[#587790]">
+              Visi kami adalah membangun ecosystem yang dapat mendukung semua
+              pelaku industri, baik talent, perusahaan, universitas, komunitas
+              dan semua pihak lain yang dapat mendukung visi kami. Ayo bergabung
+              untuk meningkatkan kualitas industri Indonesia.
+            </p>
+            <button
+              type="button"
+              class="self-start text-[16px] text-[#47b2e4] px-5 py-3 rounded-full border-1 border-[#47b2e4]"
+            >
+              Join Community
+            </button>
+          </div>
+          <div class="max-lg:hidden relative flex w-full h-full px-30 pb-14">
+            <div
+              class="absolute left-0 top-6 w-[248px] h-[186px] rounded-sm z-10 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-15.jpg"
+                alt="Image-1"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="absolute bottom-0 left-10 w-[150px] h-[113px] rounded-sm z-40 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+                alt="Image-2"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="w-[300px] h-[225px] rounded-sm z-30 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-3.jpg"
+                alt="Image-3"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="absolute right-0 bottom-5 w-[247px] h-[185px] rounded-sm z-10 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-1.jpg"
+                alt="Image-4"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="h-auto grid grid-cols-3 gap-10">
+          <div class="flex flex-col">
+            <p>Share & Learn</p>
+            <p>
+              Dengan bergabung dengan upscale, talent mendapatkan akses platform
+              edukasi yang kami kembangkan, baik sebagai mentor maupun sebagai
+              siswa.
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <p>Expand Your Network</p>
+            <p>
+              Perluas pertemananmu diberbagai bidang kemampuan dan diberbagai
+              regional. Ikuti event-event khusus upscale yang akan dilakukan
+              berkala.
+            </p>
+          </div>
+          <div class="flex flex-col">
+            <p>Get Hired & Make Money</p>
+            <p>
+              Mulai bangun pipeline karirmu dengan Upscale. Daftarkan diri anda,
+              lengkapi profile, ikuti assessment & dapatkan karir / pekerjaan
+              yang sesuai harapan anda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
