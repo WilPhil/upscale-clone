@@ -274,7 +274,8 @@
     <!-- Login Section -->
     <div
       x-show="showLoginContent"
-      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 max-lg:px-3"
+      x-bind:class="showLoginContent ? 'opacity-100' : ''"
+      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 opacity-0 max-lg:px-3"
     >
       <div
         class="max-md:w-full w-[500px] h-fit flex flex-col bg-white mt-10 gap-5 rounded-sm shadow-sm"
@@ -542,8 +543,8 @@
 
     <!-- Benefits -->
     <div class="w-full h-auto bg-[#37517e] py-20">
-      <div class="max-w-[1200px] mx-auto flex items-center gap-5 text-white">
-        <div class="w-1/3 flex items-center gap-10">
+      <div class="max-w-[1200px] mx-auto flex items-center gap-16 text-white">
+        <div class="w-1/3 flex gap-10">
           <svg
             version="1.1"
             id="Layer_1"
@@ -577,7 +578,7 @@
             </p>
           </div>
         </div>
-        <div class="w-1/3 flex items-center gap-10">
+        <div class="w-1/3 flex gap-10">
           <svg
             version="1.1"
             id="Layer_1"
@@ -588,7 +589,7 @@
             xml:space="preserve"
             fill="#"
             stroke="#"
-            class="size-16"
+            class="size-16 mt-4"
           >
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g
@@ -626,7 +627,7 @@
             <p class="text-[17px]">FREE access to our educational classes.</p>
           </div>
         </div>
-        <div class="w-1/3 flex items-center gap-10">
+        <div class="w-1/3 flex gap-10">
           <svg
             version="1.1"
             id="Layer_1"
@@ -698,7 +699,7 @@
             </p>
             <button
               type="button"
-              class="self-start text-[16px] text-[#47b2e4] px-5 py-3 rounded-full border-1 border-[#47b2e4]"
+              class="self-start text-[16px] text-[#47b2e4] px-5 py-3 rounded-full border-1 border-[#47b2e4] cursor-pointer hover:text-white hover:bg-[#47b2e4] transition ease-in-out duration-500"
             >
               Join Community
             </button>
@@ -717,51 +718,51 @@
               class="absolute bottom-0 left-10 w-[150px] h-[113px] rounded-sm z-40 overflow-hidden shadow-sm"
             >
               <img
-                src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+                src="https://upscale.id/template/upscale/media/music/image-1.jpg"
                 alt="Image-2"
-                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer animate-float"
               />
             </div>
             <div
               class="w-[300px] h-[225px] rounded-sm z-30 overflow-hidden shadow-sm"
             >
               <img
-                src="https://upscale.id/template/upscale/media/music/image-3.jpg"
+                src="https://upscale.id/template/upscale/media/music/image-11.jpg"
                 alt="Image-3"
-                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer animate-float"
               />
             </div>
             <div
               class="absolute right-0 bottom-5 w-[247px] h-[185px] rounded-sm z-10 overflow-hidden shadow-sm"
             >
               <img
-                src="https://upscale.id/template/upscale/media/music/image-1.jpg"
+                src="https://upscale.id/template/upscale/media/music/image-5.jpg"
                 alt="Image-4"
                 class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
               />
             </div>
           </div>
         </div>
-        <div class="h-auto grid grid-cols-3 gap-10">
-          <div class="flex flex-col">
-            <p>Share & Learn</p>
-            <p>
+        <div class="h-auto grid grid-cols-3 gap-20">
+          <div class="flex flex-col gap-5 text-[#12304a]">
+            <p class="text-[30px]">Share & Learn</p>
+            <p class="text-[17px] text-[#587790]">
               Dengan bergabung dengan upscale, talent mendapatkan akses platform
               edukasi yang kami kembangkan, baik sebagai mentor maupun sebagai
               siswa.
             </p>
           </div>
-          <div class="flex flex-col">
-            <p>Expand Your Network</p>
-            <p>
+          <div class="flex flex-col gap-5 text-[#12304a]">
+            <p class="text-[30px]">Expand Your Network</p>
+            <p class="text-[17px] text-[#587790]">
               Perluas pertemananmu diberbagai bidang kemampuan dan diberbagai
               regional. Ikuti event-event khusus upscale yang akan dilakukan
               berkala.
             </p>
           </div>
-          <div class="flex flex-col">
-            <p>Get Hired & Make Money</p>
-            <p>
+          <div class="flex flex-col gap-5 text-[#12304a]">
+            <p class="text-[30px]">Get Hired & Make Money</p>
+            <p class="text-[17px] text-[#587790]">
               Mulai bangun pipeline karirmu dengan Upscale. Daftarkan diri anda,
               lengkapi profile, ikuti assessment & dapatkan karir / pekerjaan
               yang sesuai harapan anda.
@@ -769,6 +770,579 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Partnership -->
+    <div class="max-w-[1200px] h-auto flex flex-col mx-auto py-20 gap-5">
+      <div class="flex flex-col text-center gap-5">
+        <p class="text-[30px] text-[#12304a]">
+          Our Partnership in many regional
+        </p>
+        <p class="text-[17px] text-[#587790] px-80">
+          Kami secara aktif akan terus mengembangkan komunitas dan network kami
+          dengan berbagai pihak. Nantikan kami hadir di kota anda.
+        </p>
+      </div>
+      <div class="w-full flex justify-between items-center">
+        <img
+          src="https://upscale.id/template/upscale/media/map.jpg"
+          alt="Eduwork"
+          class="w-[80%] object-cover"
+        />
+        <div class="w-[20%] text-[17px] text-[#587790]">
+          <ul dir="rtl" class="marker:text-[#47b2e4] list-disc">
+            <li>Yogyakarta, Indonesia</li>
+            <li class="py-3">Jakarta, soon</li>
+            <li>Bandung, soon</li>
+            <li class="py-3">Malang, soon</li>
+            <li>Bali, soon</li>
+            <li class="py-3">Surabaya, soon</li>
+            <li>Tangerang, soon</li>
+            <li class="py-3">Semarang, soon</li>
+            <li>Solo, soon</li>
+            <li class="pt-3">Bogor, soon</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jobs -->
+    <div class="max-w-[1200px] h-auto flex flex-col mx-auto pt-10 pb-20">
+      <p class="text-[30px] text-[#12304a] text-center pb-16">
+        Currently open roles urgently
+        <span class="text-[43px] text-[#47b2e4]">.</span>
+      </p>
+      <div class="relative w-full h-auto flex flex-col gap-20">
+        <div
+          class="w-auto h-auto flex justify-start items-center gap-10 pb-20 border-b border-b-gray-200"
+        >
+          <div class="w-[70%] flex flex-col gap-5">
+            <p class="text-[21px] text-[#12304a]">Web Developer</p>
+            <div class="flex justify-between items-center gap-10">
+              <p class="text-[17px] text-[#587790] tracking-wide">
+                2 years work experience, 1 year development experience with
+                Javascript, 1 year development experience with PHP, Good English
+                communication skills and client servicing experiences, Work well
+                under pressure and tight deadlines.
+              </p>
+              <div>
+                <ul
+                  class="marker:text-[#47b2e4] list-disc text-[17px] text-[#587790] text-nowrap"
+                >
+                  <li>Fulltime Jobs</li>
+                  <li class="py-3">remote/onsite</li>
+                  <li>Contract 6 month</li>
+                </ul>
+              </div>
+            </div>
+            <div class="w-full flex">
+              <div class="w-1/3 flex items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3 18C3 15.3945 4.66081 13.1768 6.98156 12.348C7.61232 12.1227 8.29183 12 9 12C9.70817 12 10.3877 12.1227 11.0184 12.348C11.3611 12.4703 11.6893 12.623 12 12.8027C12.3107 12.623 12.6389 12.4703 12.9816 12.348C13.6123 12.1227 14.2918 12 15 12C15.7082 12 16.3877 12.1227 17.0184 12.348C19.3392 13.1768 21 15.3945 21 18V21H15.75V19.5H19.5V18C19.5 15.5147 17.4853 13.5 15 13.5C14.4029 13.5 13.833 13.6163 13.3116 13.8275C14.3568 14.9073 15 16.3785 15 18V21H3V18ZM9 11.25C8.31104 11.25 7.66548 11.0642 7.11068 10.74C5.9977 10.0896 5.25 8.88211 5.25 7.5C5.25 5.42893 6.92893 3.75 9 3.75C10.2267 3.75 11.3158 4.33901 12 5.24963C12.6842 4.33901 13.7733 3.75 15 3.75C17.0711 3.75 18.75 5.42893 18.75 7.5C18.75 8.88211 18.0023 10.0896 16.8893 10.74C16.3345 11.0642 15.689 11.25 15 11.25C14.311 11.25 13.6655 11.0642 13.1107 10.74C12.6776 10.4869 12.2999 10.1495 12 9.75036C11.7001 10.1496 11.3224 10.4869 10.8893 10.74C10.3345 11.0642 9.68896 11.25 9 11.25ZM13.5 18V19.5H4.5V18C4.5 15.5147 6.51472 13.5 9 13.5C11.4853 13.5 13.5 15.5147 13.5 18ZM11.25 7.5C11.25 8.74264 10.2426 9.75 9 9.75C7.75736 9.75 6.75 8.74264 6.75 7.5C6.75 6.25736 7.75736 5.25 9 5.25C10.2426 5.25 11.25 6.25736 11.25 7.5ZM15 5.25C13.7574 5.25 12.75 6.25736 12.75 7.5C12.75 8.74264 13.7574 9.75 15 9.75C16.2426 9.75 17.25 8.74264 17.25 7.5C17.25 6.25736 16.2426 5.25 15 5.25Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Availability</p>
+                  <p class="text-[#587790]">2 people</p>
+                </div>
+              </div>
+              <div
+                class="w-1/3 flex justify-center items-center gap-3 border-l-[1px] border-l-gray-300 border-r-[1px] border-r-gray-300"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.5 4.5C6.67157 4.5 6 5.17157 6 6V15.4013C6.44126 15.1461 6.95357 15 7.5 15H18V4.5H7.5ZM18 16.5H7.5C6.67157 16.5 6 17.1716 6 18C6 18.8284 6.67157 19.5 7.5 19.5H18V16.5ZM4.5 18L4.5 6C4.5 4.34315 5.84315 3 7.5 3H18.75L19.5 3.75V21H7.5C5.84315 21 4.5 19.6569 4.5 18Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Experience</p>
+                  <p class="text-[#587790]">Min 2 years</p>
+                </div>
+              </div>
+              <div class="w-1/3 flex justify-end items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M22 9L12 4L2 9L12 14L22 9ZM22 9V15M19 10.5V16.5L12 20L5 16.5V10.5"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Min. Graduation</p>
+                  <p class="text-[#587790]">none</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-[30%] h-full flex justify-center items-center">
+            <div class="flex flex-col gap-3 px-10">
+              <button
+                type="button"
+                class="py-3 bg-[#47b2e4] text-[16px] text-white rounded-full cursor-pointer hover:text-black transition ease-in-out duration-500"
+              >
+                Apply now
+              </button>
+              <p class="text-[12px] text-[#587790]">
+                Make sure to have all the requirements before contacting us!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-auto h-auto flex justify-start items-center gap-10 pb-20 border-b border-b-gray-200"
+        >
+          <div class="w-[70%] flex flex-col gap-10">
+            <p class="text-[21px] text-[#12304a]">UI/UX Designer</p>
+            <div class="flex justify-between items-center gap-10">
+              <p class="text-[17px] text-[#587790] tracking-wide pr-5">
+                3+ years working as a UI/UX designer, Good knowledge and ability
+                to implement the vision using HTML, CSS, Javascript, Experienced
+                at driving a user experience from start-to-finish that delivers
+                results, connects emotionally. Obsessed with good user-centered
+                design practices and have an eye for detail.
+              </p>
+              <div>
+                <ul
+                  class="marker:text-[#47b2e4] list-disc text-[17px] text-[#587790] text-nowrap"
+                >
+                  <li>Fulltime Jobs</li>
+                  <li class="py-3">remote/onsite</li>
+                  <li>Contract 6 month</li>
+                </ul>
+              </div>
+            </div>
+            <div class="w-full flex">
+              <div class="w-1/3 flex items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3 18C3 15.3945 4.66081 13.1768 6.98156 12.348C7.61232 12.1227 8.29183 12 9 12C9.70817 12 10.3877 12.1227 11.0184 12.348C11.3611 12.4703 11.6893 12.623 12 12.8027C12.3107 12.623 12.6389 12.4703 12.9816 12.348C13.6123 12.1227 14.2918 12 15 12C15.7082 12 16.3877 12.1227 17.0184 12.348C19.3392 13.1768 21 15.3945 21 18V21H15.75V19.5H19.5V18C19.5 15.5147 17.4853 13.5 15 13.5C14.4029 13.5 13.833 13.6163 13.3116 13.8275C14.3568 14.9073 15 16.3785 15 18V21H3V18ZM9 11.25C8.31104 11.25 7.66548 11.0642 7.11068 10.74C5.9977 10.0896 5.25 8.88211 5.25 7.5C5.25 5.42893 6.92893 3.75 9 3.75C10.2267 3.75 11.3158 4.33901 12 5.24963C12.6842 4.33901 13.7733 3.75 15 3.75C17.0711 3.75 18.75 5.42893 18.75 7.5C18.75 8.88211 18.0023 10.0896 16.8893 10.74C16.3345 11.0642 15.689 11.25 15 11.25C14.311 11.25 13.6655 11.0642 13.1107 10.74C12.6776 10.4869 12.2999 10.1495 12 9.75036C11.7001 10.1496 11.3224 10.4869 10.8893 10.74C10.3345 11.0642 9.68896 11.25 9 11.25ZM13.5 18V19.5H4.5V18C4.5 15.5147 6.51472 13.5 9 13.5C11.4853 13.5 13.5 15.5147 13.5 18ZM11.25 7.5C11.25 8.74264 10.2426 9.75 9 9.75C7.75736 9.75 6.75 8.74264 6.75 7.5C6.75 6.25736 7.75736 5.25 9 5.25C10.2426 5.25 11.25 6.25736 11.25 7.5ZM15 5.25C13.7574 5.25 12.75 6.25736 12.75 7.5C12.75 8.74264 13.7574 9.75 15 9.75C16.2426 9.75 17.25 8.74264 17.25 7.5C17.25 6.25736 16.2426 5.25 15 5.25Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Availability</p>
+                  <p class="text-[#587790]">2 people</p>
+                </div>
+              </div>
+              <div
+                class="w-1/3 flex justify-center items-center gap-3 border-l-[1px] border-l-gray-300 border-r-[1px] border-r-gray-300"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.5 4.5C6.67157 4.5 6 5.17157 6 6V15.4013C6.44126 15.1461 6.95357 15 7.5 15H18V4.5H7.5ZM18 16.5H7.5C6.67157 16.5 6 17.1716 6 18C6 18.8284 6.67157 19.5 7.5 19.5H18V16.5ZM4.5 18L4.5 6C4.5 4.34315 5.84315 3 7.5 3H18.75L19.5 3.75V21H7.5C5.84315 21 4.5 19.6569 4.5 18Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Experience</p>
+                  <p class="text-[#587790]">Min 3 years</p>
+                </div>
+              </div>
+              <div class="w-1/3 flex justify-end items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M22 9L12 4L2 9L12 14L22 9ZM22 9V15M19 10.5V16.5L12 20L5 16.5V10.5"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Min. Graduation</p>
+                  <p class="text-[#587790]">none</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-[30%] h-full flex justify-center items-center">
+            <div class="flex flex-col gap-3 px-10">
+              <button
+                type="button"
+                class="py-3 bg-[#47b2e4] text-[16px] text-white rounded-full cursor-pointer hover:text-black transition ease-in-out duration-500"
+              >
+                Apply now
+              </button>
+              <p class="text-[12px] text-[#587790]">
+                Make sure to have all the requirements before contacting us!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-auto h-auto flex justify-start items-center gap-10 pb-20 border-b border-b-gray-200"
+        >
+          <div class="w-[70%] flex flex-col gap-10">
+            <p class="text-[21px] text-[#12304a]">Quality Assurance (Manual)</p>
+            <div class="flex justify-between items-center gap-10">
+              <p class="text-[17px] text-[#587790] tracking-wide pr-6">
+                2+ years experience as a Quality Assurance, Experience in
+                testing web-based projects, Strong interest and experience in
+                playing video games, Experience in designing test plan and test
+                cases documentation, Good English communication skills both
+                written and verbal, able to explain defects and provide steps to
+                reproduce clearly, Experience in testing APIs (REST API
+                preferred), Ability to work with clients on tight deadlines and
+                fluid requirements.
+              </p>
+              <div>
+                <ul
+                  class="marker:text-[#47b2e4] list-disc text-[17px] text-[#587790] text-nowrap"
+                >
+                  <li>Fulltime Jobs</li>
+                  <li class="py-3">Remote/onsite</li>
+                  <li>Contract 6 month</li>
+                </ul>
+              </div>
+            </div>
+            <div class="w-full flex">
+              <div class="w-1/3 flex items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M3 18C3 15.3945 4.66081 13.1768 6.98156 12.348C7.61232 12.1227 8.29183 12 9 12C9.70817 12 10.3877 12.1227 11.0184 12.348C11.3611 12.4703 11.6893 12.623 12 12.8027C12.3107 12.623 12.6389 12.4703 12.9816 12.348C13.6123 12.1227 14.2918 12 15 12C15.7082 12 16.3877 12.1227 17.0184 12.348C19.3392 13.1768 21 15.3945 21 18V21H15.75V19.5H19.5V18C19.5 15.5147 17.4853 13.5 15 13.5C14.4029 13.5 13.833 13.6163 13.3116 13.8275C14.3568 14.9073 15 16.3785 15 18V21H3V18ZM9 11.25C8.31104 11.25 7.66548 11.0642 7.11068 10.74C5.9977 10.0896 5.25 8.88211 5.25 7.5C5.25 5.42893 6.92893 3.75 9 3.75C10.2267 3.75 11.3158 4.33901 12 5.24963C12.6842 4.33901 13.7733 3.75 15 3.75C17.0711 3.75 18.75 5.42893 18.75 7.5C18.75 8.88211 18.0023 10.0896 16.8893 10.74C16.3345 11.0642 15.689 11.25 15 11.25C14.311 11.25 13.6655 11.0642 13.1107 10.74C12.6776 10.4869 12.2999 10.1495 12 9.75036C11.7001 10.1496 11.3224 10.4869 10.8893 10.74C10.3345 11.0642 9.68896 11.25 9 11.25ZM13.5 18V19.5H4.5V18C4.5 15.5147 6.51472 13.5 9 13.5C11.4853 13.5 13.5 15.5147 13.5 18ZM11.25 7.5C11.25 8.74264 10.2426 9.75 9 9.75C7.75736 9.75 6.75 8.74264 6.75 7.5C6.75 6.25736 7.75736 5.25 9 5.25C10.2426 5.25 11.25 6.25736 11.25 7.5ZM15 5.25C13.7574 5.25 12.75 6.25736 12.75 7.5C12.75 8.74264 13.7574 9.75 15 9.75C16.2426 9.75 17.25 8.74264 17.25 7.5C17.25 6.25736 16.2426 5.25 15 5.25Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Availability</p>
+                  <p class="text-[#587790]">2 people</p>
+                </div>
+              </div>
+              <div
+                class="w-1/3 flex justify-center items-center gap-3 border-l-[1px] border-l-gray-300 border-r-[1px] border-r-gray-300"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M7.5 4.5C6.67157 4.5 6 5.17157 6 6V15.4013C6.44126 15.1461 6.95357 15 7.5 15H18V4.5H7.5ZM18 16.5H7.5C6.67157 16.5 6 17.1716 6 18C6 18.8284 6.67157 19.5 7.5 19.5H18V16.5ZM4.5 18L4.5 6C4.5 4.34315 5.84315 3 7.5 3H18.75L19.5 3.75V21H7.5C5.84315 21 4.5 19.6569 4.5 18Z"
+                      fill="#000000"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Experience</p>
+                  <p class="text-[#587790]">Min 2 years</p>
+                </div>
+              </div>
+              <div class="w-1/3 flex justify-end items-center gap-3">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="size-12"
+                >
+                  <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                  <g
+                    id="SVGRepo_tracerCarrier"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></g>
+                  <g id="SVGRepo_iconCarrier">
+                    <path
+                      d="M22 9L12 4L2 9L12 14L22 9ZM22 9V15M19 10.5V16.5L12 20L5 16.5V10.5"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </g>
+                </svg>
+                <div class="flex flex-col gap-2 text-[16px]">
+                  <p class="text-[#12304a]">Min. Graduation</p>
+                  <p class="text-[#587790]">none</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-[30%] h-full flex justify-center items-center">
+            <div class="flex flex-col gap-3 px-10">
+              <button
+                type="button"
+                class="py-3 bg-[#47b2e4] text-[16px] text-white rounded-full cursor-pointer hover:text-black transition ease-in-out duration-500"
+              >
+                Apply now
+              </button>
+              <p class="text-[12px] text-[#587790]">
+                Make sure to have all the requirements before contacting us!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="w-auto h-auto flex justify-start items-center gap-10">
+          <div class="w-[70%] flex flex-col gap-10">
+            <p class="text-[21px] text-[#12304a]">Backend Engineer (Go)</p>
+            <div class="flex justify-between items-center gap-10">
+              <p class="text-[17px] text-[#587790] tracking-wide pr-6">
+                2+ years in writing GO, Prior experience developing
+                microservices in the cloud using G, Ability to write scalable Go
+                code adhering to the best practice, Solid security best
+                practice, Strong computer science and very experience in coding
+                relative fields regarding the matters. Very dependent on working
+                alone or in a
+              </p>
+              <div>
+                <ul
+                  class="marker:text-[#47b2e4] list-disc text-[17px] text-[#587790] text-nowrap"
+                >
+                  <li>Fulltime Jobs</li>
+                  <li class="py-3">Remote/onsite</li>
+                  <li>Contract 6 month</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="w-[30%] h-full flex justify-center items-center">
+            <div class="flex flex-col gap-3 px-10">
+              <button
+                type="button"
+                class="py-3 bg-[#47b2e4] text-[16px] text-white rounded-full"
+              >
+                Apply now
+              </button>
+              <p class="text-[12px] text-[#587790]">
+                Make sure to have all the requirements before contacting us!
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="absolute bottom-0 z-10 w-full h-52 bg-gradient-to-b from-transparent to-white"
+        ></div>
+      </div>
+      <div class="flex justify-center pt-5">
+        <button
+          type="button"
+          class="px-16 py-3 bg-[#47b2e4] text-[white] rounded-full cursor-pointer hover:text-black transition duration-500 ease-in-out"
+        >
+          Show All Opportunities
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full h-auto bg-[#37517d] relative">
+      <div class="max-w-[1200px] h-auto mx-auto text-[#ffffff] max-xl:px-3">
+        <div class="flex flex-col">
+          <div
+            class="flex flex-col lg:flex-row justify-between py-10 lg:py-20 max-lg:gap-10"
+          >
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">UpScale</p>
+              <div class="lg:hidden flex flex-col text-[16px] gap-8">
+                <div class="flex flex-col gap-3">
+                  <p class="font-[500]">Location</p>
+                  <p>
+                    Jln. Ringroad Utara No. 34, Maguwoharjo, Yogyakarta,
+                    Indonesia
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col gap-3 border-t border-b py-5 border-white"
+                >
+                  <p class="font-[500]">Phone</p>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="asset/images/id.png"
+                      alt="indonesian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+62 87 888 666 531</span>
+                  </div>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="asset/images/au.png"
+                      alt="australian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+61 3 9010 6067</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <p class="font-[500]">Email</p>
+                  <p>dodi@upscale.id</p>
+                </div>
+              </div>
+              <div class="max-lg:hidden flex flex-row text-[16px] gap-10">
+                <div class="flex flex-col gap-5">
+                  <p>Location</p>
+                  <p>Phone</p>
+                  <p>Email</p>
+                </div>
+                <div class="flex flex-col gap-5">
+                  <p>
+                    Jln. Ringroad Utara No. 34, Maguwoharjo, Yogyakarta,
+                    Indonesia
+                  </p>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="asset/images/id.png"
+                      alt="indonesian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+62 87 888 666 531</span>
+                    <span>|</span>
+                    <img
+                      src="asset/images/au.png"
+                      alt="australian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+61 3 9010 6067</span>
+                  </div>
+                  <p>dodi@upscale.id</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">For Talent</p>
+              <div class="flex flex-col text-[15px] gap-5 opacity-80">
+                <p class="hover:underline hover:cursor-pointer">
+                  Why Join as Talent?
+                </p>
+                <p class="hover:underline hover:cursor-pointer">
+                  Job Opportunities
+                </p>
+                <p class="hover:underline hover:cursor-pointer">
+                  Register as Talent
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-row justify-between text-[8px] lg:text-[12px] py-5 opacity-70"
+          >
+            <p>&copy; UpScale 2020. Member of PT Talenta Sinergi Group</p>
+            <img
+              src="asset/images/logo-upscale.png"
+              alt="upscale"
+              class="w-[88px] h-[20px]"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle border -->
+      <div
+        class="absolute bottom-16 w-full border-0.5 border-b border-[#dcdfe0] opacity-40"
+      ></div>
     </div>
   </body>
 </html>
