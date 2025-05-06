@@ -294,7 +294,8 @@
     <!-- Login Section -->
     <div
       x-show="showLoginContent"
-      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 max-lg:px-3"
+      x-bind:class="showLoginContent ? 'opacity-100' : ''"
+      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 opacity-0 max-lg:px-3"
     >
       <div
         class="max-md:w-full w-[500px] h-fit flex flex-col bg-white mt-10 gap-5 rounded-sm shadow-sm"
