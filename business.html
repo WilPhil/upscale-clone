@@ -248,10 +248,10 @@
           class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
         >
           <div
-            class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+            class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
           >
             <a href="index.html">Home</a>
-            <a href="business.html">For Business</a>
+            <a href="business.html" class="text-[#47b2e4]">For Business</a>
             <a href="talent.html">For Talent</a>
             <a href="#">Jobs</a>
             <a href="#">F.A.Q</a>
@@ -279,12 +279,11 @@
                 </div>
               </div>
             </div>
-            <div class="flex gap-3 text-[#47b2e4]">
+            <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
               <p x-on:click="showLoginContent = true" class="cursor-pointer">
                 Login
               </p>
-              <div class="border opacity-50"></div>
-              <a href="#" class="border rounded-full px-3">Live Chat</a>
+              <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
             </div>
           </div>
         </div>
@@ -415,7 +414,7 @@
             <div
               @mouseover="showLanguage = true"
               @mouseleave="showLanguage = false"
-              class="relative w-auto h-auto flex items-center gap-3 py-5 cursor-pointer"
+              class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
             >
               <img
                 src="Asset/Images/id.png"
@@ -441,13 +440,13 @@
 
                 <div class="flex flex-col gap-2">
                   <div
-                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                    class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
                   >
                     <img src="Asset/Images/id.png" alt="Indonesian Flag" />
                     <p>ID</p>
                   </div>
                   <div
-                    class="flex flex-row items-center gap-2 cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                    class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
                   >
                     <img src="Asset/Images/en.png" alt="American Flag" />
                     <p>EN</p>
@@ -459,14 +458,14 @@
             <div class="w-auto h-auto flex items-center gap-10">
               <p
                 x-on:click="showLoginContent = true"
-                class="cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                class="hover:text-[#47b2e4] transition ease-in-out duration-500 cursor-pointer"
               >
                 Login
               </p>
               <a
                 x-on:click="showChat = true"
                 href="#"
-                class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+                class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
                 >Live Chat</a
               >
             </div>
@@ -487,10 +486,10 @@
             class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
           >
             <div
-              class="w-full h-full flex flex-col justify-center p-3 text-[15px] text-[#444444] gap-5"
+              class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
             >
               <a href="index.html">Home</a>
-              <a href="business.html">For Business</a>
+              <a href="business.html" class="text-[#47b2e4]">For Business</a>
               <a href="talent.html">For Talent</a>
               <a href="#">Jobs</a>
               <a href="#">F.A.Q</a>
@@ -518,10 +517,11 @@
                   </div>
                 </div>
               </div>
-              <div class="flex gap-3 text-[#47b2e4]">
-                <a href="#" class="">Login</a>
-                <div class="border opacity-50"></div>
-                <a href="#" class="border rounded-full px-3">Live Chat</a>
+              <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
+                <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                  Login
+                </p>
+                <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
               </div>
             </div>
           </div>
