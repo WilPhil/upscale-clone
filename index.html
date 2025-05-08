@@ -13,8 +13,8 @@
       rel="stylesheet"
     />
 
-    <!-- Tailwind CLI -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind Link -->
+    <link rel="stylesheet" href="/main.css" />
 
     <!-- Alpine CLI -->
     <script
@@ -52,7 +52,7 @@
     <!-- Chat Button -->
     <div
       x-on:click="showChat = !showChat"
-      class="animate-pulse size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
+      class="motion-preset-spin size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
     >
       <div class="w-auto h-auto">
         <svg
@@ -161,12 +161,12 @@
             >For Talent</a
           >
           <a
-            href="#"
+            href="jobs.html"
             class="hover:text-[#47b2e4] transition ease-in-out duration-500"
             >Jobs</a
           >
           <a
-            href="#"
+            href="faq.html"
             class="hover:text-[#47b2e4] transition ease-in-out duration-500"
             >F.A.Q</a
           >
@@ -249,8 +249,8 @@
             <a href="index.html" class="text-[#47b2e4]">Home</a>
             <a href="business.html">For Business</a>
             <a href="talent.html">For Talent</a>
-            <a href="#">Jobs</a>
-            <a href="#">F.A.Q</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="faq.html">F.A.Q</a>
             <div
               x-data="{ showLanguageMobile: false }"
               class="flex flex-col gap-4"
@@ -400,7 +400,7 @@
             >Jobs</a
           >
           <a
-            href="#"
+            href="faq.html"
             class="hover:text-[#47b2e4] transition ease-in-out duration-500"
             >F.A.Q</a
           >
@@ -484,8 +484,8 @@
             <a href="index.html" class="text-[#47b2e4]">Home</a>
             <a href="business.html">For Business</a>
             <a href="talent.html">For Talent</a>
-            <a href="#">Jobs</a>
-            <a href="#">F.A.Q</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="faq.html">F.A.Q</a>
             <div
               x-data="{ showLanguageMobile: false }"
               class="flex flex-col gap-4"
@@ -693,7 +693,11 @@
           dan juga terdapat tools memonitor produktivitas secara real-time.
         </p>
       </div>
-      <img src="Asset/Images/devices.png" alt="Devices" class="py-10" />
+      <img
+        src="Asset/Images/devices.png"
+        alt="Devices"
+        class="py-10 motion-preset-bounce"
+      />
       <div
         class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
       >
