@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.5",
+    "tailwindcss-animated": "^2.0.0",
+    "tailwindcss-intersect": "^2.2.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "type": "module",
+  "devDependencies": {
+    "tailwindcss": "^4.1.5",
+    "tailwindcss-motion": "^1.1.0",
+    "vite": "^5.2.0"
+  },
+  "name": "upscale",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "tailwindcss-intersect";
+@import "tailwindcss-animated";
+@plugin "tailwindcss-motion";
