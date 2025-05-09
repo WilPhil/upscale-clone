@@ -16,6 +16,12 @@
     <!-- Tailwind Link -->
     <link rel="stylesheet" href="/main.css" />
 
+    <!-- Intersect Observer -->
+    <script
+      defer
+      src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
+    ></script>
+
     <!-- Alpine CLI -->
     <script
       defer
@@ -52,7 +58,7 @@
     <!-- Chat Button -->
     <div
       x-on:click="showChat = !showChat"
-      class="motion-preset-spin size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
+      class="motion-translate-y-in-100 size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
     >
       <div class="w-auto h-auto">
         <svg
@@ -524,7 +530,9 @@
       <div
         class="w-auto h-screen lg:h-auto flex flex-col lg:flex-row justify-center items-center text-white max-xl:px-3 gap-10"
       >
-        <div class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5">
+        <div
+          class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5 intersect:animate-fade-right"
+        >
           <p class="text-[27px] xl:text-[35px] xl:tracking-wide">
             Hire Talent On-Demand
             <span class="text-[#47B2E4] text-[27px] xl:text-[43px]">.</span>
@@ -545,7 +553,7 @@
           </p>
         </div>
         <div
-          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end"
+          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end intersect:animate-fade-left"
         >
           <button
             class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4] hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
@@ -564,7 +572,7 @@
       <div class="max-lg:hidden relative w-auto h-auto pb-20">
         <div class="absolute grid grid-cols-4 justify-between gap-10">
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Dedicated Team</p>
@@ -574,7 +582,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-200"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Freelance Team</p>
@@ -584,7 +592,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-400"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Head Hunter</p>
@@ -594,7 +602,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-600"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Project-Based</p>
@@ -657,22 +665,30 @@
         <div
           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:pt-52 xl:pb-24 gap-10 xl:gap-24"
         >
-          <img src="Asset/Images/logo-koinworks.png" alt="Koinworks" />
-          <img src="Asset/Images/logo-cakap.png" alt="Cakap" />
+          <img
+            src="Asset/Images/logo-koinworks.png"
+            alt="Koinworks"
+            class="intersect:animate-fade-right"
+          />
+          <img
+            src="Asset/Images/logo-cakap.png"
+            alt="Cakap"
+            class="intersect:animate-fade-right intersect:animate-delay-200"
+          />
           <img
             src="Asset/Images/logo-gameloft.png"
             alt="Gameloft"
-            class="max-md:hidden"
+            class="max-md:hidden intersect:animate-fade intersect:animate-delay-400"
           />
           <img
             src="Asset/Images/logo-krafthaus.png"
             alt="Krafthaus"
-            class="max-lg:hidden"
+            class="max-lg:hidden intersect:animate-fade-left intersect:animate-delay-200"
           />
           <img
             src="Asset/Images/logo-crowde.png"
             alt="Crowde"
-            class="max-lg:hidden"
+            class="max-lg:hidden intersect:animate-fade-left"
           />
         </div>
       </div>
@@ -682,7 +698,9 @@
     <div
       class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
     >
-      <div class="flex flex-col justify-center items-center gap-10">
+      <div
+        class="flex flex-col justify-center items-center gap-10 intersect:animate-fade-down"
+      >
         <p class="text-[30px] text-[#12304A] max-xl:text-center">
           Fokuskan perhatian pada strategi pengembangan bisnis Anda
           <span class="text-[#47B2E4] text-[30px] md:text-[43px]">.</span>
@@ -696,26 +714,32 @@
       <img
         src="Asset/Images/devices.png"
         alt="Devices"
-        class="py-10 motion-preset-bounce"
+        class="py-10 intersect:animate-fade-left intersect:animate-duration-700 intersect:animate-delay-200"
       />
       <div
         class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
       >
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-200"
+        >
           <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
           <p class="text-[17px] text-[#587790]">
             Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
             dalam waktu 14 hari.
           </p>
         </div>
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-400"
+        >
           <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
           <p class="text-[17px] text-[#587790]">
             Anda akan mendapatkan report berkala dan dapat login dalam sistem
             real-time monitoring kami.
           </p>
         </div>
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-600"
+        >
           <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
           <p class="text-[17px] text-[#587790]">
             Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
@@ -730,7 +754,9 @@
       <div
         class="max-w-[1200px] h-auto mx-auto flex flex-col gap-10 max-xl:px-3"
       >
-        <div class="flex flex-col text-center gap-10">
+        <div
+          class="flex flex-col text-center gap-10 intersect:animate-fade-down"
+        >
           <p class="text-[30px] text-[#12304A]">
             Departemen apa yang Anda butuhkan saat ini?
           </p>
@@ -742,7 +768,7 @@
           </p>
         </div>
         <div
-          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10"
+          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10 intersect:animate-fade-up"
         >
           <div class="flex flex-col text-center gap-5 px-5">
             <div class="flex flex-col">
@@ -781,7 +807,9 @@
     <div
       class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 py-20 max-xl:px-3 max-lg:gap-5"
     >
-      <div class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5">
+      <div
+        class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5 intersect:animate-fade-right"
+      >
         <div class="text-[30px] text-[#12304A]">
           <p>Bagaimana prosedur kami ?</p>
           <p>Kami bekerja sesuai dengan kebutuhan bisnis Anda</p>
@@ -800,7 +828,7 @@
           <span class="text-[25px] text-[#47B2E4] mt-3">Menit</span>
         </div>
       </div>
-      <div class="relative pl-7">
+      <div class="relative pl-7 intersect:animate-fade-left">
         <div
           class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
         ></div>
@@ -864,7 +892,9 @@
     <div
       class="w-full h-[320px] bg-[url(Asset/Images/hd-4.jpg)] bg-fixed text-white"
     >
-      <div class="max-w-[1200px] h-full mx-auto max-xl:px-3">
+      <div
+        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-jump intersect:animate-duration-600"
+      >
         <div
           class="h-full flex flex-col md:flex-row justify-center md:justify-between items-center max-md:gap-10"
         >
@@ -892,7 +922,9 @@
       <div
         class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 max-xl:px-3 max-lg:gap-5 py-20"
       >
-        <div class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5">
+        <div
+          class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5 intersect:animate-fade-right"
+        >
           <div class="text-[30px] text-[#12304A]">
             <p>
               Setelah Anda mendapatkan talent terbaik, Kami tetap mensupport
@@ -910,7 +942,7 @@
             <span class="text-[25px] text-[#47B2E4] mt-3">days</span>
           </div>
         </div>
-        <div class="relative pl-7">
+        <div class="relative pl-7 intersect:animate-fade-left">
           <div
             class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
           ></div>
@@ -969,7 +1001,7 @@
     <!-- Recruitment -->
     <div
       x-data="{ open1: false, open2: false, open3: false }"
-      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3"
+      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3 intersect:animate-fade-up"
     >
       <div class="flex flex-col lg:flex-row max-lg:gap-10">
         <div class="flex flex-col gap-9 max-lg:text-center">
