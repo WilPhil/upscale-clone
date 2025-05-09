@@ -15,6 +15,12 @@
 
     <!-- Tailwind Link -->
 
+    <!-- Intersect Observer -->
+    <script
+      defer
+      src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
+    ></script>
+
     <!-- Alpine CLI -->
     <script
       defer
@@ -27,7 +33,7 @@
         scroll-behavior: smooth;
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/assets/index-CW9gDUYM.css">
+    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/index-DaNtDPTL.css">
   </head>
   <body
     x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
@@ -44,7 +50,7 @@
         loop
         muted
       >
-        <source src="/assets/repeat-medium-kerwNS8A.mp4" type="video/mp4" />
+        <source src="/upscale-clone/assets/repeat-medium-kerwNS8A.mp4" type="video/mp4" />
         Your browser does not support video tag.
       </video>
     </div>
@@ -52,7 +58,7 @@
     <!-- Chat Button -->
     <div
       x-on:click="showChat = !showChat"
-      class="motion-preset-spin size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
+      class="motion-translate-y-in-100 size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center shadow-md hover:cursor-pointer"
     >
       <div class="w-auto h-auto">
         <svg
@@ -142,7 +148,7 @@
         class="max-sm:relative max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
       >
         <img
-          src="/assets/logo-upscale-B_8HAp2k.png"
+          src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
           alt="Upscale"
           class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
         />
@@ -375,7 +381,7 @@
         class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
       >
         <img
-          src="/assets/logo-upscale-B_8HAp2k.png"
+          src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
           alt="Upscale"
           class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
         />
@@ -524,7 +530,9 @@
       <div
         class="w-auto h-screen lg:h-auto flex flex-col lg:flex-row justify-center items-center text-white max-xl:px-3 gap-10"
       >
-        <div class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5">
+        <div
+          class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5 intersect:animate-fade-right"
+        >
           <p class="text-[27px] xl:text-[35px] xl:tracking-wide">
             Hire Talent On-Demand
             <span class="text-[#47B2E4] text-[27px] xl:text-[43px]">.</span>
@@ -545,7 +553,7 @@
           </p>
         </div>
         <div
-          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end"
+          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end intersect:animate-fade-left"
         >
           <button
             class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4] hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
@@ -564,7 +572,7 @@
       <div class="max-lg:hidden relative w-auto h-auto pb-20">
         <div class="absolute grid grid-cols-4 justify-between gap-10">
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Dedicated Team</p>
@@ -574,7 +582,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-200"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Freelance Team</p>
@@ -584,7 +592,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-400"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Head Hunter</p>
@@ -594,7 +602,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3"
+            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-600"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Project-Based</p>
@@ -657,22 +665,30 @@
         <div
           class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:pt-52 xl:pb-24 gap-10 xl:gap-24"
         >
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAB4CAYAAADmI9mhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUJBNjA2MTA4OUVCMTFFQUJGQTA5QTRFQTdEQjEyRUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUJBNjA2MTE4OUVCMTFFQUJGQTA5QTRFQTdEQjEyRUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQkE2MDYwRTg5RUIxMUVBQkZBMDlBNEVBN0RCMTJFQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQkE2MDYwRjg5RUIxMUVBQkZBMDlBNEVBN0RCMTJFQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pg4kMMcAAAYnSURBVHja7N3bkqM2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" alt="Koinworks" />
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAB4CAYAAADmI9mhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUFDRjhGMTQ4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUFDRjhGMTU4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1QUNGOEYxMjg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1QUNGOEYxMzg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmfMW0IAAAaESURBVHja7N1bkuM2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" alt="Cakap" />
           <img
-            src="/assets/logo-gameloft-BZpQLwF5.png"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAB4CAYAAADmI9mhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUJBNjA2MTA4OUVCMTFFQUJGQTA5QTRFQTdEQjEyRUEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUJBNjA2MTE4OUVCMTFFQUJGQTA5QTRFQTdEQjEyRUEiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBQkE2MDYwRTg5RUIxMUVBQkZBMDlBNEVBN0RCMTJFQSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBQkE2MDYwRjg5RUIxMUVBQkZBMDlBNEVBN0RCMTJFQSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pg4kMMcAAAYnSURBVHja7N3bkqM2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"
+            alt="Koinworks"
+            class="intersect:animate-fade-right"
+          />
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAB4CAYAAADmI9mhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUFDRjhGMTQ4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUFDRjhGMTU4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1QUNGOEYxMjg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1QUNGOEYxMzg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmfMW0IAAAaESURBVHja7N1bkuM2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"
+            alt="Cakap"
+            class="intersect:animate-fade-right intersect:animate-delay-200"
+          />
+          <img
+            src="/upscale-clone/assets/logo-gameloft-BZpQLwF5.png"
             alt="Gameloft"
-            class="max-md:hidden"
+            class="max-md:hidden intersect:animate-fade intersect:animate-delay-400"
           />
           <img
-            src="/assets/logo-krafthaus-Bzc-aYDR.png"
+            src="/upscale-clone/assets/logo-krafthaus-Bzc-aYDR.png"
             alt="Krafthaus"
-            class="max-lg:hidden"
+            class="max-lg:hidden intersect:animate-fade-left intersect:animate-delay-200"
           />
           <img
-            src="/assets/logo-crowde-DlsF0uam.png"
+            src="/upscale-clone/assets/logo-crowde-DlsF0uam.png"
             alt="Crowde"
-            class="max-lg:hidden"
+            class="max-lg:hidden intersect:animate-fade-left"
           />
         </div>
       </div>
@@ -682,7 +698,9 @@
     <div
       class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
     >
-      <div class="flex flex-col justify-center items-center gap-10">
+      <div
+        class="flex flex-col justify-center items-center gap-10 intersect:animate-fade-down"
+      >
         <p class="text-[30px] text-[#12304A] max-xl:text-center">
           Fokuskan perhatian pada strategi pengembangan bisnis Anda
           <span class="text-[#47B2E4] text-[30px] md:text-[43px]">.</span>
@@ -694,28 +712,34 @@
         </p>
       </div>
       <img
-        src="/assets/devices-EyQ43FdM.png"
+        src="/upscale-clone/assets/devices-EyQ43FdM.png"
         alt="Devices"
-        class="py-10 animate-[wobble_1s_ease-in-out_infinite]"
+        class="py-10 intersect:animate-fade-left intersect:animate-duration-700 intersect:animate-delay-200"
       />
       <div
         class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
       >
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-200"
+        >
           <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
           <p class="text-[17px] text-[#587790]">
             Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
             dalam waktu 14 hari.
           </p>
         </div>
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-400"
+        >
           <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
           <p class="text-[17px] text-[#587790]">
             Anda akan mendapatkan report berkala dan dapat login dalam sistem
             real-time monitoring kami.
           </p>
         </div>
-        <div class="flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-600"
+        >
           <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
           <p class="text-[17px] text-[#587790]">
             Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
@@ -730,7 +754,9 @@
       <div
         class="max-w-[1200px] h-auto mx-auto flex flex-col gap-10 max-xl:px-3"
       >
-        <div class="flex flex-col text-center gap-10">
+        <div
+          class="flex flex-col text-center gap-10 intersect:animate-fade-down"
+        >
           <p class="text-[30px] text-[#12304A]">
             Departemen apa yang Anda butuhkan saat ini?
           </p>
@@ -742,7 +768,7 @@
           </p>
         </div>
         <div
-          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10"
+          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10 intersect:animate-fade-up"
         >
           <div class="flex flex-col text-center gap-5 px-5">
             <div class="flex flex-col">
@@ -781,7 +807,9 @@
     <div
       class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 py-20 max-xl:px-3 max-lg:gap-5"
     >
-      <div class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5">
+      <div
+        class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5 intersect:animate-fade-right"
+      >
         <div class="text-[30px] text-[#12304A]">
           <p>Bagaimana prosedur kami ?</p>
           <p>Kami bekerja sesuai dengan kebutuhan bisnis Anda</p>
@@ -800,7 +828,7 @@
           <span class="text-[25px] text-[#47B2E4] mt-3">Menit</span>
         </div>
       </div>
-      <div class="relative pl-7">
+      <div class="relative pl-7 intersect:animate-fade-left">
         <div
           class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
         ></div>
@@ -864,7 +892,9 @@
     <div
       class="w-full h-[320px] bg-[url(Asset/Images/hd-4.jpg)] bg-fixed text-white"
     >
-      <div class="max-w-[1200px] h-full mx-auto max-xl:px-3">
+      <div
+        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-jump intersect:animate-duration-600"
+      >
         <div
           class="h-full flex flex-col md:flex-row justify-center md:justify-between items-center max-md:gap-10"
         >
@@ -892,7 +922,9 @@
       <div
         class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 max-xl:px-3 max-lg:gap-5 py-20"
       >
-        <div class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5">
+        <div
+          class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5 intersect:animate-fade-right"
+        >
           <div class="text-[30px] text-[#12304A]">
             <p>
               Setelah Anda mendapatkan talent terbaik, Kami tetap mensupport
@@ -910,7 +942,7 @@
             <span class="text-[25px] text-[#47B2E4] mt-3">days</span>
           </div>
         </div>
-        <div class="relative pl-7">
+        <div class="relative pl-7 intersect:animate-fade-left">
           <div
             class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
           ></div>
@@ -969,7 +1001,7 @@
     <!-- Recruitment -->
     <div
       x-data="{ open1: false, open2: false, open3: false }"
-      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3"
+      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3 intersect:animate-fade-up"
     >
       <div class="flex flex-col lg:flex-row max-lg:gap-10">
         <div class="flex flex-col gap-9 max-lg:text-center">
@@ -1114,7 +1146,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1125,7 +1157,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1144,7 +1176,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1166,7 +1198,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1188,7 +1220,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1210,7 +1242,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1232,7 +1264,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1244,7 +1276,7 @@
                 <td class="border-b-[#dcdfe0] border-b-1 text-center">
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1262,7 +1294,7 @@
                 >
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1274,7 +1306,7 @@
                 <td class="border-b-[#dcdfe0] border-b-1 text-center">
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1290,7 +1322,7 @@
                 <td class="text-center">
                   <div class="w-full flex justify-center">
                     <img
-                      src="/assets/check-DiJm-7Tu.png"
+                      src="/upscale-clone/assets/check-DiJm-7Tu.png"
                       alt="check"
                       class="size-10"
                     />
@@ -1396,7 +1428,7 @@
           >
             <p>&copy; UpScale 2020. Member of PT Talenta Sinergi Group</p>
             <img
-              src="/assets/logo-upscale-B_8HAp2k.png"
+              src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
               alt="upscale"
               class="w-[88px] h-[20px]"
             />
