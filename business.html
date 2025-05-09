@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upscale</title>
+
+    <!-- Google Font (Jost)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind Link -->
+
+    <!-- Alpine CLI -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <style>
+      body {
+        font-family: "Jost";
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-DaNtDPTL.css">
+  </head>
+  <body
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
+    @scroll.window="stickyNav = window.pageYOffset > 60"
+    x-bind:class="showLoginContent ? 'overflow-y-hidden': ''"
+  >
+    <!-- Background -->
+    <!-- <div
+      class="absolute inset-0 z-[-1] w-full h-screen xl:h-auto overflow-hidden"
+    >
+      <img
+        src="Asset/Images/video-poster-2.jpg"
+        alt="Background"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        autoplay
+        loop
+        muted
+      >
+        <source src="Asset/Video/repeat-medium.mp4" type="video/mp4" />
+        Your browser does not support video tag.
+      </video>
+    </div> -->
+
+    <!-- Chat Button -->
+    <div
+      x-on:click="showChat = !showChat"
+      class="animate-pulse size-[60px] fixed bottom-7 right-7 z-99 bg-[#37517e] rounded-full flex justify-center items-center hover:cursor-pointer"
+    >
+      <div class="w-auto h-auto">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 800 800"
+          height="32px"
+          width="32px"
+          role="img"
+          alt="Chat icon"
+          aria-labelledby="openIconTitle openIconDesc"
+          x-bind:class="showChat ? 'hidden' : ''"
+          fill="white"
+        >
+          <title id="openIconTitle">Opens Chat</title>
+          <desc id="openIconDesc">This icon Opens the chat window.</desc>
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M400 26.2c-193.3 0-350 156.7-350 350 0 136.2 77.9 254.3 191.5 312.1 15.4 8.1 31.4 15.1 48.1 20.8l-16.5 63.5c-2 7.8 5.4 14.7 13 12.1l229.8-77.6c14.6-5.3 28.8-11.6 42.4-18.7C672 630.6 750 512.5 750 376.2c0-193.3-156.7-350-350-350zm211.1 510.7c-10.8 26.5-41.9 77.2-121.5 77.2-79.9 0-110.9-51-121.6-77.4-2.8-6.8 5-13.4 13.8-11.8 76.2 13.7 147.7 13 215.3.3 8.9-1.8 16.8 4.8 14 11.7z"
+          ></path>
+        </svg>
+
+        <img
+          x-show="showChat"
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAANtJREFUWIXNl7EKwkAQBQ/B+MtaCX5JiB9gLNTP0kIQq7E5QQ5Nbu/2JW4VCMzMZZMiAdgBT6ADmiAeoAH20bkN8eI9vTIiyvsP3yPEGtQRX+QAXQCWwCG5cQJWjvJhhzIim62IMDM9I4pZHhHVjBqA21MsAXmu0Ax0l1vAMnmOQC4fiTgDR7l8JGIaeRKRnhrgUiJfKCJlM+sKZn0Jf8in+QxzBLIIC9g9ogToFlEDqo7wOEUxw3OPZpan3MxUyLPZSnlWBH/wa3ZTywcirgHYAHegVcqTiDY61y8gTpMCuyaShgAAAABJRU5ErkJggg=="
+          alt="Close"
+          class="size-[25px]"
+        />
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div
+      x-show="showChat"
+      x-transition.duration.500ms
+      class="w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+    >
+      <div class="flex w-full h-auto bg-[#37517e]">
+        <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
+          For faster response, please contact us from our WhatsApp 123-456-789
+        </p>
+      </div>
+      <div class="w-full h-full">
+        <div class="w-full h-full flex flex-col px-5 pt-5 gap-5">
+          <input
+            type="text"
+            placeholder="* Name"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="text"
+            placeholder="* Phone"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <input
+            type="email"
+            placeholder="* Email"
+            class="w-full h-auto border border-gray-300 rounded-sm p-2"
+          />
+          <textarea
+            name=""
+            id=""
+            placeholder="* Message"
+            cols="55"
+            class="border border-gray-300 rounded-sm p-2 resize-none"
+          ></textarea>
+          <button
+            type="button"
+            class="flex flex-row justify-center items-center bg-[#37517e] text-[#FFFFFF] text-[18px] py-2 rounded-sm mt-3 gap-2 hover:cursor-pointer"
+          >
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAMNJREFUSIm91b0JwkAYxvHntBFstPELdAs3sHUKZ3ATBW0cQAsbFxDJPLrB38IISVAuyd17D4RwKe4H9yRvpBQBhsAeuAArC+BIOY+oEHDld+JAwPYP8E0GrEOApQcIg4Au8KyJtIOAWwOgOYS/hzCI+j20g/j08IqAANyBhSS5CtKTNJI0y++T/Co+G0uaSup7Tv3knNt0fN0EhPIq/hHNq4B5yeavqd2HhvWoIMGwMx/X5j+cg8nGBWAA7IBz1I1T5A3JbtDDSng0KQAAAABJRU5ErkJggg==" alt="Send" />
+            Submit
+          </button>
+        </div>
+      </div>
+      <div class="w-full h-auto flex justify-center items-center pb-7">
+        <p class="text-[12px]">Add free live chat to your site</p>
+      </div>
+    </div>
+
+    <!-- Sticky Navbar -->
+    <div
+      x-bind:class="stickyNav ? '' : 'hidden'"
+      class="fixed top-0 z-99 w-full h-auto bg-[#37517e] shadow-sm"
+    >
+      <div
+        class="max-sm:relative max-w-[1200px] h-auto mx-auto py-2 flex flex-row justify-between items-center"
+      >
+        <img
+          src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
+          alt="Upscale"
+          class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+        />
+        <div
+          class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10"
+        >
+          <a
+            href="index.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Home</a
+          >
+          <a href="business.html" class="text-[#47b2e4]">For Business</a>
+          <a
+            href="talent.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >For Talent</a
+          >
+          <a
+            href="jobs.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >Jobs</a
+          >
+          <a
+            href="faq.html"
+            class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >F.A.Q</a
+          >
+          <div
+            @mouseover="showLanguage = true"
+            @mouseleave="showLanguage = false"
+            class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
+          >
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC"
+              alt="Indonesia Flag"
+              class="w-[18px] h-[12px] mb-0.5"
+            />
+            <p>ID</p>
+
+            <!-- Change Language -->
+            <div
+              x-show="showLanguage"
+              x-transition.duration.500ms
+              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+            >
+              <!-- Polygon -->
+              <div class="relative -right-6 -top-[43px]">
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAYAAABmBXS+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABZSURBVHgBjZBbCQAgDEXFBEYwkg2sYAOjGMEIRjCCEbTBVUFBfB/YzzhsdyPkBwCiVMSe2ldV8rgT6cey1NfdkD2XOwhhDM8PEp+v1JNgdq9gpWwT3DLlRQYhy8PeW3cO2wAAAABJRU5ErkJggg=="
+                  alt="Polygon"
+                  class="rotate-180"
+                />
+              </div>
+
+              <div class="flex flex-col gap-2">
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div
+                  class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition duration-500 ease-in-out"
+                >
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAYFBMVEXpr77hl6rYeJDagJckRnvdi6DDSWwuTYD5eY4gP3UYOnQCH2CdxtrMUnLOS2nLTGwCKWaSu9HXj6Xmip7LdI+ev9ScucvUorXol6nPjKPggJfIfZfgd47FbYk5VofXRmSSsdO1AAAAZ0lEQVQI123PSQ6EUAgE0FJpW/yD8zzd/5byI9HE+MKCIrUBRJwLTo8iDQoP3v+CaMCNQ5bZ1lghlxhMY6SkRaHH7ZwomLI0RmZpfgq9tVVlbVc/p0wlN9TRG9r4DR/89Yfz3l2LOwGoWwVN3jJJwgAAAABJRU5ErkJggg==" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="border-l h-5"></div>
+          <div class="w-auto h-auto flex items-center gap-10">
+            <p
+              x-on:click="showLoginContent = true"
+              class="cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+            >
+              Login
+            </p>
+            <a
+              href="#"
+              class="border rounded-full px-4 py-1 cursor-pointer hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+              >Live Chat</a
+            >
+          </div>
+        </div>
+
+        <!-- Hamburger Icon (Mobile) -->
+        <div
+          x-on:click="showHamburgerContent = !showHamburgerContent"
+          class="lg:hidden size-6 mr-2"
+        >
+          <img src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23ffffff'%20version='1.1'%20id='Capa_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20width='800px'%20height='800px'%20viewBox='0%200%2024.75%2024.75'%20xml:space='preserve'%20stroke='%23ffffff'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cg%3e%3cpath%20d='M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z%20M22.75,10.375H2%20c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z%20M22.75,18.875H2%20c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Hamburger" />
+        </div>
+
+        <!-- Hamburger Content (Mobile) -->
+        <div
+          x-show="showHamburgerContent"
+          x-transition.duration.500ms
+          class="lg:hidden absolute top-11 w-full h-auto bg-white py-5 shadow-sm"
+        >
+          <div
+            class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
+          >
+            <a href="index.html">Home</a>
+            <a href="business.html" class="text-[#47b2e4]">For Business</a>
+            <a href="talent.html">For Talent</a>
+            <a href="jobs.html">Jobs</a>
+            <a href="faq.html">F.A.Q</a>
+            <div
+              x-data="{ showLanguageMobile: false }"
+              class="flex flex-col gap-4"
+            >
+              <div
+                x-on:click="showLanguageMobile = !showLanguageMobile"
+                class="flex items-center gap-3"
+              >
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                <p>ID</p>
+              </div>
+
+              <!-- Change Language Mobile -->
+              <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                <div class="flex items-center gap-3">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+                <div class="flex items-center gap-3">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAYFBMVEXpr77hl6rYeJDagJckRnvdi6DDSWwuTYD5eY4gP3UYOnQCH2CdxtrMUnLOS2nLTGwCKWaSu9HXj6Xmip7LdI+ev9ScucvUorXol6nPjKPggJfIfZfgd47FbYk5VofXRmSSsdO1AAAAZ0lEQVQI123PSQ6EUAgE0FJpW/yD8zzd/5byI9HE+MKCIrUBRJwLTo8iDQoP3v+CaMCNQ5bZ1lghlxhMY6SkRaHH7ZwomLI0RmZpfgq9tVVlbVc/p0wlN9TRG9r4DR/89Yfz3l2LOwGoWwVN3jJJwgAAAABJRU5ErkJggg==" alt="American Flag" />
+                  <p>EN</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
+              <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                Login
+              </p>
+              <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Login Section -->
+    <div
+      x-show="showLoginContent"
+      x-bind:class="showLoginContent ? 'opacity-100' : ''"
+      class="fixed z-99 w-screen h-screen flex justify-center bg-black/50 opacity-0 max-lg:px-3"
+    >
+      <div
+        class="max-md:w-full w-[500px] h-fit flex flex-col bg-white mt-10 gap-5 rounded-sm shadow-sm"
+      >
+        <div class="flex justify-between items-center pt-5 px-5">
+          <p class="text-[20px] text-[#12304a]">Login Dashboard</p>
+          <div>
+            <p
+              x-on:click="showLoginContent = false"
+              class="text-2xl opacity-80 cursor-pointer hover:opacity-100"
+            >
+              &times;
+            </p>
+          </div>
+        </div>
+        <div
+          class="flex flex-col border-t-1 border-t-gray-300 border-b-1 border-b-gray-300 py-5 px-5 gap-4 text-[17px]"
+        >
+          <div class="flex flex-col md:flex-row md:items-center max-md:gap-2">
+            <p class="w-full md:w-1/3 text-[#587790]">Email</p>
+            <input
+              type="text"
+              placeholder="Type Your Email"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div
+            class="flex flex-col md:flex-row justify-between md:items-center max-md:gap-2"
+          >
+            <p class="w-full md:w-1/3 text-[#587790]">Password</p>
+            <input
+              type="text"
+              name=""
+              id=""
+              placeholder="Type Your Password"
+              class="w-full md:w-2/3 border border-gray-300 p-2 rounded-sm text-[15px]"
+            />
+          </div>
+          <div class="flex justify-between items-center">
+            <div class="max-md:hidden w-1/3"></div>
+            <a
+              href="#"
+              class="w-2/3 text-[15px] text-[#47b2e4] hover:underline"
+            >
+              Forgot Password
+            </a>
+          </div>
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-between items-center pb-5 px-5 gap-5 md:gap-10"
+        >
+          <div>
+            <a href="#" class="text-[17px] text-[#47b2e4] hover:underline"
+              >Belum punya Akun?</a
+            >
+          </div>
+          <div class="flex text-[16px] text-white gap-2">
+            <button
+              type="button"
+              class="bg-[#28a745] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Reset Password
+            </button>
+            <button
+              type="button"
+              class="bg-[#47b2e4] px-3 py-2 rounded-sm cursor-pointer hover:brightness-90"
+            >
+              Login
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <div
+      class="w-full h-screen bg-[url(Asset/Images/video-poster-2.jpg)] bg-cover"
+    >
+      <div
+        class="relative max-w-[1200px] h-screen mx-auto flex flex-col place-content-start gap-10 xl:place-content-between"
+      >
+        <!-- Navbar -->
+        <div
+          x-bind:class="stickyNav ? 'opacity-0' : 'opacity-100'"
+          class="max-sm:relative w-full h-auto pt-2 flex flex-row justify-between items-center"
+        >
+          <img
+            src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
+            alt="Upscale"
+            class="w-[132px] h-[30px] xl:w-[176px] xl:h-[40px] ml-3"
+          />
+
+          <div
+            class="max-lg:hidden w-auto h-auto flex items-center text-[#FFFFFF] gap-10 max-xl:pr-3"
+          >
+            <a
+              href="index.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Home</a
+            >
+            <a href="business.html" class="text-[#47b2e4]">For Business</a>
+            <a
+              href="talent.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >For Talent</a
+            >
+            <a
+              href="jobs.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >Jobs</a
+            >
+            <a
+              href="faq.html"
+              class="hover:text-[#47b2e4] transition ease-in-out duration-500"
+              >F.A.Q</a
+            >
+            <div
+              @mouseover="showLanguage = true"
+              @mouseleave="showLanguage = false"
+              class="relative w-auto h-auto flex items-center gap-3 py-5 hover:cursor-pointer"
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC"
+                alt="Indonesia Flag"
+                class="w-[18px] h-[12px] mb-0.5"
+              />
+              <p>ID</p>
+
+              <!-- Change Language -->
+              <div
+                x-show="showLanguage"
+                x-transition.duration.500ms
+                class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+              >
+                <!-- Polygon -->
+                <div class="relative -right-6 -top-[43px]">
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAYAAABmBXS+AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAABZSURBVHgBjZBbCQAgDEXFBEYwkg2sYAOjGMEIRjCCEbTBVUFBfB/YzzhsdyPkBwCiVMSe2ldV8rgT6cey1NfdkD2XOwhhDM8PEp+v1JNgdq9gpWwT3DLlRQYhy8PeW3cO2wAAAABJRU5ErkJggg=="
+                    alt="Polygon"
+                    class="rotate-180"
+                  />
+                </div>
+
+                <div class="flex flex-col gap-2">
+                  <div
+                    class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div
+                    class="flex flex-row items-center gap-2 hover:cursor-pointer hover:text-[#47b2e4] transition ease-in-out duration-500"
+                  >
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAYFBMVEXpr77hl6rYeJDagJckRnvdi6DDSWwuTYD5eY4gP3UYOnQCH2CdxtrMUnLOS2nLTGwCKWaSu9HXj6Xmip7LdI+ev9ScucvUorXol6nPjKPggJfIfZfgd47FbYk5VofXRmSSsdO1AAAAZ0lEQVQI123PSQ6EUAgE0FJpW/yD8zzd/5byI9HE+MKCIrUBRJwLTo8iDQoP3v+CaMCNQ5bZ1lghlxhMY6SkRaHH7ZwomLI0RmZpfgq9tVVlbVc/p0wlN9TRG9r4DR/89Yfz3l2LOwGoWwVN3jJJwgAAAABJRU5ErkJggg==" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="border-l h-5"></div>
+            <div class="w-auto h-auto flex items-center gap-10">
+              <p
+                x-on:click="showLoginContent = true"
+                class="hover:text-[#47b2e4] transition ease-in-out duration-500 cursor-pointer"
+              >
+                Login
+              </p>
+              <a
+                x-on:click="showChat = true"
+                href="#"
+                class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+                >Live Chat</a
+              >
+            </div>
+          </div>
+
+          <!-- Hamburger Icon (Mobile) -->
+          <div
+            x-on:click="showHamburgerContent = !showHamburgerContent"
+            class="lg:hidden size-6 mr-2"
+          >
+            <img src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23ffffff'%20version='1.1'%20id='Capa_1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%20width='800px'%20height='800px'%20viewBox='0%200%2024.75%2024.75'%20xml:space='preserve'%20stroke='%23ffffff'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cg%3e%3cpath%20d='M0,3.875c0-1.104,0.896-2,2-2h20.75c1.104,0,2,0.896,2,2s-0.896,2-2,2H2C0.896,5.875,0,4.979,0,3.875z%20M22.75,10.375H2%20c-1.104,0-2,0.896-2,2c0,1.104,0.896,2,2,2h20.75c1.104,0,2-0.896,2-2C24.75,11.271,23.855,10.375,22.75,10.375z%20M22.75,18.875H2%20c-1.104,0-2,0.896-2,2s0.896,2,2,2h20.75c1.104,0,2-0.896,2-2S23.855,18.875,22.75,18.875z'/%3e%3c/g%3e%3c/g%3e%3c/svg%3e" alt="Hamburger" />
+          </div>
+
+          <!-- Hamburger Content (Mobile) -->
+          <div
+            x-show="showHamburgerContent"
+            x-transition.duration.500ms
+            class="lg:hidden absolute top-11 w-full h-auto bg-white py-5"
+          >
+            <div
+              class="w-full h-full flex flex-col justify-center items-center p-3 text-[15px] text-[#444444] gap-5"
+            >
+              <a href="index.html">Home</a>
+              <a href="business.html" class="text-[#47b2e4]">For Business</a>
+              <a href="talent.html">For Talent</a>
+              <a href="jobs.html">Jobs</a>
+              <a href="faq.html">F.A.Q</a>
+              <div
+                x-data="{ showLanguageMobile: false }"
+                class="flex flex-col gap-4"
+              >
+                <div
+                  x-on:click="showLanguageMobile = !showLanguageMobile"
+                  class="flex items-center gap-3"
+                >
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                  <p>ID</p>
+                </div>
+
+                <!-- Change Language Mobile -->
+                <div x-show="showLanguageMobile" class="flex flex-col pl-2">
+                  <div class="flex items-center gap-3">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                    <p>ID</p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAYFBMVEXpr77hl6rYeJDagJckRnvdi6DDSWwuTYD5eY4gP3UYOnQCH2CdxtrMUnLOS2nLTGwCKWaSu9HXj6Xmip7LdI+ev9ScucvUorXol6nPjKPggJfIfZfgd47FbYk5VofXRmSSsdO1AAAAZ0lEQVQI123PSQ6EUAgE0FJpW/yD8zzd/5byI9HE+MKCIrUBRJwLTo8iDQoP3v+CaMCNQ5bZ1lghlxhMY6SkRaHH7ZwomLI0RmZpfgq9tVVlbVc/p0wlN9TRG9r4DR/89Yfz3l2LOwGoWwVN3jJJwgAAAABJRU5ErkJggg==" alt="American Flag" />
+                    <p>EN</p>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-3 text-[#47b2e4]">
+                <p x-on:click="showLoginContent = true" class="cursor-pointer">
+                  Login
+                </p>
+                <a href="#" class="border rounded-full px-4 py-1">Live Chat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="w-full h-screen flex lg:grid lg:grid-cols-2 max-lg:px-3">
+          <div class="w-auto h-auto flex items-center">
+            <div class="flex flex-col text-white gap-10">
+              <p class="text-[45px]">Scaling Up Your Business</p>
+              <p class="text-[25px]">
+                Service kami cocok untuk membantu berbagai skala perusahaan
+                mulai dari:
+              </p>
+              <div class="w-auto h-auto flex pl-5">
+                <ul class="text-[25px] list-disc">
+                  <li>Enterprise Corporation</li>
+                  <li>Startup Company</li>
+                  <li>E-commerce</li>
+                  <li>Small-business</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description & Companies -->
+    <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-20 max-lg:px-3">
+        <div
+          class="h-auto flex flex-col lg:flex-row gap-5 lg:gap-14 items-center text-[17px] text-[#587790] leading-8"
+        >
+          <div class="lg:pr-3">
+            <p>
+              Dapatkan akses database talent kami untuk membantu scaling up
+              perusahaan anda dengan cara yang flexible. Hal ini sangat krusial
+              bagi bisnis yang ingin berinovasi dengan cepat dan tepat. Terlebih
+              apabila anda memiliki roadmap project yang baik dan strategi yang
+              tepat.
+            </p>
+          </div>
+          <div class="lg:pr-3">
+            <p>
+              Sejak tahun 2009, kami telah membantu banyak perusahaan untuk
+              mewujudkan harapan dengan mencarikan talent atau vendor yang
+              tepat. Dengan database talent pool kami yang jumlahnya lebih dari
+              5000 talent, kami dapat membantu anda mewujudkan visi anda.
+            </p>
+          </div>
+          <div class="max-lg:hidden relative flex w-full h-full px-30 pb-14">
+            <div
+              class="absolute left-0 top-6 w-[248px] h-[186px] rounded-sm z-10 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-15.jpg"
+                alt="Image-1"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="absolute bottom-0 left-10 w-[150px] h-[113px] rounded-sm z-40 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+                alt="Image-2"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="w-[300px] h-[225px] rounded-sm z-30 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-3.jpg"
+                alt="Image-3"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+            <div
+              class="absolute right-0 bottom-5 w-[247px] h-[185px] rounded-sm z-10 overflow-hidden shadow-sm"
+            >
+              <img
+                src="https://upscale.id/template/upscale/media/music/image-1.jpg"
+                alt="Image-4"
+                class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-5">
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-15.jpg"
+              alt="Image 1"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+              alt="Image 2"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-3.jpg"
+              alt="Image 3"
+            />
+            <img
+              src="https://upscale.id/template/upscale/media/music/image-1.jpg"
+              alt="Image 4"
+            />
+          </div>
+        </div>
+        <div
+          class="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-20"
+        >
+          <img
+            src="https://upscale.id/template/upscale/media/logos/logo-6.png"
+            alt="Wakuliner"
+          />
+          <img
+            src="https://upscale.id/template/upscale/media/logos/logo-4.png"
+            alt="Krafthaus"
+          />
+          <img
+            src="https://upscale.id/template/upscale/media/logos/logo-1.png"
+            alt="Koinworks"
+            class="max-md:hidden"
+          />
+          <img
+            src="https://upscale.id/template/upscale/media/logos/logo-5.png"
+            alt="Crowde"
+            class="max-lg:hidden"
+          />
+          <img
+            src="https://upscale.id/template/upscale/media/logos/logo-3.png"
+            alt="Gameloft"
+            class="max-lg:hidden"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Article -->
+    <div class="max-w-[1200px] h-auto mx-auto py-20 max-lg:px-3">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-5">
+        <div class="flex flex-col gap-8">
+          <div class="relative w-auto h-auto">
+            <img
+              src="/upscale-clone/assets/article1-DisLSlPy.jpg"
+              alt="Article 1"
+              class="aspect-3/2 object-cover rounded-sm"
+            />
+            <p
+              class="absolute top-2 right-2 text-[11px] text-[#FFFFFF] bg-[#12304a] px-5 py-2 rounded-full tracking-widest"
+            >
+              AI STARTUP COMPANY
+            </p>
+          </div>
+          <p class="text-[20px] text-[#12304a]">
+            Malaysia Startup, Dedicated Team
+          </p>
+          <p class="text-[17px] text-[#587790]">
+            2020 kami membantu salah satu startup di Malaysia yang melayani
+            perusahaan oli & gas untuk entry & extraction data untuk AI Learning
+          </p>
+          <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
+            <a href="#" class="hover:underline">Data Entry Dedicated Team</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div class="relative w-auto h-auto">
+            <img
+              src="/upscale-clone/assets/article2-B5kx-jbD.jpg"
+              alt="Article 2"
+              class="aspect-3/2 object-cover rounded-sm"
+            />
+            <p
+              class="absolute top-2 right-2 text-[11px] text-[#FFFFFF] bg-[#12304a] px-5 py-2 rounded-full tracking-widest"
+            >
+              STARTUP EDUCATION
+            </p>
+          </div>
+          <p class="text-[20px] text-[#12304a]">
+            Cakap, Dedicated Office & Team
+          </p>
+          <p class="text-[17px] text-[#587790]">
+            Sejak tahun 2015 s/d 2020 membantu Cakap mendapatkan belasan
+            programmer & mengelola development office di Jogja.
+          </p>
+          <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
+            <a href="#" class="hover:underline">Dodi Prakoso Wibowo</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="flex flex-col gap-8">
+          <div class="relative w-auto h-auto">
+            <img
+              src="/upscale-clone/assets/article3-DCjnPCjo.jpg"
+              alt="Article 3"
+              class="aspect-3/2 object-cover rounded-sm"
+            />
+            <p
+              class="absolute top-2 right-2 text-[11px] text-[#FFFFFF] bg-[#12304a] px-5 py-2 rounded-full tracking-widest"
+            >
+              DIGITAL AGENCY
+            </p>
+          </div>
+          <p class="text-[20px] text-[#12304a]">
+            Krafthaus, Corporate Management
+          </p>
+          <p class="text-[17px] text-[#587790]">
+            Sejak tahun 2012 telah dipercaya oleh perusahaan Australia sebagai
+            Managing Director untuk mengelola cabang di Indonesia.
+          </p>
+          <div class="flex items-center text-[17px] text-[#47b2e4] gap-5">
+            <a href="#" class="hover:underline">Arief Widyananda</a>
+            <svg
+              fill="#47b2e4"
+              viewBox="-128 0 512 512"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#47b2e4"
+              class="size-5"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"
+                ></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Price Plan & Consultation -->
+    <div class="w-full h-auto bg-[#f1f5f7] py-20">
+      <div class="max-w-[1200px] mx-auto flex flex-col gap-10 max-lg:px-3">
+        <div class="flex flex-col text-center gap-5">
+          <p class="text-[30px] text-[#12304a]">
+            Simple & an affordable price plans for everyone
+          </p>
+          <p class="text-[17px] text-[#587790] lg:px-64">
+            Paket harga dengan konsep yang sederhana & terjangkau untuk semua
+            orang. Baik skala Coorporate, startup sampai dengan UKM
+          </p>
+        </div>
+        <div
+          class="w-full h-auto bg-[#FFFFFF] p-10 flex flex-col lg:flex-row rounded-sm shadow-md max-lg:gap-10"
+        >
+          <div class="lg:w-1/3 flex flex-col gap-9">
+            <p class="text-[30px] text-[#12304a] lg:mr-10">
+              Ingin Konsultasi Kebutuhan Anda?
+            </p>
+            <p class="text-[17px] text-[#587790] lg:mr-10">
+              Bisnis analis kami akan membantu Anda dalam menentukan kualifikasi
+              talent.
+            </p>
+            <div class="flex flex-col gap-2 text-[17px] text-[#587790]">
+              <div class="flex items-center gap-3">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC" alt="Indonesian Flag" />
+                <p>+62 87 888 666 531</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAMAAABYzB2OAAAAYFBMVEXpr77hl6rYeJDagJckRnvdi6DDSWwuTYD5eY4gP3UYOnQCH2CdxtrMUnLOS2nLTGwCKWaSu9HXj6Xmip7LdI+ev9ScucvUorXol6nPjKPggJfIfZfgd47FbYk5VofXRmSSsdO1AAAAZ0lEQVQI123PSQ6EUAgE0FJpW/yD8zzd/5byI9HE+MKCIrUBRJwLTo8iDQoP3v+CaMCNQ5bZ1lghlxhMY6SkRaHH7ZwomLI0RmZpfgq9tVVlbVc/p0wlN9TRG9r4DR/89Yfz3l2LOwGoWwVN3jJJwgAAAABJRU5ErkJggg==" alt="American Flag" />
+                <p>+61 3 9010 6067</p>
+              </div>
+            </div>
+          </div>
+          <div class="lg:w-2/3 flex flex-col gap-5">
+            <input
+              type="text"
+              placeholder="Name"
+              class="w-auto border border-gray-300 rounded-sm py-4 pl-3"
+            />
+            <div class="flex flex-col lg:flex-row gap-5">
+              <input
+                type="text"
+                placeholder="Phone"
+                class="w-full border border-gray-300 rounded-sm py-4 pl-3"
+              />
+              <input
+                type="text"
+                placeholder="Email"
+                class="w-full border border-gray-300 rounded-sm py-4 lg:py-2 pl-3"
+              />
+            </div>
+            <textarea
+              name=""
+              id=""
+              placeholder="Write something ..."
+              class="w-full border border-gray-300 rounded-sm pt-4 pl-3 resize-none"
+              rows="5"
+            ></textarea>
+            <div>
+              <button
+                type="button"
+                class="bg-[#47b2e4] text-[16px] text-[#FFFFFF] px-8 py-3 rounded-full hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
+              >
+                Send Inquiry
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="w-full h-auto bg-[#37517d] relative">
+      <div class="max-w-[1200px] h-auto mx-auto text-[#ffffff] max-xl:px-3">
+        <div class="flex flex-col">
+          <div
+            class="flex flex-col lg:flex-row justify-between py-10 lg:py-20 max-lg:gap-10"
+          >
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">UpScale</p>
+              <div class="lg:hidden flex flex-col text-[16px] gap-8">
+                <div class="flex flex-col gap-3">
+                  <p class="font-[500]">Location</p>
+                  <p>
+                    Jln. Ringroad Utara No. 34, Maguwoharjo, Yogyakarta,
+                    Indonesia
+                  </p>
+                </div>
+                <div
+                  class="flex flex-col gap-3 border-t border-b py-5 border-white"
+                >
+                  <p class="font-[500]">Phone</p>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC"
+                      alt="indonesian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+62 87 888 666 531</span>
+                  </div>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAAqACAAQAAAABAAAAEqADAAQAAAABAAAADAAAAAD5i34HAAAACXBIWXMAAAsTAAALEwEAmpwYAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgpMwidZAAAC0klEQVQoFS2STUxTWRTHf+/2vdLalmINfjQgYaySIsFJUBMl6kIHo2ZWmpgoanTnwhg3blzoYrazmMxkJrowfsXojmj8SlAWuhiNCERGgREQAwSLFIv9eO378rzO3Jfc3HfPvb/7P+d/tLG7PV4ouZrewXFOnenj1sVNHIqY/Lq0jAu/POL62U669m1lMptn+/nH4HlEwwpd18hNlOW3hGqMo/81PMfRaC3d+7fR0dWJ8/kzZu9jdu3eyXBnmlTbBt5kctwYHoCAh6Y0Co6HcqEuHceyoxSKZfRztRXsl3+T7X1C849tVBYWKTx8TosRxIgsIzc/x9qJKU7O5XgQUkxXvKqqoKGzqbWBhYVvvPt3Ft2zLKxYLaq9FT2/hC3SLRTxdAvKsckOjRJYswo9HMPoe4cGKKUo2xavBj6iaR7rmlaiLkeSuHv3kGhtoT+c4MO6NCsPdNJf38BUup3G7kN8qqvnj49FJiyN2liIjvYmAoEAxZKJ47gCqkd1tzWivR/h9z972HH4HqMjU5TDEV486ye95zfuvB7jh1QjR1IJmCwKQBGL1IgSrboOh4MMvJ1CO/3zee/N0FdefqpIMQ3aUzorZsvMJEOMjX6VRHQOdqeIVypc7cugRQMYArNEiR7QSCyPspQr+Smf8IiHWLFGR5kOyaYomzsaePR0nBrBTE6XYaEkqxqCqaAA/iu2SJI9cU8+zxNocmMMXYKG9Mb4yBduXTlG10/buXbzPieP32T95iSFekNsdpmXc/51HyJdQDQSxrIcSqbYM5t3yNjilP8SBo4rDSLDFekQZLFgM1vyIeJWNSKTOBsS+3dtTdG2YbW/QUAltlzyITXSqYV5j5kvMwwO/sPtniEyWQ8voqQlqiJk8kkamtTGLrss5r6RL5rkS7aIbD7t+XHXldYPKvIZG3ImJMOEJF1ThFXv+4z/h5SEREgjOyrnMFHNcb4DjhMm+HuxYK4AAAAASUVORK5CYII="
+                      alt="australian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+61 3 9010 6067</span>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-3">
+                  <p class="font-[500]">Email</p>
+                  <p>dodi@upscale.id</p>
+                </div>
+              </div>
+              <div class="max-lg:hidden flex flex-row text-[16px] gap-10">
+                <div class="flex flex-col gap-5">
+                  <p>Location</p>
+                  <p>Phone</p>
+                  <p>Email</p>
+                </div>
+                <div class="flex flex-col gap-5">
+                  <p>
+                    Jln. Ringroad Utara No. 34, Maguwoharjo, Yogyakarta,
+                    Indonesia
+                  </p>
+                  <div class="flex justify-start gap-3">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAIAAADgcHrrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQyIDc5LjE2MDkyNCwgMjAxNy8wNy8xMy0wMTowNjozOSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxNTIyMEEzOTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxNTIyMEE0OTVDNjExRUE5QUNBRkIxNTY3MzlDQUJBIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjE1MjIwQTE5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjE1MjIwQTI5NUM2MTFFQTlBQ0FGQjE1NjczOUNBQkEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6kWZR6AAAAHklEQVR42mL8z0AOYGIY1YYGWBj+/x8NEmpoAwgwAEFBAxfYvjOTAAAAAElFTkSuQmCC"
+                      alt="indonesian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+62 87 888 666 531</span>
+                    <span>|</span>
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAMCAYAAABvEu28AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAFARIAAwAAAAEAAQAAARoABQAAAAEAAABKARsABQAAAAEAAABSASgAAwAAAAEAAgAAh2kABAAAAAEAAABaAAAAAAAAAEgAAAABAAAASAAAAAEAAqACAAQAAAABAAAAEqADAAQAAAABAAAADAAAAAD5i34HAAAACXBIWXMAAAsTAAALEwEAmpwYAAABWWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNS40LjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyI+CiAgICAgICAgIDx0aWZmOk9yaWVudGF0aW9uPjE8L3RpZmY6T3JpZW50YXRpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgpMwidZAAAC0klEQVQoFS2STUxTWRTHf+/2vdLalmINfjQgYaySIsFJUBMl6kIHo2ZWmpgoanTnwhg3blzoYrazmMxkJrowfsXojmj8SlAWuhiNCERGgREQAwSLFIv9eO378rzO3Jfc3HfPvb/7P+d/tLG7PV4ouZrewXFOnenj1sVNHIqY/Lq0jAu/POL62U669m1lMptn+/nH4HlEwwpd18hNlOW3hGqMo/81PMfRaC3d+7fR0dWJ8/kzZu9jdu3eyXBnmlTbBt5kctwYHoCAh6Y0Co6HcqEuHceyoxSKZfRztRXsl3+T7X1C849tVBYWKTx8TosRxIgsIzc/x9qJKU7O5XgQUkxXvKqqoKGzqbWBhYVvvPt3Ft2zLKxYLaq9FT2/hC3SLRTxdAvKsckOjRJYswo9HMPoe4cGKKUo2xavBj6iaR7rmlaiLkeSuHv3kGhtoT+c4MO6NCsPdNJf38BUup3G7kN8qqvnj49FJiyN2liIjvYmAoEAxZKJ47gCqkd1tzWivR/h9z972HH4HqMjU5TDEV486ye95zfuvB7jh1QjR1IJmCwKQBGL1IgSrboOh4MMvJ1CO/3zee/N0FdefqpIMQ3aUzorZsvMJEOMjX6VRHQOdqeIVypc7cugRQMYArNEiR7QSCyPspQr+Smf8IiHWLFGR5kOyaYomzsaePR0nBrBTE6XYaEkqxqCqaAA/iu2SJI9cU8+zxNocmMMXYKG9Mb4yBduXTlG10/buXbzPieP32T95iSFekNsdpmXc/51HyJdQDQSxrIcSqbYM5t3yNjilP8SBo4rDSLDFekQZLFgM1vyIeJWNSKTOBsS+3dtTdG2YbW/QUAltlzyITXSqYV5j5kvMwwO/sPtniEyWQ8voqQlqiJk8kkamtTGLrss5r6RL5rkS7aIbD7t+XHXldYPKvIZG3ImJMOEJF1ThFXv+4z/h5SEREgjOyrnMFHNcb4DjhMm+HuxYK4AAAAASUVORK5CYII="
+                      alt="australian flag"
+                      class="self-center pb-[1px]"
+                    />
+                    <span>+61 3 9010 6067</span>
+                  </div>
+                  <p>dodi@upscale.id</p>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-8">
+              <p class="text-[24px]">For Talent</p>
+              <div class="flex flex-col text-[15px] gap-5 opacity-80">
+                <p class="hover:underline cursor-pointer">
+                  Why Join as Talent?
+                </p>
+                <p class="hover:underline cursor-pointer">Job Opportunities</p>
+                <p class="hover:underline cursor-pointer">Register as Talent</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-row justify-between text-[8px] lg:text-[12px] py-5 opacity-70"
+          >
+            <p>&copy; UpScale 2020. Member of PT Talenta Sinergi Group</p>
+            <img
+              src="/upscale-clone/assets/logo-upscale-B_8HAp2k.png"
+              alt="upscale"
+              class="w-[88px] h-[20px]"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Middle border -->
+      <div
+        class="absolute bottom-16 w-full border-0.5 border-b border-[#dcdfe0] opacity-40"
+      ></div>
+    </div>
+  </body>
+</html>
