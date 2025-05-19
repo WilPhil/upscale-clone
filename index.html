@@ -27,13 +27,16 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
+    <!-- Gsap -->
+    <script src="./gsap.min.js"></script>
+
     <style>
       body {
         font-family: "Jost";
         scroll-behavior: smooth;
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-DaNtDPTL.css">
+    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-D2AE7qr6.css">
   </head>
   <body
     x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
@@ -530,9 +533,7 @@
       <div
         class="w-auto h-screen lg:h-auto flex flex-col lg:flex-row justify-center items-center text-white max-xl:px-3 gap-10"
       >
-        <div
-          class="w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5 intersect:animate-fade-right"
-        >
+        <div class="content1 w-auto xl:w-[600px] flex flex-col gap-3 xl:gap-5">
           <p class="text-[27px] xl:text-[35px] xl:tracking-wide">
             Hire Talent On-Demand
             <span class="text-[#47B2E4] text-[27px] xl:text-[43px]">.</span>
@@ -553,7 +554,7 @@
           </p>
         </div>
         <div
-          class="w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end intersect:animate-fade-left"
+          class="content2 w-full xl:w-[600px] flex flex-col md:flex-row xl:justify-center xl:items-center gap-5 xl:gap-10 text-[15px] justify-end"
         >
           <button
             class="max-lg:w-full rounded-full lg:px-8 py-4 lg:py-3 bg-[#47B2E4] hover:cursor-pointer hover:opacity-90 transition ease-in-out duration-500"
@@ -568,11 +569,29 @@
         </div>
       </div>
 
+      <!-- Content Animation -->
+      <script>
+        gsap.from(".content1", {
+          opacity: 0,
+          x: -100,
+          y: 100,
+          duration: 1,
+          ease: "power2",
+        });
+        gsap.from(".content2", {
+          opacity: 0,
+          x: 100,
+          y: 100,
+          duration: 1,
+          ease: "power2",
+        });
+      </script>
+
       <!-- Features -->
       <div class="max-lg:hidden relative w-auto h-auto pb-20">
         <div class="absolute grid grid-cols-4 justify-between gap-10">
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in"
+            class="feat1 w-auto justify-center items-start rounded-md bg-white py-8 px-3"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Dedicated Team</p>
@@ -582,7 +601,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-200"
+            class="feat2 w-auto justify-center items-start rounded-md bg-white py-8 px-3"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Freelance Team</p>
@@ -592,7 +611,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-400"
+            class="feat3 w-auto justify-center items-start rounded-md bg-white py-8 px-3"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Head Hunter</p>
@@ -602,7 +621,7 @@
             </div>
           </div>
           <div
-            class="w-auto justify-center items-start rounded-md bg-white py-8 px-3 animate-jump-in animate-delay-600"
+            class="feat4 w-auto justify-center items-start rounded-md bg-white py-8 px-3"
           >
             <div class="flex flex-col justify-center gap-4 px-5">
               <p class="text-[25px]">Project-Based</p>
@@ -613,6 +632,16 @@
           </div>
         </div>
       </div>
+
+      <!-- Features Animation -->
+      <script>
+        gsap.from(".feat1, .feat2, .feat3, .feat4", {
+          opacity: 0,
+          y: 100,
+          duration: 1,
+          stagger: 0.4,
+        });
+      </script>
     </div>
 
     <!-- Companies -->
@@ -673,17 +702,17 @@
           <img
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXYAAAB4CAYAAADmI9mhAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NUFDRjhGMTQ4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NUFDRjhGMTU4OUVDMTFFQUFDMzBGQkI0MzRDMEI4MzciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo1QUNGOEYxMjg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo1QUNGOEYxMzg5RUMxMUVBQUMzMEZCQjQzNEMwQjgzNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PmfMW0IAAAaESURBVHja7N1bkuM2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"
             alt="Cakap"
-            class="intersect:animate-fade-right intersect:animate-delay-200"
+            class="intersect:animate-fade-right intersect:animate-delay-400"
           />
           <img
             src="/upscale-clone/assets/logo-gameloft-BZpQLwF5.png"
             alt="Gameloft"
-            class="max-md:hidden intersect:animate-fade intersect:animate-delay-400"
+            class="max-md:hidden intersect:animate-fade intersect:animate-delay-800"
           />
           <img
             src="/upscale-clone/assets/logo-krafthaus-Bzc-aYDR.png"
             alt="Krafthaus"
-            class="max-lg:hidden intersect:animate-fade-left intersect:animate-delay-200"
+            class="max-lg:hidden intersect:animate-fade-left intersect:animate-delay-400"
           />
           <img
             src="/upscale-clone/assets/logo-crowde-DlsF0uam.png"
@@ -696,10 +725,10 @@
 
     <!-- Strategy -->
     <div
-      class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
+      class="containerStrat max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
     >
       <div
-        class="flex flex-col justify-center items-center gap-10 intersect:animate-fade-down"
+        class="intersect:titleStrat flex flex-col justify-center items-center gap-10"
       >
         <p class="text-[30px] text-[#12304A] max-xl:text-center">
           Fokuskan perhatian pada strategi pengembangan bisnis Anda
@@ -714,32 +743,26 @@
       <img
         src="/upscale-clone/assets/devices-EyQ43FdM.png"
         alt="Devices"
-        class="py-10 intersect:animate-fade-left intersect:animate-duration-700 intersect:animate-delay-200"
+        class="imgStrat py-10"
       />
       <div
         class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
       >
-        <div
-          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-200"
-        >
+        <div class="strat1 flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
           <p class="text-[17px] text-[#587790]">
             Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
             dalam waktu 14 hari.
           </p>
         </div>
-        <div
-          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-400"
-        >
+        <div class="strat2 flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
           <p class="text-[17px] text-[#587790]">
             Anda akan mendapatkan report berkala dan dapat login dalam sistem
             real-time monitoring kami.
           </p>
         </div>
-        <div
-          class="flex flex-col text-center gap-5 intersect:animate-jump-in intersect:animate-delay-600"
-        >
+        <div class="strat3 flex flex-col text-center gap-5">
           <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
           <p class="text-[17px] text-[#587790]">
             Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
@@ -748,6 +771,15 @@
         </div>
       </div>
     </div>
+
+    <script>
+      gsap.from(".titleStrat, .imgStrat, .strat1, .strat2, .strat3", {
+        opacity: 0,
+        y: 100,
+        duration: 1,
+        stagger: 0.4,
+      });
+    </script>
 
     <!-- Departemen -->
     <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
@@ -808,7 +840,7 @@
       class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 py-20 max-xl:px-3 max-lg:gap-5"
     >
       <div
-        class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5 intersect:animate-fade-right"
+        class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5 intersect:animate-fade-right intersect:animate-duration-1000 intersect:animate-delay-400"
       >
         <div class="text-[30px] text-[#12304A]">
           <p>Bagaimana prosedur kami ?</p>
@@ -828,7 +860,9 @@
           <span class="text-[25px] text-[#47B2E4] mt-3">Menit</span>
         </div>
       </div>
-      <div class="relative pl-7 intersect:animate-fade-left">
+      <div
+        class="relative pl-7 intersect:animate-fade-left intersect:animate-duration-1000 intersect:animate-delay-400"
+      >
         <div
           class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
         ></div>
@@ -893,7 +927,7 @@
       class="w-full h-[320px] bg-[url(Asset/Images/hd-4.jpg)] bg-fixed text-white"
     >
       <div
-        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-jump intersect:animate-duration-600"
+        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-fade-down intersect:animate-duration-1000 intersect:animate-delay-400"
       >
         <div
           class="h-full flex flex-col md:flex-row justify-center md:justify-between items-center max-md:gap-10"
@@ -923,7 +957,7 @@
         class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 max-xl:px-3 max-lg:gap-5 py-20"
       >
         <div
-          class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5 intersect:animate-fade-right"
+          class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5 intersect:animate-fade-right intersect:animate-duration-1000 intersect:animate-delay-400"
         >
           <div class="text-[30px] text-[#12304A]">
             <p>
@@ -942,7 +976,9 @@
             <span class="text-[25px] text-[#47B2E4] mt-3">days</span>
           </div>
         </div>
-        <div class="relative pl-7 intersect:animate-fade-left">
+        <div
+          class="relative pl-7 intersect:animate-fade-left intersect:animate-duration-1000 intersect:animate-delay-400"
+        >
           <div
             class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
           ></div>
@@ -1001,7 +1037,7 @@
     <!-- Recruitment -->
     <div
       x-data="{ open1: false, open2: false, open3: false }"
-      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3 intersect:animate-fade-up"
+      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3 intersect:animate-fade-up intersect:animate-duration-1000 intersect:animate-delay-400"
     >
       <div class="flex flex-col lg:flex-row max-lg:gap-10">
         <div class="flex flex-col gap-9 max-lg:text-center">
