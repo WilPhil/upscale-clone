@@ -26,12 +26,12 @@
         font-family: "Jost";
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-D2AE7qr6.css">
+    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-DmwFAssm.css">
   </head>
   <body
-    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
+    x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false, showGallery: false }"
     @scroll.window="stickyNav = window.pageYOffset > 60"
-    x-bind:class="showLoginContent ? 'overflow-y-hidden': ''"
+    x-bind:class="showLoginContent || showGallery ? 'overflow-y-hidden': ''"
   >
     <!-- Background -->
     <!-- <div
@@ -369,6 +369,52 @@
       </div>
     </div>
 
+    <!-- Gallery -->
+    <div
+      x-data="toggle"
+      x-show="showGallery"
+      x-bind:class="showGallery ? 'opacity-100' : ''"
+      class="opacity-0 fixed z-99 w-full h-screen flex justify-center items-center bg-black/70"
+    >
+      <div
+        class="w-[10%] h-full flex justify-start items-center justify-self-start"
+      >
+        <button x-on:click="toggleLeft" type="button" class="text-white">
+          <img
+            src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23bababa'%20width='800px'%20height='800px'%20viewBox='-128%200%20512%20512'%20xmlns='http://www.w3.org/2000/svg'%20stroke='%23bababa'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cpath%20d='M31.7%20239l136-136c9.4-9.4%2024.6-9.4%2033.9%200l22.6%2022.6c9.4%209.4%209.4%2024.6%200%2033.9L127.9%20256l96.4%2096.4c9.4%209.4%209.4%2024.6%200%2033.9L201.7%20409c-9.4%209.4-24.6%209.4-33.9%200l-136-136c-9.5-9.4-9.5-24.6-.1-34z'/%3e%3c/g%3e%3c/svg%3e"
+            alt="angle left"
+            class="cursor-pointer size-10 opacity-80 hover:opacity-100"
+          />
+        </button>
+      </div>
+      <div
+        x-on:click="showGallery = false"
+        class="w-[80%] h-full flex justify-center items-center justify-self-center"
+      >
+        <img
+          x-show="picture == 1"
+          src="https://upscale.id/template/upscale/media/music/image-15.jpg"
+          alt="Gallery image"
+        />
+        <img
+          x-show="picture == 2"
+          src="https://upscale.id/template/upscale/media/music/image-13.jpg"
+          alt="Gallery image"
+        />
+      </div>
+      <div
+        class="w-[10%] h-full flex justify-end items-center justify-self-end"
+      >
+        <button x-on:click="toggleRight" type="button" class="text-white">
+          <img
+            src="data:image/svg+xml,%3c!DOCTYPE%20svg%20PUBLIC%20'-//W3C//DTD%20SVG%201.1//EN'%20'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3e%3c!--%20Uploaded%20to:%20SVG%20Repo,%20www.svgrepo.com,%20Transformed%20by:%20SVG%20Repo%20Mixer%20Tools%20--%3e%3csvg%20fill='%23bababa'%20width='800px'%20height='800px'%20viewBox='-128%200%20512%20512'%20xmlns='http://www.w3.org/2000/svg'%20stroke='%23bababa'%3e%3cg%20id='SVGRepo_bgCarrier'%20stroke-width='0'/%3e%3cg%20id='SVGRepo_tracerCarrier'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cg%20id='SVGRepo_iconCarrier'%3e%3cpath%20d='M31.7%20239l136-136c9.4-9.4%2024.6-9.4%2033.9%200l22.6%2022.6c9.4%209.4%209.4%2024.6%200%2033.9L127.9%20256l96.4%2096.4c9.4%209.4%209.4%2024.6%200%2033.9L201.7%20409c-9.4%209.4-24.6%209.4-33.9%200l-136-136c-9.5-9.4-9.5-24.6-.1-34z'/%3e%3c/g%3e%3c/svg%3e"
+            alt="angle right"
+            class="cursor-pointer size-10 rotate-180 opacity-80 hover:opacity-100"
+          />
+        </button>
+      </div>
+    </div>
+
     <!-- Header -->
     <div
       class="w-full h-screen bg-[url(Asset/Images/video-poster-2.jpg)] bg-cover"
@@ -574,11 +620,16 @@
               5000 talent, kami dapat membantu anda mewujudkan visi anda.
             </p>
           </div>
-          <div class="max-lg:hidden relative flex w-full h-full px-30 pb-14">
+          <div
+            x-data="toggle"
+            class="max-lg:hidden relative flex w-full h-full px-30 pb-14"
+          >
             <div
               class="absolute left-0 top-6 w-[248px] h-[186px] rounded-sm z-10 overflow-hidden shadow-sm"
             >
               <img
+                @click="showGallery = true; log()"
+                @mouseenter="picture = 1"
                 src="https://upscale.id/template/upscale/media/music/image-15.jpg"
                 alt="Image-1"
                 class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
@@ -588,12 +639,15 @@
               class="absolute bottom-0 left-10 w-[150px] h-[113px] rounded-sm z-40 overflow-hidden shadow-sm"
             >
               <img
+                x-on:click="showGallery = true; log()"
+                @mouseenter="picture = 2"
                 src="https://upscale.id/template/upscale/media/music/image-13.jpg"
                 alt="Image-2"
                 class="bg-cover transition ease-in-out duration-400 hover:grayscale-50 hover:cursor-pointer"
               />
             </div>
             <div
+              x-on:click="showGallery = true; picture = 3; log()"
               class="w-[300px] h-[225px] rounded-sm z-30 overflow-hidden shadow-sm"
             >
               <img
@@ -603,6 +657,7 @@
               />
             </div>
             <div
+              x-on:click="showGallery = true; picture = 4; log()"
               class="absolute right-0 bottom-5 w-[247px] h-[185px] rounded-sm z-10 overflow-hidden shadow-sm"
             >
               <img
@@ -660,6 +715,28 @@
         </div>
       </div>
     </div>
+
+    <script>
+      document.addEventListener("alpine:init", () => {
+        Alpine.data("toggle", () => ({
+          picture: 1,
+
+          toggleRight() {
+            this.picture =
+              this.picture == 4 ? (this.picture = 1) : this.picture + 1;
+          },
+
+          toggleLeft() {
+            this.picture =
+              this.picture == 1 ? (this.picture = 4) : this.picture - 1;
+          },
+
+          log() {
+            console.log(this.picture);
+          },
+        }));
+      });
+    </script>
 
     <!-- Article -->
     <div class="max-w-[1200px] h-auto mx-auto py-20 max-lg:px-3">

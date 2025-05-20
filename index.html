@@ -27,8 +27,7 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
     ></script>
 
-    <!-- Gsap -->
-    <script src="./gsap.min.js"></script>
+    <!-- JS -->
 
     <style>
       body {
@@ -36,7 +35,8 @@
         scroll-behavior: smooth;
       }
     </style>
-    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-D2AE7qr6.css">
+    <script type="module" crossorigin src="/upscale-clone/assets/main-CBboN_M1.js"></script>
+    <link rel="stylesheet" crossorigin href="/upscale-clone/assets/main-DmwFAssm.css">
   </head>
   <body
     x-data="{ stickyNav: false, showLanguage: false, showChat: false, showHamburgerContent: false, showLoginContent: false }"
@@ -97,7 +97,8 @@
     <div
       x-show="showChat"
       x-transition.duration.500ms
-      class="w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
+      x-bind:class="showChat ? 'opacity-100' : ''"
+      class="opacity-0 w-[300px] md:w-[350px] h-[520px] fixed bottom-24 right-3 md:right-7 z-99 bg-white rounded-sm flex flex-col shadow-md"
     >
       <div class="flex w-full h-auto bg-[#37517e]">
         <p class="text-center text-[18px] text-[#FFFFFF] px-5 py-5">
@@ -195,7 +196,8 @@
             <div
               x-show="showLanguage"
               x-transition.duration.500ms
-              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+              x-bind:class="showLanguage ? 'opacity-100' : ''"
+              class="opacity-0 absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
             >
               <!-- Polygon -->
               <div class="relative -right-6 -top-[43px]">
@@ -231,8 +233,8 @@
               Login
             </p>
             <a
-              href="#"
-              class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
+              x-on:click="showChat = !showChat"
+              class="cursor-pointer border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
               >Live Chat</a
             >
           </div>
@@ -429,7 +431,8 @@
             <div
               x-show="showLanguage"
               x-transition.duration.500ms
-              class="absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
+              x-bind:class="showLanguage ? 'opacity-100' : ''"
+              class="opacity-0 absolute flex justify-center items-center bg-white text-black size-20 -right-[17px] top-13 rounded-sm"
             >
               <!-- Polygon -->
               <div class="relative -right-6 -top-[43px]">
@@ -465,7 +468,7 @@
               Login
             </p>
             <a
-              x-on:click="showChat = true"
+              x-on:click="showChat = !showChat"
               href="#"
               class="border rounded-full px-4 py-1 hover:border-1 hover:border-[#47b2e4] hover:bg-[#47b2e4] transition ease-in-out duration-500"
               >Live Chat</a
@@ -569,24 +572,6 @@
         </div>
       </div>
 
-      <!-- Content Animation -->
-      <script>
-        gsap.from(".content1", {
-          opacity: 0,
-          x: -100,
-          y: 100,
-          duration: 1,
-          ease: "power2",
-        });
-        gsap.from(".content2", {
-          opacity: 0,
-          x: 100,
-          y: 100,
-          duration: 1,
-          ease: "power2",
-        });
-      </script>
-
       <!-- Features -->
       <div class="max-lg:hidden relative w-auto h-auto pb-20">
         <div class="absolute grid grid-cols-4 justify-between gap-10">
@@ -632,16 +617,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Features Animation -->
-      <script>
-        gsap.from(".feat1, .feat2, .feat3, .feat4", {
-          opacity: 0,
-          y: 100,
-          duration: 1,
-          stagger: 0.4,
-        });
-      </script>
     </div>
 
     <!-- Companies -->
@@ -725,16 +700,18 @@
 
     <!-- Strategy -->
     <div
-      class="containerStrat max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
+      class="max-w-[1200px] h-auto mx-auto flex flex-col py-20 gap-10 max-xl:px-3"
     >
-      <div
-        class="intersect:titleStrat flex flex-col justify-center items-center gap-10"
-      >
-        <p class="text-[30px] text-[#12304A] max-xl:text-center">
+      <div class="flex flex-col justify-center items-center gap-10">
+        <p
+          class="text-[30px] text-[#12304A] max-xl:text-center intersect:animate-fade-down intersect:animate-duration-1500"
+        >
           Fokuskan perhatian pada strategi pengembangan bisnis Anda
           <span class="text-[#47B2E4] text-[30px] md:text-[43px]">.</span>
         </p>
-        <p class="text-[17px] text-[#587790] text-center lg:px-72">
+        <p
+          class="text-[17px] text-[#587790] text-center lg:px-72 intersect:animate-fade-down intersect:animate-duration-1500 intersect:animate-delay-200"
+        >
           Kami akan meng-handle urusan perpajakan, legal, dan management. Kami
           memiliki framework kerja yang terbukti efektif untuk kolaborasi team
           dan juga terdapat tools memonitor produktivitas secara real-time.
@@ -743,26 +720,32 @@
       <img
         src="/upscale-clone/assets/devices-EyQ43FdM.png"
         alt="Devices"
-        class="imgStrat py-10"
+        class="py-10 intersect:animate-fade intersect:animate-duration-1500 intersect:animate-delay-200"
       />
       <div
         class="w-full flex flex-col lg:flex-row justify-between items-center gap-10"
       >
-        <div class="strat1 flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-300"
+        >
           <p class="text-[21px] text-[#12304A]">Kecepatan Rekrutmen</p>
           <p class="text-[17px] text-[#587790]">
             Setelah kami mengetahui kebutuhan bisnis Anda, talent akan ready
             dalam waktu 14 hari.
           </p>
         </div>
-        <div class="strat2 flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-fade-up intersect:animate-delay-600 intersect:animate-duration-1500"
+        >
           <p class="text-[21px] text-[#12304A]">Kontrol Penuh</p>
           <p class="text-[17px] text-[#587790]">
             Anda akan mendapatkan report berkala dan dapat login dalam sistem
             real-time monitoring kami.
           </p>
         </div>
-        <div class="strat3 flex flex-col text-center gap-5">
+        <div
+          class="flex flex-col text-center gap-5 intersect:animate-fade-up intersect:animate-delay-900 intersect:animate-duration-1500"
+        >
           <p class="text-[21px] text-[#12304A]">Cost-Efficient</p>
           <p class="text-[17px] text-[#587790]">
             Tidak perlu mengeluarkan biaya untuk kantor dan team yang tidak
@@ -772,27 +755,20 @@
       </div>
     </div>
 
-    <script>
-      gsap.from(".titleStrat, .imgStrat, .strat1, .strat2, .strat3", {
-        opacity: 0,
-        y: 100,
-        duration: 1,
-        stagger: 0.4,
-      });
-    </script>
-
     <!-- Departemen -->
     <div class="w-full h-auto bg-[#f1f5f7] flex py-20">
       <div
         class="max-w-[1200px] h-auto mx-auto flex flex-col gap-10 max-xl:px-3"
       >
-        <div
-          class="flex flex-col text-center gap-10 intersect:animate-fade-down"
-        >
-          <p class="text-[30px] text-[#12304A]">
+        <div class="flex flex-col text-center gap-10">
+          <p
+            class="text-[30px] text-[#12304A] intersect:animate-fade-down intersect:animate-delay-200 intersect:animate-duration-1500"
+          >
             Departemen apa yang Anda butuhkan saat ini?
           </p>
-          <p class="text-[17px] text-[#587790] px-6 xl:px-64">
+          <p
+            class="text-[17px] text-[#587790] px-6 xl:px-64 intersect:animate-fade-down intersect:animate-delay-400 intersect:animate-duration-1500"
+          >
             Talent kami mencakup, namun tidak terbatas pada Software Developer,
             Quality Assurance, Graphic Designer, UX Designer, Product Manager,
             Keuangan, Data Entry, dll. Talent kami sangat disiplin dan memiliki
@@ -800,9 +776,11 @@
           </p>
         </div>
         <div
-          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10 intersect:animate-fade-up"
+          class="grid grid-cols-1 lg:grid-cols-3 justify-center items-center gap-10"
         >
-          <div class="flex flex-col text-center gap-5 px-5">
+          <div
+            class="flex flex-col text-center gap-5 px-5 intersect:animate-fade-up intersect:animate-delay-300 intersect:animate-duration-1500"
+          >
             <div class="flex flex-col">
               <p class="text-[18px] text-[#12304A]">Talent Pool</p>
               <p class="text-[32px] text-[#12304A]">100000 +</p>
@@ -812,7 +790,7 @@
             </p>
           </div>
           <div
-            class="flex flex-col text-center gap-5 max-lg:border-t-1 max-lg:border-t-[#dbdee0] max-lg:border-b-1 max-lg:border-b-[#dbdee0] max-lg:mx-5 max-lg:py-5 lg:px-5 lg:border-l-1 lg:border-l-[#dbdee0] lg:border-r-1 lg:border-r-[#dbdee0]"
+            class="flex flex-col text-center gap-5 max-lg:border-t-1 max-lg:border-t-[#dbdee0] max-lg:border-b-1 max-lg:border-b-[#dbdee0] max-lg:mx-5 max-lg:py-5 lg:px-5 lg:border-l-1 lg:border-l-[#dbdee0] lg:border-r-1 lg:border-r-[#dbdee0] intersect:animate-fade-up intersect:animate-delay-600 intersect:animate-duration-1500"
           >
             <div class="flex flex-col">
               <p class="text-[18px] text-[#12304A]">Talent Tersalurkan</p>
@@ -822,7 +800,9 @@
               Talent tersalurkan dan bekerja untuk client kami.
             </p>
           </div>
-          <div class="flex flex-col text-center gap-5 px-5">
+          <div
+            class="flex flex-col text-center gap-5 px-5 intersect:animate-fade-up intersect:animate-delay-900 intersect:animate-duration-1500"
+          >
             <div class="flex flex-col">
               <p class="text-[18px] text-[#12304A]">Happy Clients</p>
               <p class="text-[32px] text-[#12304A]">100 +</p>
@@ -839,36 +819,42 @@
     <div
       class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 py-20 max-xl:px-3 max-lg:gap-5"
     >
-      <div
-        class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5 intersect:animate-fade-right intersect:animate-duration-1000 intersect:animate-delay-400"
-      >
-        <div class="text-[30px] text-[#12304A]">
+      <div class="flex flex-col gap-5 font-[500] max-lg:text-center pr-5">
+        <div
+          class="text-[30px] text-[#12304A] intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-200"
+        >
           <p>Bagaimana prosedur kami ?</p>
           <p>Kami bekerja sesuai dengan kebutuhan bisnis Anda</p>
         </div>
-        <p class="text-[17px] text-[#587790]">
+        <p
+          class="text-[17px] text-[#587790] intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-400"
+        >
           Konsultasi singkat dengan konsultan kami akan membantu kamu untuk
           mengetahui kebutuhan bisnis dan talent Anda. Kami pastikan talent yang
           kami tawarkan adalah talent yang memiliki kualifikasi sesuai dengan
           kebutuhan.
         </p>
-        <p class="text-[18px] text-[#12304A]">
+        <p
+          class="text-[18px] text-[#12304A] intersect:animate-fade-right intersect:animate-delay-600 intersect:animate-duration-1500"
+        >
           Perkiraan waktu untuk konsultasi
         </p>
-        <div class="flex max-lg:justify-center items-center gap-4">
+        <div
+          class="flex max-lg:justify-center items-center gap-4 intersect:animate-fade-right intersect:animate-delay-800 intersect:animate-duration-1500"
+        >
           <span class="text-[40px] lg:text-[50px] text-[#12304A]">30</span>
           <span class="text-[25px] text-[#47B2E4] mt-3">Menit</span>
         </div>
       </div>
-      <div
-        class="relative pl-7 intersect:animate-fade-left intersect:animate-duration-1000 intersect:animate-delay-400"
-      >
+      <div class="relative pl-7">
         <div
-          class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
+          class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2 intersect:animate-fade intersect:animate-delay-1000 intersect:animate-duration-1500"
         ></div>
 
         <div class="w-full h-full flex flex-col justify-between max-lg:gap-5">
-          <div class="w-full flex flex-row relative">
+          <div
+            class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-300"
+          >
             <div
               class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
             >
@@ -885,7 +871,9 @@
             </div>
           </div>
 
-          <div class="w-full flex flex-row relative">
+          <div
+            class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-600"
+          >
             <div
               class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
             >
@@ -902,7 +890,9 @@
             </div>
           </div>
 
-          <div class="w-full flex flex-row relative">
+          <div
+            class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-900"
+          >
             <div
               class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
             >
@@ -927,7 +917,7 @@
       class="w-full h-[320px] bg-[url(Asset/Images/hd-4.jpg)] bg-fixed text-white"
     >
       <div
-        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-fade-down intersect:animate-duration-1000 intersect:animate-delay-400"
+        class="max-w-[1200px] h-full mx-auto max-xl:px-3 intersect:animate-fade-down intersect:animate-duration-1500 intersect:animate-delay-400"
       >
         <div
           class="h-full flex flex-col md:flex-row justify-center md:justify-between items-center max-md:gap-10"
@@ -956,35 +946,43 @@
       <div
         class="max-w-[1200px] h-auto mx-auto grid grid-cols-1 lg:grid-cols-2 max-xl:px-3 max-lg:gap-5 py-20"
       >
-        <div
-          class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5 intersect:animate-fade-right intersect:animate-duration-1000 intersect:animate-delay-400"
-        >
-          <div class="text-[30px] text-[#12304A]">
+        <div class="flex flex-col gap-5 font-[500] max-lg:text-center lg:pr-5">
+          <div
+            class="text-[30px] text-[#12304A] intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-200"
+          >
             <p>
               Setelah Anda mendapatkan talent terbaik, Kami tetap mensupport
               kebutuhan bisnis Anda
             </p>
           </div>
-          <p class="text-[17px] text-[#587790]">
+          <p
+            class="text-[17px] text-[#587790] intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-400"
+          >
             Setelah Anda mendapatkan talent, kami segera mempersiapkan semua
             dokumen HR seperti kontrak dan perpajakan. Kami juga mengelola
             seputar manajemen seperti timeline, finance, KPI Building, dll.
           </p>
-          <p class="text-[18px] text-[#12304A]">Estimated Talent Matching</p>
-          <div class="flex max-lg:justify-center items-center gap-4">
+          <p
+            class="text-[18px] text-[#12304A] intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-600"
+          >
+            Estimated Talent Matching
+          </p>
+          <div
+            class="flex max-lg:justify-center items-center gap-4 intersect:animate-fade-right intersect:animate-duration-1500 intersect:animate-delay-800"
+          >
             <span class="text-[40px] lg:text-[50px] text-[#12304A]">14</span>
             <span class="text-[25px] text-[#47B2E4] mt-3">days</span>
           </div>
         </div>
-        <div
-          class="relative pl-7 intersect:animate-fade-left intersect:animate-duration-1000 intersect:animate-delay-400"
-        >
+        <div class="relative pl-7">
           <div
-            class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2"
+            class="block w-0.5 bg-[#e6e6e6] absolute h-full left-4 lg:left-7 top-1 transform -translate-x-1/2 intersect:animate-fade intersect:animate-duration-1500 intersect:animate-delay-1000"
           ></div>
 
           <div class="w-full h-full flex flex-col justify-between max-lg:gap-5">
-            <div class="w-full flex flex-row relative">
+            <div
+              class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-300"
+            >
               <div
                 class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
               >
@@ -999,7 +997,9 @@
               </div>
             </div>
 
-            <div class="w-full flex flex-row relative">
+            <div
+              class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-600"
+            >
               <div
                 class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
               >
@@ -1015,7 +1015,9 @@
               </div>
             </div>
 
-            <div class="w-full flex flex-row relative">
+            <div
+              class="w-full flex flex-row relative intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-900"
+            >
               <div
                 class="absolute -left-3 lg:left-0 top-1 transform -translate-x-1/2 bg-white border-1 border-[#e6e6e6] py-2 px-4 rounded-full"
               >
@@ -1037,19 +1039,25 @@
     <!-- Recruitment -->
     <div
       x-data="{ open1: false, open2: false, open3: false }"
-      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3 intersect:animate-fade-up intersect:animate-duration-1000 intersect:animate-delay-400"
+      class="max-w-[1200px] h-auto mx-auto py-10 lg:py-20 items-center max-xl:px-3"
     >
       <div class="flex flex-col lg:flex-row max-lg:gap-10">
         <div class="flex flex-col gap-9 max-lg:text-center">
-          <p class="text-[30px] text-[#12304A]">
+          <p
+            class="text-[30px] text-[#12304A] intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-200"
+          >
             Recruitment Type <span class="text-[43px] text-[#47B2E4]">.</span>
           </p>
-          <p class="text-[17px] text-[#587790] lg:pr-10">
+          <p
+            class="text-[17px] text-[#587790] lg:pr-10 intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-400"
+          >
             Tentukan tipe recruitment anda. Pilihan fasilitas tidak bersifat
             wajib, sehingga masih dapat disesuaikan kembali sesuai kebutuhan.
           </p>
           <div class="flex flex-col gap-7">
-            <div class="flex flex-col">
+            <div
+              class="flex flex-col intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-700"
+            >
               <div
                 x-on:click="open1 = ! open1"
                 class="flex flex-row gap-3 hover:cursor-pointer"
@@ -1081,7 +1089,9 @@
                 maupun part-time
               </p>
             </div>
-            <div class="flex flex-col">
+            <div
+              class="flex flex-col intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-1000"
+            >
               <div
                 x-on:click="open2 = ! open2"
                 class="flex flex-row gap-3 hover:cursor-pointer"
@@ -1112,8 +1122,9 @@
                 internal.
               </p>
             </div>
-
-            <div class="flex flex-col">
+            <div
+              class="flex flex-col intersect:animate-fade-up intersect:animate-duration-1500 intersect:animate-delay-1300"
+            >
               <div
                 x-on:click="open3 = ! open3"
                 class="flex flex-row gap-3 hover:cursor-pointer"
@@ -1146,7 +1157,9 @@
             </div>
           </div>
         </div>
-        <div class="flex lg:text-nowrap">
+        <div
+          class="flex lg:text-nowrap intersect:animate-fade-left intersect:animate-duration-1500 intersect:animate-delay-400"
+        >
           <table class="text-[14px] table-auto">
             <thead>
               <tr>
